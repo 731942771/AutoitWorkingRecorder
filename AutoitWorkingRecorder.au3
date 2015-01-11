@@ -12,7 +12,7 @@
 #include <GuiToolbar.au3>
 #include <GuiToolTip.au3>
 #include <StaticConstants.au3>
-#include <WinAPI.au3>
+#include <WinAPI.au3> 
 #Include <WinAPIEx.au3>
 #include <WindowsConstants.au3>
 
@@ -40,17 +40,28 @@ EndIf
 
 
 ;======================================================================
+; 单击标签切换LV时用到的
 Global $itemInToolbar, $idOfTabItem	; 添加一个全局变量$idOfTabItem记录被右击的标签索引
-Global $WidthOfWindow = 800, $HeightOfWindow = 600	; 窗体宽高
+; 主窗体宽高
+Global $WidthOfWindow = 800, $HeightOfWindow = 600
+; 主窗体，工具条，工具条提示器
 Global $guiMainWindow, $toolbarInMainWindow, $hToolTip 
+; 工具条上的按钮既定ID
 Global Enum $id_Toolbar_New = 1000, $id_Toolbar_Save, $id_Toolbar_Delete, $id_Toolbar_Find, $id_Toolbar_Help
+; 数据库读取标识。读过的True
 Global $hasReadedDbTbWorkers = False, $hasReadedDbTbSchools = False, $hasReadedDbTbProducts = False, $hasReadedDbTbAccets = False, $hasReadedDbTbPartners = False, $hasReadedDbTbProjects = False, $hasReadedDbTbUsers = False, $hasReadedDbTbSource = False, $hasReadedDbTbLog = False, $hasReadedDbTbJournal = False
+; 双击单元格时创建编辑框用到的
 Global $hEdit, $hBrush, $hDC, $hItemRow, $hItemColumn	; 双击LV进行修改用到了
-Global $columnOfTable, $columnOfLV, $columnName, $columnOldData;, $columnsUpdatedArr[][2]	; 缓存更新过的单元格。$columnsUpdatedArr[i][0]=x,y，$columnsUpdatedArr[i][1]=$columnOldData
+; 双击单元格修改数据，保存日志到Log表时用到的。修改的数据属于哪个表，属于哪个LV，对应的列名，修改前数据
+Global $columnOfTable, $columnOfLV, $columnName, $columnOldData
+; 子窗体，子窗体的确定按钮，取消按钮。
+Global $popupWindow, $btnOKInPopWin, $btnNOInPopWin
+; 查询时保存查询条件
+Global $strArgsOfQuery, $strArgsOfLVArr[7], $strArgsOfTableArr[7]	; 根据本例需要，长度设为7
 
 ;======================================================================
 ;-------------------- GUI ---------------------------------
-$guiMainWindow = GUICreate("中徽教育", $WidthOfWindow, $HeightOfWindow) 
+$guiMainWindow = GUICreate("中徽教育|威格灵 www.cuiweiyou.com", $WidthOfWindow, $HeightOfWindow) 
 	GUISetOnEvent($GUI_EVENT_CLOSE, "Func_GUI_EVENT_CLOSE")
 	GUISetIcon( @ScriptDir & "\Logo.ico")	; 设置程序图标为脚本文件同目录中的Logo.ico
 	
@@ -66,13 +77,13 @@ $guiMainWindow = GUICreate("中徽教育", $WidthOfWindow, $HeightOfWindow)
 	$menuTab = GUICtrlCreateMenu ( "窗口 &W")
 		$itemJournalOfTabInMenu = GUICtrlCreateMenuItem("√ 工作日志", $menuTab)
 			GUICtrlSetOnEvent($itemJournalOfTabInMenu, "Func_ShowTab_ByMenu")
-		$itemProductsOfTabInMenu = GUICtrlCreateMenuItem("　公司产品", $menuTab)
+		$itemProductsOfTabInMenu = GUICtrlCreateMenuItem("  公司产品", $menuTab)
 			GUICtrlSetOnEvent($itemProductsOfTabInMenu, "Func_ShowTab_ByMenu")
-		$itemSchoolsOfTabInMenu = GUICtrlCreateMenuItem("　学校信息", $menuTab)
+		$itemSchoolsOfTabInMenu = GUICtrlCreateMenuItem("  学校信息", $menuTab)
 			GUICtrlSetOnEvent($itemSchoolsOfTabInMenu, "Func_ShowTab_ByMenu")
-		$itemPartnersOfTabInMenu = GUICtrlCreateMenuItem("　合作伙伴", $menuTab)
+		$itemPartnersOfTabInMenu = GUICtrlCreateMenuItem("  合作伙伴", $menuTab)
 			GUICtrlSetOnEvent($itemPartnersOfTabInMenu, "Func_ShowTab_ByMenu")
-		$itemProjectsOfTabInMenu = GUICtrlCreateMenuItem("　工程管理", $menuTab)
+		$itemProjectsOfTabInMenu = GUICtrlCreateMenuItem("  工程管理", $menuTab)
 			GUICtrlSetOnEvent($itemProjectsOfTabInMenu, "Func_ShowTab_ByMenu")
 	
 	$menuHelp = GUICtrlCreateMenu ( "帮助 &H")
@@ -95,7 +106,7 @@ $guiMainWindow = GUICreate("中徽教育", $WidthOfWindow, $HeightOfWindow)
 		_GUICtrlToolbar_AddButtonSep($toolbarInMainWindow)
 		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_Help, $STD_HELP)				; 帮助
  
-	$tabInMainWindow = GUICtrlCreateTab ( 1, 28, $WidthOfWindow, $HeightOfWindow - 70)
+	$tabInMainWindow = GUICtrlCreateTab ( 1, 28, $WidthOfWindow - 1, $HeightOfWindow - 70)
 		GUICtrlSetOnEvent($tabInMainWindow, "Func_Tab_Click")
 	
 		$imgList = _GUIImageList_Create()
@@ -104,9 +115,10 @@ $guiMainWindow = GUICreate("中徽教育", $WidthOfWindow, $HeightOfWindow)
 			_GUIImageList_Add($imgList, _WinAPI_CreateSolidBitmap($guiMainWindow, 0x0000FF, 16, 16))
 			_GUIImageList_Add($imgList, _WinAPI_CreateSolidBitmap($guiMainWindow, 0xFF3399, 16, 16))
 			_GUIImageList_Add($imgList, _WinAPI_CreateSolidBitmap($guiMainWindow, 0x007700, 16, 16))
+			_GUIImageList_Add($imgList, _WinAPI_CreateSolidBitmap($guiMainWindow, 0xFF6600, 16, 16))	; 查询结果
 			_GUICtrlTab_SetImageList($tabInMainWindow, $imgList)
 	
-		$itemWorkerInTabWelcome = _GUICtrlTab_InsertItem ( $tabInMainWindow, 0, "工作日志", 0)
+		_GUICtrlTab_InsertItem ( $tabInMainWindow, 0, "工作日志", 0)
 	
 	$mouseMenuTab = GUICtrlCreateContextMenu($tabInMainWindow)
 		$mouseMenuItemClose = GUICtrlCreateMenuItem("关闭", $mouseMenuTab)
@@ -120,27 +132,27 @@ $guiMainWindow = GUICreate("中徽教育", $WidthOfWindow, $HeightOfWindow)
 
 	GUICtrlCreateLabel("文本 3", 2, $HeightOfWindow - 38, 50, 20)
 	
-	$lvInTabJournal = GUICtrlCreateListView ( "编号|人员|日期|地点|交通|食宿|工作描述|备注", 3, 51, $WidthOfWindow - 6, $HeightOfWindow - 97)	; 工作日志表
+	$lvInTabJournal = GUICtrlCreateListView ( "编号|人员|日期|地点|交通|食宿|工作描述|备注", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)	; 工作日志表
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabJournal, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))	; 统计设置多种扩展样式
 		GUICtrlSetBkColor($lvInTabJournal, 0xffffff)					;设置listview的背景色
 		GUICtrlSetBkColor($lvInTabJournal, $GUI_BKCOLOR_LV_ALTERNATE)	;奇数行为listview的背景色，偶数行为listviewitem的背景色
 		GUICtrlSetState($lvInTabJournal, $GUI_SHOW)
-	$lvInTabProducts = GUICtrlCreateListView ( "编号|产品|类型|设计|配置|造价|备注", 3, 51, $WidthOfWindow - 6, $HeightOfWindow - 97)	; 公司产品表
+	$lvInTabProducts = GUICtrlCreateListView ( "编号|产品|类型|设计|配置|造价|备注", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)	; 公司产品表
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabProducts, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabProducts, 0xffffff)
 		GUICtrlSetBkColor($lvInTabProducts, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabProducts, $GUI_HIDE)
-	$lvInTabSchools  = GUICtrlCreateListView ( "编号|学校|联系人|地址|电话|邮箱|备注", 3, 51, $WidthOfWindow - 6, $HeightOfWindow - 97)	; 学校信息表
+	$lvInTabSchools  = GUICtrlCreateListView ( "编号|学校|联系人|地址|电话|邮箱|备注", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)	; 学校信息表
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabSchools, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabSchools, 0xffffff)
 		GUICtrlSetBkColor($lvInTabSchools, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabSchools, $GUI_HIDE)
-	$lvInTabProjects = GUICtrlCreateListView ( "编号|名称|学校|产品|合作者|我司负责人|细则|起始日期|状态|结束日期|结算记录|备注", 3, 51, $WidthOfWindow - 6, $HeightOfWindow - 97)	; 工程管理表
+	$lvInTabProjects = GUICtrlCreateListView ( "编号|名称|学校|产品|合作者|我司负责人|细则|起始日期|状态|结束日期|结算记录|备注", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)	; 工程管理表
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabProjects, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabProjects, 0xffffff)
 		GUICtrlSetBkColor($lvInTabProjects, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabProjects, $GUI_HIDE)
-	$lvInTabPartners = GUICtrlCreateListView ( "编号|名称|类型|地址|电话|邮箱|业务|备注", 3, 51, $WidthOfWindow - 6, $HeightOfWindow - 97)	; 合作伙伴表
+	$lvInTabPartners = GUICtrlCreateListView ( "编号|名称|类型|地址|电话|邮箱|业务|备注", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)	; 合作伙伴表
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabPartners, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabPartners, 0xffffff)
 		GUICtrlSetBkColor($lvInTabPartners, $GUI_BKCOLOR_LV_ALTERNATE)
@@ -348,9 +360,227 @@ EndFunc
 ;#cs
 ; 在当前列表中查询数据
 ; 累加不同的字段集合为查询条件
+; 在$strArgsOfLVArr中保存关键字控件的ID
+; 在$strArgsOfTableArr中保存表、列
 ;#ce
 Func FuncFindData()
+	Local $strLvName
+	$strLvName = _GUICtrlTab_GetItemText ( $tabInMainWindow, _GUICtrlTab_GetCurSel ( $tabInMainWindow ))
 	
+	$popupWindow = GUICreate("" , 500, 175, Default, Default, $WS_CAPTION, BitOR($WS_EX_TOPMOST, $GUI_WS_EX_PARENTDRAG))
+		WinSetTitle($popupWindow, "", "在《" & $strLvName & "》中查询数据" )
+		
+		GUICtrlCreateGroup("在需要的条件里输入关键字。多个词用空格分开", 10, 10, 480, 125)
+
+		; 获取当前激活的LV
+		Switch $strLvName
+			Case "工作日志"		;  人员 日期 地点 交通 食宿 工作描述。id, j_name, j_date, j_address, j_traffic, j_board, j_content, j_note, j_record, j_date_record
+				$strArgsOfLVArr[0] = $lvInTabJournal	; LV
+				$strArgsOfTableArr[0] = $tb_journal		; Table
+				
+				GUICtrlCreateLabel("人员:", 20, 45, 30, 20 )
+				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 40, 180, 20)
+				$strArgsOfTableArr[1] = "j_name"
+				GUICtrlCreateLabel("日期:", 20, 75, 30, 20 )
+				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 70, 180, 20)
+				$strArgsOfTableArr[2] = "j_date"
+				GUICtrlCreateLabel("地点:", 20, 105, 30, 20 )
+				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 100, 180, 20)
+				$strArgsOfTableArr[3] = "j_address"
+				
+				GUICtrlCreateLabel("交通:", 260, 45, 30, 20 )
+				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 292, 40, 180, 20)
+				$strArgsOfTableArr[4] = "j_traffic"
+				GUICtrlCreateLabel("食宿:", 260, 75, 30, 20 )
+				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 70, 180, 20)
+				$strArgsOfTableArr[5] = "j_board"
+				GUICtrlCreateLabel("工作:", 260, 105, 30, 20 )
+				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 292, 100, 180, 20)
+				$strArgsOfTableArr[6] = "j_content"
+				
+			Case "公司产品"		; 产品 类型 设计 配置 造价。id, pd_name, pd_type, pd_desiger, pd_configuration, pd_cost, pd_note
+				$strArgsOfLVArr[0] = $lvInTabProducts
+				$strArgsOfTableArr[0] = $tb_products
+				
+				GUICtrlCreateLabel("产品:", 20, 45, 30, 20 )
+				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 40, 180, 20)
+				$strArgsOfTableArr[1] = "pd_name"
+				GUICtrlCreateLabel("类型:", 20, 75, 30, 20 )
+				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 70, 180, 20)
+				$strArgsOfTableArr[2] = "pd_type"
+				GUICtrlCreateLabel("设计:", 20, 105, 30, 20 )
+				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 100, 180, 20)
+				$strArgsOfTableArr[3] = "pd_desiger"
+				
+				GUICtrlCreateLabel("配置:", 260, 45, 30, 20 )
+				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 292, 40, 180, 20)
+				$strArgsOfTableArr[4] = "pd_configuration"
+				GUICtrlCreateLabel("造价:", 260, 75, 30, 20 )
+				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 70, 180, 20)
+				$strArgsOfTableArr[5] = "pd_cost"
+			Case "学校信息"		; 学校 联系人 地址 电话 邮箱。id, s_name, s_contact, s_address, s_phone, s_email, s_note
+				$strArgsOfLVArr[0] = $lvInTabSchools
+				$strArgsOfTableArr[0] = $tb_schools
+				
+				GUICtrlCreateLabel("学  校:", 20, 45, 45, 20 )
+				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 67, 40, 170, 20)
+				$strArgsOfTableArr[1] = "s_name"
+				GUICtrlCreateLabel("联系人:", 20, 75, 45, 20 )
+				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 67, 70, 170, 20)
+				$strArgsOfTableArr[2] = "s_contact"
+				GUICtrlCreateLabel("地  址:", 20, 105, 45, 20 )
+				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 67, 100, 170, 20)
+				$strArgsOfTableArr[3] = "s_address"
+				
+				GUICtrlCreateLabel("电  话:", 260, 45, 45, 20 )
+				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 307, 40, 170, 20)
+				$strArgsOfTableArr[4] = "s_phone"
+				GUICtrlCreateLabel("邮  箱:", 260, 75, 45, 20 )
+				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 307, 70, 170, 20)
+				$strArgsOfTableArr[5] = "s_email"
+			Case "工程管理"		; 名称 学校 产品 合作者 状态。id, pj_name, pj_s_name, pj_pd_name, pj_pt_name, pj_w_name, pj_content, pj_date_start, pj_state, pj_date_finish, pj_account, pj_note
+				$strArgsOfLVArr[0] = $lvInTabProjects
+				$strArgsOfTableArr[0] = $tb_projects
+				
+				GUICtrlCreateLabel("名  称:", 20, 45, 45, 20 )
+				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 67, 40, 170, 20)
+				$strArgsOfTableArr[1] = "pj_name"
+				GUICtrlCreateLabel("学  校:", 20, 75, 45, 20 )
+				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 67, 70, 170, 20)
+				$strArgsOfTableArr[2] = "pj_s_name"
+				GUICtrlCreateLabel("产  品:", 20, 105, 45, 20 )
+				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 67, 100, 170, 20)
+				$strArgsOfTableArr[3] = "pj_pt_name"
+				
+				GUICtrlCreateLabel("合作者:", 260, 45, 45, 20 )
+				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 307, 40, 170, 20)
+				$strArgsOfTableArr[4] = "pj_content"
+				GUICtrlCreateLabel("状  态:", 260, 75, 45, 20 )
+				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 307, 70, 170, 20)
+				$strArgsOfTableArr[5] = "pj_state"
+			Case "合作伙伴"		; 名称 类型 地址 电话 邮箱 业务。id, pt_name, pt_type, pt_address, pt_phone, pt_email, pt_business, pt_note
+				$strArgsOfLVArr[0] = $lvInTabPartners
+				$strArgsOfTableArr[0] = $tb_partners
+				
+				GUICtrlCreateLabel("名称:", 20, 45, 30, 20 )
+				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 40, 180, 20)
+				$strArgsOfTableArr[1] = "pt_name"
+				GUICtrlCreateLabel("类型:", 20, 75, 30, 20 )
+				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 70, 180, 20)
+				$strArgsOfTableArr[2] = "pt_type"
+				GUICtrlCreateLabel("地址:", 20, 105, 30, 20 )
+				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 100, 180, 20)
+				$strArgsOfTableArr[3] = "pt_address"
+				
+				GUICtrlCreateLabel("电话:", 260, 45, 30, 20 )
+				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 292, 40, 180, 20)
+				$strArgsOfTableArr[4] = "pt_phone"
+				GUICtrlCreateLabel("邮箱:", 260, 75, 30, 20 )
+				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 70, 180, 20)
+				$strArgsOfTableArr[5] = "pt_email"
+				GUICtrlCreateLabel("业务:", 260, 105, 30, 20 )
+				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 292, 100, 180, 20)
+				$strArgsOfTableArr[6] = "pt_business"
+		EndSwitch
+		
+		GUICtrlCreateGroup("", -99, -99, 1, 1) 
+		
+		$btnOKInPopWin = GUICtrlCreateButton("确定", 10, 145, 60, 22)
+			GUICtrlSetOnEvent($btnOKInPopWin, "FuncFindDataByArgs")
+		$btnNOInPopWin = GUICtrlCreateButton("取消", 428, 145, 60, 22)
+			GUICtrlSetOnEvent($btnNOInPopWin, "FuncFindDataByArgs")
+		
+	GUISetState(@SW_SHOW, $popupWindow)
+	GUISetState(@SW_DISABLE, $guiMainWindow) 
+EndFunc
+
+Func FuncFindDataByArgs ()
+	If @GUI_CtrlId = $btnOKInPopWin Then
+		Local $isSqlStrEnable = False	; 查询语句是否可用。如果全部参数都是空的，不会设为true
+		
+		$strArgsOfQuery = "SELECT * FROM " & $strArgsOfTableArr[0] & " WHERE "
+		
+		; 遍历控件数组，拼接语句
+		For $iiii = 1 To 6 Step 1	; 0索引保存的是lV或Access名称。剩余1-6保存控件
+			
+			Local $strWidget = GUICtrlRead($strArgsOfLVArr[$iiii])
+			
+			If $strWidget <> "" And StringIsSpace($strWidget) <> 1 Then
+				
+				; 读控件内的文本，去除首、尾空格、连续多个空格合为1个
+				Local $keywords = StringStripWS($strWidget, $STR_STRIPLEADING + $STR_STRIPTRAILING + $STR_STRIPSPACES )
+				; 根据关键词文本之间的空格进行拆组
+				Local $keywordArr = StringSplit ($keywords, " ")
+				; 只要有词语，至少能有一个元素[1]
+				If $keywordArr[0] > 0 Then	; $keywordArr[0]保存有效元素数量
+					; 如果有多个词，拼接
+					For $j = 1 To $keywordArr[0]
+						; 列 like %值%
+						$strArgsOfQuery &= $strArgsOfTableArr[$iiii] & " LIKE '%" & $keywordArr[$j] & "%' AND "
+					Next
+				EndIf
+				
+				$isSqlStrEnable = True	; 至少有一个有效参数，才可用
+			EndIf
+		Next
+		
+		$strArgsOfQuery &= "1 = 1"	; 拼接sql语句常用结尾。否则删除最后一个 AND比较麻烦
+		
+		If $isSqlStrEnable Then
+			; 执行数据库查询
+			Local $adoCon = ObjCreate("ADODB.Connection")
+			$adoCon.Open("Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" & $db_path & "; Jet OLEDB:Database Password='" & $db_pswd & "'")
+			Local $adoRec = ObjCreate("ADODB.Recordset")
+			$adoRec.ActiveConnection = $adoCon
+			
+			$adoRec.Open($strArgsOfQuery)	; 从表中查到的结果集
+			
+			Local $fieldsCount = $adoRec.fields.count	; 执行上一步后，得到表的字段数量
+			If $strArgsOfTableArr[0] = $tb_journal Then
+				$fieldsCount = $fieldsCount - 2
+			EndIf
+			
+			; 清空列表
+			_GUICtrlListView_DeleteAllItems ($strArgsOfLVArr[0])
+			
+			_GUICtrlListView_BeginUpdate($strArgsOfLVArr[0])
+			While Not $adoRec.Eof And Not $adoRec.Bof	; 遍历结果集每一行
+				If @error = 1 Then
+					ExitLoop
+				Else
+					; 这里最好是创建一个新的标签、LV来展示查询结果
+					
+					Local $strResultDataForLv = ""
+					
+					For $i = 0 To $fieldsCount - 1 Step 1
+						$strResultDataForLv &= $adoRec.fields($i).value & "|" 
+					Next
+					
+					GUICtrlCreateListViewItem($strResultDataForLv, $strArgsOfLVArr[0])
+						GUICtrlSetBkColor (-1, 0xffa500 );设置listviewitem的背景色
+					
+					$adoRec.Movenext	; 结果集的下一行
+				EndIf
+			WEnd
+			_GUICtrlListView_EndUpdate($strArgsOfLVArr[0])
+			_GUICtrlListView_Scroll($strArgsOfLVArr[0], 0, _GUICtrlListView_GetItemCount($strArgsOfLVArr[0])*10)
+
+			$adoRec.Close
+			$adoCon.Close
+		EndIf
+		
+	EndIf
+	
+	GUIDelete ( $popupWindow )
+	GUISetState(@SW_ENABLE, $guiMainWindow) 
+	GUISetState(@SW_RESTORE, $guiMainWindow)
+	
+	; 复位。清空数组
+	$strArgsOfQuery = ""
+	For $i = 0 To 6
+		$strArgsOfLVArr[$i] = ""
+		$strArgsOfTableArr[$i] = ""
+	Next
 EndFunc
 
 ; #cs
@@ -420,7 +650,7 @@ Func _WM_COMMAND($hWnd, $msg, $wParam, $lParam)
 					If $iText <> $columnOldData Then
 						
 						Local $tmpIndexOfDClick = _GUICtrlListView_GetItemText ( $columnOfLV, $hItemRow )
-						ConsoleWrite($tmpIndexOfDClick & @CRLF)
+						
 						;                               表                             列                新值             条件
 						Local $strUpdate = "UPDATE " & $columnOfTable & " SET " & $columnName & "='" & $iText & "' WHERE id=" & $tmpIndexOfDClick
 						Local $adoCon = ObjCreate("ADODB.Connection")
@@ -459,7 +689,7 @@ Func FuncDeleteItemFromListView()
 	Switch _GUICtrlTab_GetItemText ( $tabInMainWindow, _GUICtrlTab_GetCurSel ( $tabInMainWindow ))
 		Case "工作日志"
 			; 获取选中行的内容
-			$row = _GUICtrlListView_GetSelectedIndices ( $lvInTabJournal )			; 选中的条目的索引
+			;$row = _GUICtrlListView_GetSelectedIndices ( $lvInTabJournal )			; 选中的条目的索引
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabJournal, -1 )	; 选中的条目的整行内容
 			
 			$strLvInTab = $lvInTabJournal	; LV
@@ -503,7 +733,7 @@ Func FuncDeleteItemFromAccessAndListView ( $strTbName, $strLvInTab, $strLvItem )
 		$dataAdodbConnectionDel.Open("Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" & $db_path & ";Jet Oledb:Database Password='" & $db_pswd & "'")
 		
 		Local $strDel = "DELETE FROM " & $strTbName & " IN '" & $db_path & "' WHERE id" & " = " & $indexOfDelItem[1]
-		ConsoleWrite("===>" & $strDel & @CRLF)
+		
 		$dataAdodbConnectionDel.execute($strDel)
 		
 		; 日志表
@@ -690,15 +920,15 @@ Func Func_ShowTab_ByText ( $strItemName )
 		
 		Switch _GUICtrlTab_GetItemText($tabInMainWindow, $id_item)
 			Case "工作日志"
-				GUICtrlSetData($itemJournalOfTabInMenu, "　工作日志")
+				GUICtrlSetData($itemJournalOfTabInMenu, "  工作日志")
 			Case "公司产品"
-				GUICtrlSetData($itemProductsOfTabInMenu, "　公司产品")
+				GUICtrlSetData($itemProductsOfTabInMenu, "  公司产品")
 			Case "学校信息"
-				GUICtrlSetData($itemSchoolsOfTabInMenu, "　学校信息")
+				GUICtrlSetData($itemSchoolsOfTabInMenu, "  学校信息")
 			Case "工程管理"
-				GUICtrlSetData($itemProjectsOfTabInMenu, "　工程管理")
+				GUICtrlSetData($itemProjectsOfTabInMenu, "  工程管理")
 			Case "合作伙伴"
-				GUICtrlSetData($itemPartnersOfTabInMenu, "　合作伙伴")
+				GUICtrlSetData($itemPartnersOfTabInMenu, "  合作伙伴")
 		EndSwitch
 				
 		_GUICtrlTab_DeleteItem ( $tabInMainWindow, $id_item )
@@ -887,7 +1117,7 @@ Func FuncCreateDb()
 
 	;=== 学校信息表 tb_schools ：
 	;                              编号|                                 学校|        联系人|         地址|                电话|         邮箱|        备注
-	Local $strColsForTbSchools = "id integer identity(1,1) primary key, s_name text, s_contact text, s_address text(250), s_phone text, s_email text, s_note text(250)"
+	Local $strColsForTbSchools = "id integer identity(1,1) primary key, s_name text, s_contact text, s_address text(250), s_phone text, s_email text, s_note memo"
 
 	;=== 公司产品表 tb_products ：
 	;                               编号|                                 产品|         类型|        设计|             配置|                       造价|        备注
@@ -899,7 +1129,7 @@ Func FuncCreateDb()
 
 	;=== 合作伙伴表 tb_partners ：
 	;                               编号|                                 名称|         类型|         地址|                 电话|          邮箱|          业务|             备注
-	Local $strColsForTbPartners = "id integer identity(1,1) primary key, pt_name text, pt_type text, pt_address text(250), pt_phone text, pt_email text, pt_business text, pt_note text(250)"
+	Local $strColsForTbPartners = "id integer identity(1,1) primary key, pt_name text, pt_type text, pt_address text(250), pt_phone text, pt_email text, pt_business text, pt_note memo"
 
 	;=== 工程管理表 tb_projects ：
 	;                               编号|                                 名称|         学校|           产品|            合作者|          我司负责人|     细则（照片）|         起始日期|           状态|          结束日期|            结算记录|             备注
