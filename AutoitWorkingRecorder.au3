@@ -1,27 +1,27 @@
-#Region ;**** ÓÉ AccAu3Wrapper_GUI ´´½¨Ö¸Áî ****
+#Region ;**** ç”± AccAu3Wrapper_GUI åˆ›å»ºæŒ‡ä»¤ ****
 #AccAu3Wrapper_Icon=favicon.ico
-#AccAu3Wrapper_OutFile=C:\Documents and Settings\Administrator\×ÀÃæ\vigiles.exe
+#AccAu3Wrapper_OutFile=C:\Documents and Settings\Administrator\æ¡Œé¢\vigiles.exe
 #AccAu3Wrapper_Compression=4
-#AccAu3Wrapper_Res_Comment=Íş¸ñÁé²©¿Í
+#AccAu3Wrapper_Res_Comment=å¨æ ¼çµåšå®¢
 #AccAu3Wrapper_Res_Description=www.cuiweiyou.com
 #AccAu3Wrapper_Res_Fileversion=8.8.8.8
 #AccAu3Wrapper_Res_ProductVersion=9.9.9.9
 #AccAu3Wrapper_Res_LegalCopyright=vigiles
 #AccAu3Wrapper_Res_Language=2052
 #AccAu3Wrapper_Res_requestedExecutionLevel=None
-#AccAu3Wrapper_Res_Field=OriginalFilename|ÖĞ»Õ½ÌÓı-´ŞÎ¬ÓÑ
-#AccAu3Wrapper_Res_Field=ProductName|ÖĞ»Õ½ÌÓı-´ŞÎ¬ÓÑ
+#AccAu3Wrapper_Res_Field=OriginalFilename|å´”ç»´å‹
+#AccAu3Wrapper_Res_Field=ProductName|å´”ç»´å‹
 #AccAu3Wrapper_Res_Field=ProductVersion|V1.0
-#AccAu3Wrapper_Res_Field=InternalName|ÖĞ»Õ½ÌÓı-´ŞÎ¬ÓÑ
-#AccAu3Wrapper_Res_Field=FileDescription|ÖĞ»Õ½ÌÓı-´ŞÎ¬ÓÑ
-#AccAu3Wrapper_Res_Field=Comments|ÖĞ»Õ½ÌÓı-´ŞÎ¬ÓÑ
+#AccAu3Wrapper_Res_Field=InternalName|å´”ç»´å‹
+#AccAu3Wrapper_Res_Field=FileDescription|å´”ç»´å‹
+#AccAu3Wrapper_Res_Field=Comments|å´”ç»´å‹
 #AccAu3Wrapper_Res_Field=LegalTrademarks|cuiweiyou.com
 #AccAu3Wrapper_Res_Field=CompanyName|cuiweiyou.com
 #AccAu3Wrapper_Run_AU3Check=n
 #AutoIt3Wrapper_UseX64=n
 #Tidy_Parameters=/sfc/rel
 #AccAu3Wrapper_Tidy_Stop_OnError=n
-#EndRegion ;**** ÓÉ AccAu3Wrapper_GUI ´´½¨Ö¸Áî ****
+#EndRegion ;**** ç”± AccAu3Wrapper_GUI åˆ›å»ºæŒ‡ä»¤ ****
 
 #include <GUIConstantsEx.au3>
 #include <GUIEdit.au3>
@@ -40,38 +40,38 @@
 Opt("GUIOnEventMode", 1)
 
 ;======================================================================
-; È«¾ÖµÄÊı¾İ¿âÂ·¾¶
+; å…¨å±€çš„æ•°æ®åº“è·¯å¾„
 Global $db_path = @ScriptDir & "\mdbZhongHui.mdb"
-Global $db_pswd = ""	; ´ËÃÜÂëÊÇmdbÎÄ¼şµÄÃÜÂë
+Global $db_pswd = ""	; æ­¤å¯†ç æ˜¯mdbæ–‡ä»¶çš„å¯†ç 
 
-; ÓÃµ½µÄ±íµ¥£º          ¹«Ë¾ÈËÔ±                   Ñ§Ğ£ĞÅÏ¢                      ¹«Ë¾²úÆ·                  ×Ê²ú¹ÜÀí                     ºÏ×÷»ï°é                       ¹¤³Ì¹ÜÀí                   ¹¤×÷ÈÕÖ¾                   ÓÃ»§                     ÔªÊı¾İ              ²Ù×÷ÈÕÖ¾
+; ç”¨åˆ°çš„è¡¨å•ï¼š          å…¬å¸äººå‘˜                   å­¦æ ¡ä¿¡æ¯                      å…¬å¸äº§å“                  èµ„äº§ç®¡ç†                     åˆä½œä¼™ä¼´                       å·¥ç¨‹ç®¡ç†                   å·¥ä½œæ—¥å¿—                   ç”¨æˆ·                     å…ƒæ•°æ®              æ“ä½œæ—¥å¿—
 Global $tb_workers = "tb_workers", $tb_schools = "tb_schools", $tb_products = "tb_products", $tb_accets = "tb_accets", $tb_partners = "tb_partners", $tb_projects = "tb_projects", $tb_journal = "tb_journal", $tb_users = "tb_users", $tb_source = "tb_source", $tb_log = "tb_log"
 
-;-------------------- Ô´Êı¾İ²Ù×÷ -------------------------------
+;-------------------- æºæ•°æ®æ“ä½œ -------------------------------
 If FileExists ( $db_path ) = 0 Then
-	;If MsgBox(52, "¾¯¸æ", "Î´¼ì²âµ½Êı¾İ¿âÎÄ¼ş£¬ÊÇ·ñÖØĞÂ´´½¨£¿") = 6 Then
+	;If MsgBox(52, "è­¦å‘Š", "æœªæ£€æµ‹åˆ°æ•°æ®åº“æ–‡ä»¶ï¼Œæ˜¯å¦é‡æ–°åˆ›å»ºï¼Ÿ") = 6 Then
 		FuncCreateDb ( )
 	;EndIf
 EndIf
 
 ;======================================================================
-;-------------------- ÓÃ»§µÇÂ¼ --------------------------------
+;-------------------- ç”¨æˆ·ç™»å½• --------------------------------
 
 
 ;======================================================================
-; µ¥»÷±êÇ©ÇĞ»»LVÊ±ÓÃµ½µÄ
-Global $itemInToolbar, $idOfTabItem	; Ìí¼ÓÒ»¸öÈ«¾Ö±äÁ¿$idOfTabItem¼ÇÂ¼±»ÓÒ»÷µÄ±êÇ©Ë÷Òı
-; Ö÷´°Ìå¿í¸ß
+; å•å‡»æ ‡ç­¾åˆ‡æ¢LVæ—¶ç”¨åˆ°çš„
+Global $itemInToolbar, $idOfTabItem	; æ·»åŠ ä¸€ä¸ªå…¨å±€å˜é‡$idOfTabItemè®°å½•è¢«å³å‡»çš„æ ‡ç­¾ç´¢å¼•
+; ä¸»çª—ä½“å®½é«˜
 Global $WidthOfWindow = 1100, $HeightOfWindow = 600
-; Ö÷´°Ìå£¬¹¤¾ßÌõ£¬¹¤¾ßÌõÌáÊ¾Æ÷
+; ä¸»çª—ä½“ï¼Œå·¥å…·æ¡ï¼Œå·¥å…·æ¡æç¤ºå™¨
 Global $guiMainWindow, $toolbarInMainWindow, $hToolTip
-; ¹¤¾ßÌõÉÏµÄ°´Å¥¼È¶¨ID
+; å·¥å…·æ¡ä¸Šçš„æŒ‰é’®æ—¢å®šID
 Global Enum $id_Toolbar_New = 1000, $id_Toolbar_Save, $id_Toolbar_Delete, $id_Toolbar_Find, $id_Toolbar_Help
-; Êı¾İ¿â¶ÁÈ¡±êÊ¶¡£¶Á¹ıµÄTrue
+; æ•°æ®åº“è¯»å–æ ‡è¯†ã€‚è¯»è¿‡çš„True
 Global $hasReadedDbTbWorkers = False, $hasReadedDbTbSchools = False, $hasReadedDbTbProducts = False, $hasReadedDbTbAccets = False, $hasReadedDbTbPartners = False, $hasReadedDbTbProjects = False, $hasReadedDbTbUsers = False, $hasReadedDbTbSource = False, $hasReadedDbTbLog = False, $hasReadedDbTbJournal = False
-; Ë«»÷¡¢ÓÒ»÷µ¥Ôª¸ñÊ±´´½¨±à¼­¿òÓÃµ½µÄ
-Global $hEdit, $hBrush, $hDC, $hItemRow, $hItemColumn	; Ë«»÷LV½øĞĞĞŞ¸ÄÓÃµ½ÁË
-; ÓÒ»÷LVµÄÏîÄ¿£¨ĞĞ£©Ê±ÓÒ¼ü²Ëµ¥µÄID
+; åŒå‡»ã€å³å‡»å•å…ƒæ ¼æ—¶åˆ›å»ºç¼–è¾‘æ¡†ç”¨åˆ°çš„
+Global $hEdit, $hBrush, $hDC, $hItemRow, $hItemColumn	; åŒå‡»LVè¿›è¡Œä¿®æ”¹ç”¨åˆ°äº†
+; å³å‡»LVçš„é¡¹ç›®ï¼ˆè¡Œï¼‰æ—¶å³é”®èœå•çš„ID
 Global $mouseMenuLV, $mouseMenuItemDelLV, $mouseMenuItemUpdateLV, $mouseMenuItemCopyLV, $dataIndex
 ;
 Global $hEnableListView
@@ -79,71 +79,71 @@ Global $hEnableListView
 Global Enum $id_menu_lv_del = 2000, $id_menu_lv_update, $id_menu_lv_copy
 ;
 Global $hLvInTabJournal, $hLvInTabAccets, $hLvInTabPartners, $hLvInTabProducts, $hLvInTabProjects, $hLvInTabSchools, $hLvInTabSources, $hLvInTabWorkers, $hLvInTabUsers, $hlvintabLog
-; Ë«»÷µ¥Ôª¸ñĞŞ¸ÄÊı¾İ£¬±£´æÈÕÖ¾µ½Log±íÊ±ÓÃµ½µÄ¡£ĞŞ¸ÄµÄÊı¾İÊôÓÚÄÄ¸ö±í£¬ÊôÓÚÄÄ¸öLV£¬¶ÔÓ¦µÄÁĞÃû£¬ĞŞ¸ÄÇ°Êı¾İ
+; åŒå‡»å•å…ƒæ ¼ä¿®æ”¹æ•°æ®ï¼Œä¿å­˜æ—¥å¿—åˆ°Logè¡¨æ—¶ç”¨åˆ°çš„ã€‚ä¿®æ”¹çš„æ•°æ®å±äºå“ªä¸ªè¡¨ï¼Œå±äºå“ªä¸ªLVï¼Œå¯¹åº”çš„åˆ—åï¼Œä¿®æ”¹å‰æ•°æ®
 Global $columnOfTable, $columnOfLV, $columnName, $columnOldData
-; ×Ó´°Ìå£¬×Ó´°ÌåµÄÈ·¶¨°´Å¥£¬È¡Ïû°´Å¥¡£
+; å­çª—ä½“ï¼Œå­çª—ä½“çš„ç¡®å®šæŒ‰é’®ï¼Œå–æ¶ˆæŒ‰é’®ã€‚
 Global $popupWindow, $btnOKInPopWin, $btnNOInPopWin
-; ²éÑ¯Ê±±£´æ²éÑ¯Ìõ¼ş¡£²åÈëÊı¾İÒ²ÓÃµ½ÁË
-Global $strArgsOfSql, $strArgsOfLVArr[15], $strArgsOfTableArr[15]	; ¸ù¾İ±¾ÀıĞèÒª
+; æŸ¥è¯¢æ—¶ä¿å­˜æŸ¥è¯¢æ¡ä»¶ã€‚æ’å…¥æ•°æ®ä¹Ÿç”¨åˆ°äº†
+Global $strArgsOfSql, $strArgsOfLVArr[15], $strArgsOfTableArr[15]	; æ ¹æ®æœ¬ä¾‹éœ€è¦
 
 ;======================================================================
 ;-------------------- GUI ---------------------------------
-$guiMainWindow = GUICreate("ÖĞ»Õ½ÌÓı|Íş¸ñÁé", $WidthOfWindow, $HeightOfWindow)
+$guiMainWindow = GUICreate("å¨æ ¼çµ", $WidthOfWindow, $HeightOfWindow)
 	GUISetOnEvent($GUI_EVENT_CLOSE, "Func_GUI_EVENT_CLOSE")
-	GUISetIcon( @ScriptDir & "\favicon.ico")	; ÉèÖÃ³ÌĞòÍ¼±êÎª½Å±¾ÎÄ¼şÍ¬Ä¿Â¼ÖĞµÄLogo.ico
+	GUISetIcon( @ScriptDir & "\favicon.ico")	; è®¾ç½®ç¨‹åºå›¾æ ‡ä¸ºè„šæœ¬æ–‡ä»¶åŒç›®å½•ä¸­çš„Logo.ico
 
-	$menuFile = GUICtrlCreateMenu ( "ÎÄ¼ş &F")
-		$itemOpenInMenuFile = GUICtrlCreateMenuItem("´ò¿ª", $menuFile)
-		$itemSaveInMenuFile = GUICtrlCreateMenuItem("±£´æ", $menuFile)
-		GUICtrlCreateMenuItem("", $menuFile) ; ·Ö¸ôÏß
-		$itemRecentfilesInMenuFile = GUICtrlCreateMenu("×î½üµÄÎÄ¼ş", $menuFile)
+	$menuFile = GUICtrlCreateMenu ( "æ–‡ä»¶ &F")
+		$itemOpenInMenuFile = GUICtrlCreateMenuItem("æ‰“å¼€", $menuFile)
+		$itemSaveInMenuFile = GUICtrlCreateMenuItem("ä¿å­˜", $menuFile)
+		GUICtrlCreateMenuItem("", $menuFile) ; åˆ†éš”çº¿
+		$itemRecentfilesInMenuFile = GUICtrlCreateMenu("æœ€è¿‘çš„æ–‡ä»¶", $menuFile)
 		GUICtrlCreateMenuItem("", $menuFile)
-		$itemExitInMenuFile = GUICtrlCreateMenuItem("ÍË³ö", $menuFile)
+		$itemExitInMenuFile = GUICtrlCreateMenuItem("é€€å‡º", $menuFile)
 			GUICtrlSetOnEvent($itemExitInMenuFile, "Func_GUI_EVENT_CLOSE")
 
-	$menuTab = GUICtrlCreateMenu ( "´°¿Ú &W")
-		$menuItemJournal = GUICtrlCreateMenuItem("¡Ì ¹¤×÷ÈÕÖ¾", $menuTab)
+	$menuTab = GUICtrlCreateMenu ( "çª—å£ &W")
+		$menuItemJournal = GUICtrlCreateMenuItem("âˆš å·¥ä½œæ—¥å¿—", $menuTab)
 			GUICtrlSetOnEvent($menuItemJournal, "Func_ShowTab_ByMenu")
-		$menuItemProducts = GUICtrlCreateMenuItem("  ¹«Ë¾²úÆ·", $menuTab)
+		$menuItemProducts = GUICtrlCreateMenuItem("  å…¬å¸äº§å“", $menuTab)
 			GUICtrlSetOnEvent($menuItemProducts, "Func_ShowTab_ByMenu")
-		$menuItemSchools = GUICtrlCreateMenuItem("  Ñ§Ğ£ĞÅÏ¢", $menuTab)
+		$menuItemSchools = GUICtrlCreateMenuItem("  å­¦æ ¡ä¿¡æ¯", $menuTab)
 			GUICtrlSetOnEvent($menuItemSchools, "Func_ShowTab_ByMenu")
-		$menuItemPartners = GUICtrlCreateMenuItem("  ºÏ×÷»ï°é", $menuTab)
+		$menuItemPartners = GUICtrlCreateMenuItem("  åˆä½œä¼™ä¼´", $menuTab)
 			GUICtrlSetOnEvent($menuItemPartners, "Func_ShowTab_ByMenu")
-		GUICtrlCreateMenuItem("", $menuTab) ; ·Ö¸ôÏß
-		$menuItemProjects = GUICtrlCreateMenuItem("  ¹¤³Ì¹ÜÀí", $menuTab)
+		GUICtrlCreateMenuItem("", $menuTab) ; åˆ†éš”çº¿
+		$menuItemProjects = GUICtrlCreateMenuItem("  å·¥ç¨‹ç®¡ç†", $menuTab)
 			GUICtrlSetOnEvent($menuItemProjects, "Func_ShowTab_ByMenu")
-		$menuItemUsers = GUICtrlCreateMenuItem("  ÓÃ»§¹ÜÀí", $menuTab)
+		$menuItemUsers = GUICtrlCreateMenuItem("  ç”¨æˆ·ç®¡ç†", $menuTab)
 			GUICtrlSetOnEvent($menuItemUsers, "Func_ShowTab_ByMenu")
-		$menuItemAccets = GUICtrlCreateMenuItem("  ×Ê²ú¹ÜÀí", $menuTab)
+		$menuItemAccets = GUICtrlCreateMenuItem("  èµ„äº§ç®¡ç†", $menuTab)
 			GUICtrlSetOnEvent($menuItemAccets, "Func_ShowTab_ByMenu")
-		$menuItemWorkers = GUICtrlCreateMenuItem("  ÈËÔ±¹ÜÀí", $menuTab)
+		$menuItemWorkers = GUICtrlCreateMenuItem("  äººå‘˜ç®¡ç†", $menuTab)
 			GUICtrlSetOnEvent($menuItemWorkers, "Func_ShowTab_ByMenu")
-		GUICtrlCreateMenuItem("", $menuTab) ; ·Ö¸ôÏß
-		$menuItemLog = GUICtrlCreateMenuItem("  ²Ù×÷ÈÕÖ¾", $menuTab)
+		GUICtrlCreateMenuItem("", $menuTab) ; åˆ†éš”çº¿
+		$menuItemLog = GUICtrlCreateMenuItem("  æ“ä½œæ—¥å¿—", $menuTab)
 			GUICtrlSetOnEvent($menuItemLog, "Func_ShowTab_ByMenu")
-		$menuItemSources = GUICtrlCreateMenuItem("  Ôª Êı ¾İ", $menuTab)
+		$menuItemSources = GUICtrlCreateMenuItem("  å…ƒ æ•° æ®", $menuTab)
 			GUICtrlSetOnEvent($menuItemSources, "Func_ShowTab_ByMenu")
 
-	$menuHelp = GUICtrlCreateMenu ( "°ïÖú &H")
-		$itemGuideInMenuHelp = GUICtrlCreateMenuItem("Ê¹ÓÃÖ¸ÄÏ", $menuHelp)
-			GUICtrlSetOnEvent($itemGuideInMenuHelp, "Func_MenuHelp")	; ´ò¿ª¡±¹«Ë¾²úÆ·¡±±êÇ©¿¨
-		$itemAboutInMenuHelp = GUICtrlCreateMenuItem("¹ØÓÚ", $menuHelp)
-			GUICtrlSetOnEvent($itemAboutInMenuHelp, "Func_MenuHelp")	; ´ò¿ª¡±Ñ§Ğ£ĞÅÏ¢¡±±êÇ©¿¨
+	$menuHelp = GUICtrlCreateMenu ( "å¸®åŠ© &H")
+		$itemGuideInMenuHelp = GUICtrlCreateMenuItem("ä½¿ç”¨æŒ‡å—", $menuHelp)
+			GUICtrlSetOnEvent($itemGuideInMenuHelp, "Func_MenuHelp")	; æ‰“å¼€â€å…¬å¸äº§å“â€æ ‡ç­¾å¡
+		$itemAboutInMenuHelp = GUICtrlCreateMenuItem("å…³äº", $menuHelp)
+			GUICtrlSetOnEvent($itemAboutInMenuHelp, "Func_MenuHelp")	; æ‰“å¼€â€å­¦æ ¡ä¿¡æ¯â€æ ‡ç­¾å¡
 
 	$toolbarInMainWindow = _GUICtrlToolbar_Create($guiMainWindow)
-		; ´´½¨¹¤¾ßÌáÊ¾¿Ø¼ş£¬È»ºó²ÅÄÜÔÚ$WM_NOTIFYÖĞ»ñÈ¡ÏûÏ¢ÏìÓ¦
+		; åˆ›å»ºå·¥å…·æç¤ºæ§ä»¶ï¼Œç„¶åæ‰èƒ½åœ¨$WM_NOTIFYä¸­è·å–æ¶ˆæ¯å“åº”
 		$hToolTip = _GUIToolTip_Create($toolbarInMainWindow)
 		_GUICtrlToolbar_SetToolTips($toolbarInMainWindow, $hToolTip)
 
-		_GUICtrlToolbar_AddBitmap($toolbarInMainWindow, 1, -1, $IDB_STD_SMALL_COLOR)	; Ìí¼ÓÍ¼±ê
-		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_New, $STD_FILENEW)				; ĞÂ½¨
-		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_Save, $STD_FILESAVE)			; ±£´æ
-		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_Delete, $STD_DELETE)			; É¾³ı
+		_GUICtrlToolbar_AddBitmap($toolbarInMainWindow, 1, -1, $IDB_STD_SMALL_COLOR)	; æ·»åŠ å›¾æ ‡
+		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_New, $STD_FILENEW)				; æ–°å»º
+		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_Save, $STD_FILESAVE)			; ä¿å­˜
+		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_Delete, $STD_DELETE)			; åˆ é™¤
 		_GUICtrlToolbar_AddButtonSep($toolbarInMainWindow)
-		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_Find, $STD_FIND)				; ²éÕÒ
+		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_Find, $STD_FIND)				; æŸ¥æ‰¾
 		_GUICtrlToolbar_AddButtonSep($toolbarInMainWindow)
-		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_Help, $STD_HELP)				; °ïÖú
+		_GUICtrlToolbar_AddButton($toolbarInMainWindow, $id_Toolbar_Help, $STD_HELP)				; å¸®åŠ©
 
 	$tabInMainWindow = GUICtrlCreateTab ( 1, 28, $WidthOfWindow - 1, $HeightOfWindow - 70)
 		GUICtrlSetOnEvent($tabInMainWindow, "Func_Tab_Click")
@@ -161,89 +161,89 @@ $guiMainWindow = GUICreate("ÖĞ»Õ½ÌÓı|Íş¸ñÁé", $WidthOfWindow, $HeightOfWindow)
 			_GUIImageList_Add($imgList, _WinAPI_CreateSolidBitmap($guiMainWindow, 0xCC33CC, 16, 16))	; 9
 			_GUICtrlTab_SetImageList($tabInMainWindow, $imgList)
 
-		_GUICtrlTab_InsertItem ( $tabInMainWindow, 0, "¹¤×÷ÈÕÖ¾", 0)
-		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 1, "¹«Ë¾²úÆ·", 1)
-		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 2, "Ñ§Ğ£ĞÅÏ¢", 2)
-		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 3, "ºÏ×÷»ï°é", 3)
-		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 4, "¹¤³Ì¹ÜÀí", 4)
-		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 5, "ÓÃ»§¹ÜÀí", 5)
-		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 6, "×Ê²ú¹ÜÀí", 6)
-		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 7, "ÈËÔ±¹ÜÀí", 7)
-		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 8, "²Ù×÷ÈÕÖ¾", 8)
-		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 9, "Ôª Êı ¾İ", 9)
+		_GUICtrlTab_InsertItem ( $tabInMainWindow, 0, "å·¥ä½œæ—¥å¿—", 0)
+		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 1, "å…¬å¸äº§å“", 1)
+		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 2, "å­¦æ ¡ä¿¡æ¯", 2)
+		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 3, "åˆä½œä¼™ä¼´", 3)
+		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 4, "å·¥ç¨‹ç®¡ç†", 4)
+		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 5, "ç”¨æˆ·ç®¡ç†", 5)
+		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 6, "èµ„äº§ç®¡ç†", 6)
+		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 7, "äººå‘˜ç®¡ç†", 7)
+		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 8, "æ“ä½œæ—¥å¿—", 8)
+		;_GUICtrlTab_InsertItem ( $tabInMainWindow, 9, "å…ƒ æ•° æ®", 9)
 
 	$mouseMenuTab = GUICtrlCreateContextMenu($tabInMainWindow)
-		$mouseMenuItemClose = GUICtrlCreateMenuItem("¹Ø±Õ", $mouseMenuTab)
+		$mouseMenuItemClose = GUICtrlCreateMenuItem("å…³é—­", $mouseMenuTab)
 			GUICtrlSetOnEvent($mouseMenuItemClose, "Func_MouseMenuItem")
 		GUICtrlCreateMenuItem("", $mouseMenuTab)
-		$mouseMenuItemSaveAs = GUICtrlCreateMenuItem("Áí´æÎª", $mouseMenuTab)
+		$mouseMenuItemSaveAs = GUICtrlCreateMenuItem("å¦å­˜ä¸º", $mouseMenuTab)
 			GUICtrlSetOnEvent($mouseMenuItemSaveAs, "Func_MouseMenuItem")
 		GUICtrlCreateMenuItem("", $mouseMenuTab)
-		$mouseMenuItemPrint = GUICtrlCreateMenuItem("´òÓ¡", $mouseMenuTab)
+		$mouseMenuItemPrint = GUICtrlCreateMenuItem("æ‰“å°", $mouseMenuTab)
 			GUICtrlSetOnEvent($mouseMenuItemPrint, "Func_MouseMenuItem")
 
 	$strInfoLbl = GUICtrlCreateLabel("", 2, $HeightOfWindow - 38, $WidthOfWindow - 5, 20)
 
-	$lvInTabJournal = GUICtrlCreateListView ( "±àºÅ|ÈËÔ±|ÈÕÆÚ|µØµã|½»Í¨|Ê³ËŞ|¹¤×÷ÃèÊö|±¸×¢", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)		; ¹¤×÷ÈÕÖ¾±í
-		_GUICtrlListView_SetExtendedListViewStyle($lvInTabJournal, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))			; Í³¼ÆÉèÖÃ¶àÖÖÀ©Õ¹ÑùÊ½
-		GUICtrlSetBkColor($lvInTabJournal, 0xffffff)					;ÉèÖÃlistviewµÄ±³¾°É«
-		GUICtrlSetBkColor($lvInTabJournal, $GUI_BKCOLOR_LV_ALTERNATE)	;ÆæÊıĞĞÎªlistviewµÄ±³¾°É«£¬Å¼ÊıĞĞÎªlistviewitemµÄ±³¾°É«
+	$lvInTabJournal = GUICtrlCreateListView ( "ç¼–å·|äººå‘˜|æ—¥æœŸ|åœ°ç‚¹|äº¤é€š|é£Ÿå®¿|å·¥ä½œæè¿°|å¤‡æ³¨", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)		; å·¥ä½œæ—¥å¿—è¡¨
+		_GUICtrlListView_SetExtendedListViewStyle($lvInTabJournal, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))			; ç»Ÿè®¡è®¾ç½®å¤šç§æ‰©å±•æ ·å¼
+		GUICtrlSetBkColor($lvInTabJournal, 0xffffff)					;è®¾ç½®listviewçš„èƒŒæ™¯è‰²
+		GUICtrlSetBkColor($lvInTabJournal, $GUI_BKCOLOR_LV_ALTERNATE)	;å¥‡æ•°è¡Œä¸ºlistviewçš„èƒŒæ™¯è‰²ï¼Œå¶æ•°è¡Œä¸ºlistviewitemçš„èƒŒæ™¯è‰²
 		GUICtrlSetState($lvInTabJournal, $GUI_SHOW)
 		$hLvInTabJournal = GUICtrlGetHandle($lvInTabJournal)
-	$lvInTabProducts = GUICtrlCreateListView ( "±àºÅ|²úÆ·|ÀàĞÍ|Éè¼Æ|ÅäÖÃ|Ôì¼Û|±¸×¢", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)		; ¹«Ë¾²úÆ·±í
+	$lvInTabProducts = GUICtrlCreateListView ( "ç¼–å·|äº§å“|ç±»å‹|è®¾è®¡|é…ç½®|é€ ä»·|å¤‡æ³¨", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)		; å…¬å¸äº§å“è¡¨
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabProducts, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabProducts, 0xffffff)
 		GUICtrlSetBkColor($lvInTabProducts, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabProducts, $GUI_HIDE)
 		$hLvInTabProducts = GUICtrlGetHandle($lvInTabProducts)
-	$lvInTabSchools  = GUICtrlCreateListView ( "±àºÅ|Ñ§Ğ£|ÁªÏµÈË|µØÖ·|µç»°|ÓÊÏä|±¸×¢", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)	; Ñ§Ğ£ĞÅÏ¢±í
+	$lvInTabSchools  = GUICtrlCreateListView ( "ç¼–å·|å­¦æ ¡|è”ç³»äºº|åœ°å€|ç”µè¯|é‚®ç®±|å¤‡æ³¨", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)	; å­¦æ ¡ä¿¡æ¯è¡¨
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabSchools, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabSchools, 0xffffff)
 		GUICtrlSetBkColor($lvInTabSchools, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabSchools, $GUI_HIDE)
 		$hLvInTabSchools = GUICtrlGetHandle($lvInTabSchools)
-	$lvInTabPartners = GUICtrlCreateListView ( "±àºÅ|Ãû³Æ|ÀàĞÍ|µØÖ·|µç»°|ÓÊÏä|ÒµÎñ|±¸×¢", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)	; ºÏ×÷»ï°é±í
+	$lvInTabPartners = GUICtrlCreateListView ( "ç¼–å·|åç§°|ç±»å‹|åœ°å€|ç”µè¯|é‚®ç®±|ä¸šåŠ¡|å¤‡æ³¨", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)	; åˆä½œä¼™ä¼´è¡¨
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabPartners, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabPartners, 0xffffff)
 		GUICtrlSetBkColor($lvInTabPartners, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabPartners, $GUI_HIDE)
 		$hLvInTabPartners = GUICtrlGetHandle($lvInTabPartners)
-	$lvInTabProjects = GUICtrlCreateListView ( "±àºÅ|Ãû³Æ|Ñ§Ğ£|²úÆ·|ºÏ×÷Õß|ÎÒË¾¸ºÔğÈË|Ï¸Ôò|ÆğÊ¼ÈÕÆÚ|×´Ì¬|½áÊøÈÕÆÚ|½áËã¼ÇÂ¼|±¸×¢", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
+	$lvInTabProjects = GUICtrlCreateListView ( "ç¼–å·|åç§°|å­¦æ ¡|äº§å“|åˆä½œè€…|æˆ‘å¸è´Ÿè´£äºº|ç»†åˆ™|èµ·å§‹æ—¥æœŸ|çŠ¶æ€|ç»“æŸæ—¥æœŸ|ç»“ç®—è®°å½•|å¤‡æ³¨", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabProjects, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabProjects, 0xffffff)
 		GUICtrlSetBkColor($lvInTabProjects, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabProjects, $GUI_HIDE)
 		$hLvInTabProjects = GUICtrlGetHandle($lvInTabProjects)
-	; ÓÃ»§¹ÜÀí
-	$lvInTabUsers = GUICtrlCreateListView ( "±àºÅ|ÓÃ»§Ãû|ÃÜÂë|È¨ÏŞ|±¸×¢", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
+	; ç”¨æˆ·ç®¡ç†
+	$lvInTabUsers = GUICtrlCreateListView ( "ç¼–å·|ç”¨æˆ·å|å¯†ç |æƒé™|å¤‡æ³¨", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabUsers, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabUsers, 0xffffff)
 		GUICtrlSetBkColor($lvInTabUsers, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabUsers, $GUI_HIDE)
 		$hLvInTabUsers = GUICtrlGetHandle($lvInTabUsers)
-	; ×Ê²ú¹ÜÀí
-	$lvInTabAccets = GUICtrlCreateListView ( "±àºÅ|Ãû³Æ|´®ºÅ|µ¥Î»|ÀàĞÍ|¹ºÈëÈÕÆÚ|µ¥¼Û|ËùÊô²¿ÃÅ|¾­ÏúÉÌ|ÊÇ·ñ±¨·Ï|±¸×¢", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
+	; èµ„äº§ç®¡ç†
+	$lvInTabAccets = GUICtrlCreateListView ( "ç¼–å·|åç§°|ä¸²å·|å•ä½|ç±»å‹|è´­å…¥æ—¥æœŸ|å•ä»·|æ‰€å±éƒ¨é—¨|ç»é”€å•†|æ˜¯å¦æŠ¥åºŸ|å¤‡æ³¨", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabAccets, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabAccets, 0xffffff)
 		GUICtrlSetBkColor($lvInTabAccets, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabAccets, $GUI_HIDE)
 		$hLvInTabAccets = GUICtrlGetHandle($lvInTabAccets)
-	; ÈËÔ±¹ÜÀí
-	$lvInTabWorkers = GUICtrlCreateListView ( "±àºÅ|ĞÕÃû|Éí·İÖ¤ºÅ|²¿ÃÅ|Ö°Îñ|ÈëÖ°ÈÕÆÚ|×ªÕıÈÕÆÚ|ÔÂĞ½×Ê|ĞÔ±ğ|ÉúÈÕ|µç»°|ÓÊÏä|×¡Ö·|¼ÒÍ¥ĞÅÏ¢|±¸×¢", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
+	; äººå‘˜ç®¡ç†
+	$lvInTabWorkers = GUICtrlCreateListView ( "ç¼–å·|å§“å|èº«ä»½è¯å·|éƒ¨é—¨|èŒåŠ¡|å…¥èŒæ—¥æœŸ|è½¬æ­£æ—¥æœŸ|æœˆè–ªèµ„|æ€§åˆ«|ç”Ÿæ—¥|ç”µè¯|é‚®ç®±|ä½å€|å®¶åº­ä¿¡æ¯|å¤‡æ³¨", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabWorkers, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabWorkers, 0xffffff)
 		GUICtrlSetBkColor($lvInTabWorkers, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabWorkers, $GUI_HIDE)
 		$hLvInTabWorkers = GUICtrlGetHandle($lvInTabWorkers)
-	; ²Ù×÷ÈÕÖ¾
-	$lvInTabLog = GUICtrlCreateListView ( "±àºÅ|ÓÃ»§|²Ù×÷|±íµ¥|ÁĞÃû|¾ÉÊı¾İ|ĞÂÊı¾İ|ÈÕÆÚ|±¸×¢", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
+	; æ“ä½œæ—¥å¿—
+	$lvInTabLog = GUICtrlCreateListView ( "ç¼–å·|ç”¨æˆ·|æ“ä½œ|è¡¨å•|åˆ—å|æ—§æ•°æ®|æ–°æ•°æ®|æ—¥æœŸ|å¤‡æ³¨", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabLog, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabLog, 0xffffff)
 		GUICtrlSetBkColor($lvInTabLog, $GUI_BKCOLOR_LV_ALTERNATE)
 		GUICtrlSetState($lvInTabLog, $GUI_HIDE)
 		$hlvintabLog = GUICtrlGetHandle($lvInTabLog)
-	; ÔªÊı¾İ
-	$lvInTabSources = GUICtrlCreateListView ( "±àºÅ|±íµ¥|ÁĞ|Öµ|ÃèÊö", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
+	; å…ƒæ•°æ®
+	$lvInTabSources = GUICtrlCreateListView ( "ç¼–å·|è¡¨å•|åˆ—|å€¼|æè¿°", 3, 51, $WidthOfWindow - 5, $HeightOfWindow - 95)
 		_GUICtrlListView_SetExtendedListViewStyle($lvInTabSources, BitOR($LVS_EX_FULLROWSELECT, $LVS_EX_GRIDLINES, $LVS_EX_DOUBLEBUFFER))
 		GUICtrlSetBkColor($lvInTabSources, 0xffffff)
 		GUICtrlSetBkColor($lvInTabSources, $GUI_BKCOLOR_LV_ALTERNATE)
@@ -253,7 +253,7 @@ $guiMainWindow = GUICreate("ÖĞ»Õ½ÌÓı|Íş¸ñÁé", $WidthOfWindow, $HeightOfWindow)
 GUISetState(@SW_SHOW, $guiMainWindow)
 
 ; #cs
-;	³õÊ¼ÔÚ¡°ÈÕÖ¾¡±Êı¾İ¿â²éÑ¯£¬ÔÚ¡°ÈÕÖ¾¡±ÁĞ±í²åÈëÊı¾İ
+;	åˆå§‹åœ¨â€œæ—¥å¿—â€æ•°æ®åº“æŸ¥è¯¢ï¼Œåœ¨â€œæ—¥å¿—â€åˆ—è¡¨æ’å…¥æ•°æ®
 ; #ce
 FuncReadDb( $tb_journal, $lvInTabJournal )
 $hasReadedDbTbJournal = True
@@ -274,8 +274,8 @@ Func Func_GUI_EVENT_CLOSE ()
 EndFunc
 
 ; #cs
-; Êó±ê×ó¼üµã»÷±êÇ©¿¨Ïî
-; ÇĞ»»±êÇ©µÄÑ¡ÖĞ×´Ì¬
+; é¼ æ ‡å·¦é”®ç‚¹å‡»æ ‡ç­¾å¡é¡¹
+; åˆ‡æ¢æ ‡ç­¾çš„é€‰ä¸­çŠ¶æ€
 ; #ce
 Func Func_Tab_Click ()
 	Local $ctrlId = GUICtrlRead (@GUI_CtrlId)
@@ -294,44 +294,44 @@ Func Func_Tab_Click ()
 	GUICtrlSetState($lvInTabSources, $GUI_HIDE)
 
 	Switch $itemText
-		Case "¹¤×÷ÈÕÖ¾"
+		Case "å·¥ä½œæ—¥å¿—"
 			GUICtrlSetState($lvInTabJournal, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹¤×÷ÈÕÖ¾¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabJournal ))
-		Case "¹«Ë¾²úÆ·"
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå·¥ä½œæ—¥å¿—ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabJournal ))
+		Case "å…¬å¸äº§å“"
 			GUICtrlSetState($lvInTabProducts, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹«Ë¾²úÆ·¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabProducts ))
-		Case "Ñ§Ğ£ĞÅÏ¢"
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå…¬å¸äº§å“ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabProducts ))
+		Case "å­¦æ ¡ä¿¡æ¯"
 			GUICtrlSetState($lvInTabSchools, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶Ñ§Ğ£ĞÅÏ¢¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabSchools ))
-		Case "¹¤³Ì¹ÜÀí"
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå­¦æ ¡ä¿¡æ¯ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabSchools ))
+		Case "å·¥ç¨‹ç®¡ç†"
 			GUICtrlSetState($lvInTabProjects, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹¤³Ì¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabProjects ))
-		Case "ºÏ×÷»ï°é"
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå·¥ç¨‹ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabProjects ))
+		Case "åˆä½œä¼™ä¼´"
 			GUICtrlSetState($lvInTabPartners, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ºÏ×÷»ï°é¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabPartners ))
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šåˆä½œä¼™ä¼´ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabPartners ))
 
-		Case "ÓÃ»§¹ÜÀí"
+		Case "ç”¨æˆ·ç®¡ç†"
 			GUICtrlSetState($lvInTabUsers, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ÓÃ»§¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabUsers ))
-		Case "×Ê²ú¹ÜÀí"
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šç”¨æˆ·ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabUsers ))
+		Case "èµ„äº§ç®¡ç†"
 			GUICtrlSetState($lvInTabAccets, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶×Ê²ú¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabAccets ))
-		Case "ÈËÔ±¹ÜÀí"
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šèµ„äº§ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabAccets ))
+		Case "äººå‘˜ç®¡ç†"
 			GUICtrlSetState($lvInTabWorkers, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ÈËÔ±¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabWorkers ))
-		Case "²Ù×÷ÈÕÖ¾"
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šäººå‘˜ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabWorkers ))
+		Case "æ“ä½œæ—¥å¿—"
 			GUICtrlSetState($lvInTabLog, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶²Ù×÷ÈÕÖ¾¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabLog ))
-		Case "Ôª Êı ¾İ"
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šæ“ä½œæ—¥å¿—ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabLog ))
+		Case "å…ƒ æ•° æ®"
 			GUICtrlSetState($lvInTabSources, $GUI_SHOW)
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶Ôª Êı ¾İ¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabSources ))
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå…ƒ æ•° æ®ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabSources ))
 	EndSwitch
 EndFunc
 
-; ÏûÏ¢¼àÌı
-; ¼àÌıUDF´´½¨µÄ¹¤¾ßÌõ£¬Ìí¼ÓÌáÊ¾£¬µã»÷»¥¶¯
-; ¼àÌı±êÇ©¿¨ÓÒ¼üµã»÷ÊÂ¼ş
-; ¼àÌı...
+; æ¶ˆæ¯ç›‘å¬
+; ç›‘å¬UDFåˆ›å»ºçš„å·¥å…·æ¡ï¼Œæ·»åŠ æç¤ºï¼Œç‚¹å‡»äº’åŠ¨
+; ç›‘å¬æ ‡ç­¾å¡å³é”®ç‚¹å‡»äº‹ä»¶
+; ç›‘å¬...
 Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 	Local $tNMHDR, $hwndFrom, $code, $i_idOld, $i_idNew
     Local $tNMTBHOTITEM
@@ -347,33 +347,33 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
         $iID = DllStructGetData($tInfo, "IDFrom")
         Switch $iID
 			Case $id_Toolbar_New
-				DllStructSetData($tInfo, "aText", "ÔÚµ±Ç°Êı¾İ±í²åÈëĞÂÊı¾İ")
+				DllStructSetData($tInfo, "aText", "åœ¨å½“å‰æ•°æ®è¡¨æ’å…¥æ–°æ•°æ®")
 			Case $id_Toolbar_Save
-				DllStructSetData($tInfo, "aText", "±£´æµ±Ç°Êı¾İ±íµ½Excel")
+				DllStructSetData($tInfo, "aText", "ä¿å­˜å½“å‰æ•°æ®è¡¨åˆ°Excel")
 			Case $id_Toolbar_Delete
-				DllStructSetData($tInfo, "aText", "É¾³ıµ±Ç°Êı¾İ±íÑ¡ÔñµÄĞĞ")
+				DllStructSetData($tInfo, "aText", "åˆ é™¤å½“å‰æ•°æ®è¡¨é€‰æ‹©çš„è¡Œ")
 			Case $id_Toolbar_Find
-				DllStructSetData($tInfo, "aText", "ÔÚµ±Ç°Êı¾İ±í²éÕÒÊı¾İ")
+				DllStructSetData($tInfo, "aText", "åœ¨å½“å‰æ•°æ®è¡¨æŸ¥æ‰¾æ•°æ®")
 			Case $id_Toolbar_Help
-				DllStructSetData($tInfo, "aText", "°ïÖú")
+				DllStructSetData($tInfo, "aText", "å¸®åŠ©")
 		EndSwitch
 	EndIf
 
-    Switch $hwndFrom	; ¿Ø¼ş
-        Case $toolbarInMainWindow	;----------- ¹¤¾ßÀ¸
-            Switch $code	; ÊÂ¼ş
+    Switch $hwndFrom	; æ§ä»¶
+        Case $toolbarInMainWindow	;----------- å·¥å…·æ 
+            Switch $code	; äº‹ä»¶
 				Case $TBN_HOTITEMCHANGE
 					$tNMTBHOTITEM = DllStructCreate($tagNMTBHOTITEM, $lParam)
 					$i_idOld = DllStructGetData($tNMTBHOTITEM, "idOld")
 					$i_idNew = DllStructGetData($tNMTBHOTITEM, "idNew")
 					$itemInToolbar = $i_idNew
 
-				Case $NM_CLICK	; ×ó¼üµã»÷
+				Case $NM_CLICK	; å·¦é”®ç‚¹å‡»
 					Switch $itemInToolbar
 						Case $id_Toolbar_New
 							$itemInToolbar = -1
 
-							FuncInsertItemToListView()	; ²åÈëÌõÄ¿µ½ListView
+							FuncInsertItemToListView()	; æ’å…¥æ¡ç›®åˆ°ListView
 
 						Case $id_Toolbar_Save
 							$itemInToolbar = -1
@@ -386,7 +386,7 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 						Case $id_Toolbar_Find
 							$itemInToolbar = -1
 
-							FuncFindData()	; ÔÚµ±Ç°ÏÔÊ¾µÄLV¶ÔÓ¦±í²éÕÒ
+							FuncFindData()	; åœ¨å½“å‰æ˜¾ç¤ºçš„LVå¯¹åº”è¡¨æŸ¥æ‰¾
 
 						Case $id_Toolbar_Help
 							$itemInToolbar = -1
@@ -395,9 +395,9 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 
 			EndSwitch
 
-		Case GUICtrlGetHandle($tabInMainWindow)	;-------------------- ±êÇ©Ò³
+		Case GUICtrlGetHandle($tabInMainWindow)	;-------------------- æ ‡ç­¾é¡µ
             Switch $code
-				Case $NM_RCLICK	; ÓÒ»÷
+				Case $NM_RCLICK	; å³å‡»
 
 					Local $x, $y, $aHit
 					$x = _WinAPI_GetMousePosX(True, GUICtrlGetHandle($tabInMainWindow))
@@ -421,76 +421,76 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 					GUICtrlSetState($lvInTabSources, $GUI_HIDE)
 
 					Switch _GUICtrlTab_GetItemText ( $tabInMainWindow, $aHit[0] )
-						Case "¹¤×÷ÈÕÖ¾"
+						Case "å·¥ä½œæ—¥å¿—"
 							GUICtrlSetState($lvInTabJournal, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹¤×÷ÈÕÖ¾¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabJournal ))
-						Case "¹«Ë¾²úÆ·"
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå·¥ä½œæ—¥å¿—ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabJournal ))
+						Case "å…¬å¸äº§å“"
 							GUICtrlSetState($lvInTabProducts, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹«Ë¾²úÆ·¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabProducts ))
-						Case "Ñ§Ğ£ĞÅÏ¢"
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå…¬å¸äº§å“ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabProducts ))
+						Case "å­¦æ ¡ä¿¡æ¯"
 							GUICtrlSetState($lvInTabSchools, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶Ñ§Ğ£ĞÅÏ¢¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabSchools ))
-						Case "¹¤³Ì¹ÜÀí"
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå­¦æ ¡ä¿¡æ¯ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabSchools ))
+						Case "å·¥ç¨‹ç®¡ç†"
 							GUICtrlSetState($lvInTabProjects, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹¤³Ì¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabProjects ))
-						Case "ºÏ×÷»ï°é"
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå·¥ç¨‹ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabProjects ))
+						Case "åˆä½œä¼™ä¼´"
 							GUICtrlSetState($lvInTabPartners, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ºÏ×÷»ï°é¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabPartners ))
-						Case "ÓÃ»§¹ÜÀí"
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šåˆä½œä¼™ä¼´ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabPartners ))
+						Case "ç”¨æˆ·ç®¡ç†"
 							GUICtrlSetState($lvInTabUsers, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ÓÃ»§¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabUsers ))
-						Case "×Ê²ú¹ÜÀí"
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šç”¨æˆ·ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabUsers ))
+						Case "èµ„äº§ç®¡ç†"
 							GUICtrlSetState($lvInTabAccets, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶×Ê²ú¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabAccets ))
-						Case "ÈËÔ±¹ÜÀí"
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šèµ„äº§ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabAccets ))
+						Case "äººå‘˜ç®¡ç†"
 							GUICtrlSetState($lvInTabWorkers, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ÈËÔ±¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabWorkers ))
-						Case "²Ù×÷ÈÕÖ¾"
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šäººå‘˜ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabWorkers ))
+						Case "æ“ä½œæ—¥å¿—"
 							GUICtrlSetState($lvInTabLog, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶²Ù×÷ÈÕÖ¾¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabLog ))
-						Case "Ôª Êı ¾İ"
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šæ“ä½œæ—¥å¿—ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabLog ))
+						Case "å…ƒ æ•° æ®"
 							GUICtrlSetState($lvInTabSources, $GUI_SHOW)
-							GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶Ôª Êı ¾İ¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabSources ))
+							GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå…ƒ æ•° æ®ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabSources ))
 					EndSwitch
 			EndSwitch
 
-		Case GUICtrlGetHandle($lvInTabJournal)	;--------------------- ÁĞ±í¿Ø¼ş£º¹¤×÷ÈÕÖ¾
+		Case GUICtrlGetHandle($lvInTabJournal)	;--------------------- åˆ—è¡¨æ§ä»¶ï¼šå·¥ä½œæ—¥å¿—
             Switch $code
-				Case $NM_DBLCLK	; Ë«»÷
+				Case $NM_DBLCLK	; åŒå‡»
 					$columnOfTable = $tb_journal
 					$columnOfLV = $lvInTabJournal
 
-					FuncCreateEditRecForColumn("¹¤×÷ÈÕÖ¾", $lvInTabJournal, $lParam )
+					FuncCreateEditRecForColumn("å·¥ä½œæ—¥å¿—", $lvInTabJournal, $lParam )
 
-				Case $NM_CLICK	; ×ó¼üµã»÷
+				Case $NM_CLICK	; å·¦é”®ç‚¹å‡»
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabJournal )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹¤×÷ÈÕÖ¾¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå·¥ä½œæ—¥å¿—ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
 				#cs
-				Case $NM_RCLICK	; ÓÒ»÷
+				Case $NM_RCLICK	; å³å‡»
 					$columnOfTable = $tb_journal
 					$columnOfLV = $lvInTabJournal
 					$columnOldData = _GUICtrlListView_GetItemTextString ( $lvInTabJournal )
 
 					Local $tInfo = DllStructCreate($tagNMITEMACTIVATE, $lParam)
-					$dataIndex = DllStructGetData($tInfo, "Index")		; µã»÷µÄĞĞ¡£Ê¼ÓÚ0
-					Local $dataSubItem = DllStructGetData($tInfo, "SubItem")	; µã»÷µÄÁĞ¡£Ê¼ÓÚ0
-					ConsoleWrite("ÓÒ»÷----------ĞĞ£º" & $dataIndex & "£¬ÁĞ£º" & $dataSubItem & @CRLF)
+					$dataIndex = DllStructGetData($tInfo, "Index")		; ç‚¹å‡»çš„è¡Œã€‚å§‹äº0
+					Local $dataSubItem = DllStructGetData($tInfo, "SubItem")	; ç‚¹å‡»çš„åˆ—ã€‚å§‹äº0
+					ConsoleWrite("å³å‡»----------è¡Œï¼š" & $dataIndex & "ï¼Œåˆ—ï¼š" & $dataSubItem & @CRLF)
 
 					If $dataIndex = -1 Then
 						_GUICtrlMenu_DestroyMenu(GUICtrlGetHandle($mouseMenuLV))
 					Else
 						$mouseMenuLV = GUICtrlCreateContextMenu($lvInTabJournal)
-							$mouseMenuItemDelLV = GUICtrlCreateMenuItem("É¾³ı", $mouseMenuLV)
+							$mouseMenuItemDelLV = GUICtrlCreateMenuItem("åˆ é™¤", $mouseMenuLV)
 								GUICtrlSetOnEvent($mouseMenuItemDelLV, "Func_MouseMenuItem_LV")
 							GUICtrlCreateMenuItem("", $mouseMenuLV)
-							$mouseMenuItemUpdateLV = GUICtrlCreateMenuItem("ĞŞ¸Ä", $mouseMenuLV)
+							$mouseMenuItemUpdateLV = GUICtrlCreateMenuItem("ä¿®æ”¹", $mouseMenuLV)
 								GUICtrlSetOnEvent($mouseMenuItemUpdateLV, "Func_MouseMenuItem_LV")
 							GUICtrlCreateMenuItem("", $mouseMenuLV)
-							$mouseMenuItemCopyLV = GUICtrlCreateMenuItem("¸´ÖÆ", $mouseMenuLV)
+							$mouseMenuItemCopyLV = GUICtrlCreateMenuItem("å¤åˆ¶", $mouseMenuLV)
 								GUICtrlSetOnEvent($mouseMenuItemCopyLV, "Func_MouseMenuItem_LV")
 				EndIf
 				#ce
@@ -500,11 +500,11 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 				Case $NM_DBLCLK
 					$columnOfTable = $tb_products
 					$columnOfLV = $lvInTabProducts
-					FuncCreateEditRecForColumn("¹«Ë¾²úÆ·", $lvInTabProducts, $lParam )
+					FuncCreateEditRecForColumn("å…¬å¸äº§å“", $lvInTabProducts, $lParam )
 				Case $NM_CLICK
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabProducts )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹«Ë¾²úÆ·¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå…¬å¸äº§å“ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
@@ -514,11 +514,11 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 				Case $NM_DBLCLK
 					$columnOfTable = $tb_projects
 					$columnOfLV = $lvInTabProjects
-					FuncCreateEditRecForColumn("¹¤³Ì¹ÜÀí", $lvInTabProjects, $lParam )
+					FuncCreateEditRecForColumn("å·¥ç¨‹ç®¡ç†", $lvInTabProjects, $lParam )
 				Case $NM_CLICK
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabProjects )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹¤³Ì¹ÜÀí¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå·¥ç¨‹ç®¡ç†ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
@@ -528,11 +528,11 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 				Case $NM_DBLCLK
 					$columnOfTable = $tb_partners
 					$columnOfLV = $lvInTabPartners
-					FuncCreateEditRecForColumn("ºÏ×÷»ï°é", $lvInTabPartners, $lParam )
+					FuncCreateEditRecForColumn("åˆä½œä¼™ä¼´", $lvInTabPartners, $lParam )
 				Case $NM_CLICK
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabPartners )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ºÏ×÷»ï°é¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šåˆä½œä¼™ä¼´ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
@@ -542,11 +542,11 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 				Case $NM_DBLCLK
 					$columnOfTable = $tb_schools
 					$columnOfLV = $lvInTabSchools
-					FuncCreateEditRecForColumn("Ñ§Ğ£ĞÅÏ¢", $lvInTabSchools, $lParam )
+					FuncCreateEditRecForColumn("å­¦æ ¡ä¿¡æ¯", $lvInTabSchools, $lParam )
 				Case $NM_CLICK
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabSchools )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶Ñ§Ğ£ĞÅÏ¢¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå­¦æ ¡ä¿¡æ¯ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
@@ -557,11 +557,11 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 				Case $NM_DBLCLK
 					$columnOfTable = $tb_users
 					$columnOfLV = $lvInTabUsers
-					FuncCreateEditRecForColumn("ÓÃ»§¹ÜÀí", $lvInTabUsers, $lParam )
+					FuncCreateEditRecForColumn("ç”¨æˆ·ç®¡ç†", $lvInTabUsers, $lParam )
 				Case $NM_CLICK
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabUsers )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ÓÃ»§¹ÜÀí¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šç”¨æˆ·ç®¡ç†ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
@@ -571,11 +571,11 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 				Case $NM_DBLCLK
 					$columnOfTable = $tb_accets
 					$columnOfLV = $lvInTabAccets
-					FuncCreateEditRecForColumn("×Ê²ú¹ÜÀí", $lvInTabAccets, $lParam )
+					FuncCreateEditRecForColumn("èµ„äº§ç®¡ç†", $lvInTabAccets, $lParam )
 				Case $NM_CLICK
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabAccets )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶×Ê²ú¹ÜÀí¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šèµ„äº§ç®¡ç†ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
@@ -585,11 +585,11 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 				Case $NM_DBLCLK
 					$columnOfTable = $tb_workers
 					$columnOfLV = $lvInTabWorkers
-					FuncCreateEditRecForColumn("ÈËÔ±¹ÜÀí", $lvInTabWorkers, $lParam )
+					FuncCreateEditRecForColumn("äººå‘˜ç®¡ç†", $lvInTabWorkers, $lParam )
 				Case $NM_CLICK
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabWorkers )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ÈËÔ±¹ÜÀí¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šäººå‘˜ç®¡ç†ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
@@ -599,11 +599,11 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 				Case $NM_DBLCLK
 					$columnOfTable = $tb_log
 					$columnOfLV = $lvInTabLog
-					FuncCreateEditRecForColumn("²Ù×÷ÈÕÖ¾", $lvInTabLog, $lParam )
+					FuncCreateEditRecForColumn("æ“ä½œæ—¥å¿—", $lvInTabLog, $lParam )
 				Case $NM_CLICK
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabLog )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶²Ù×÷ÈÕÖ¾¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šæ“ä½œæ—¥å¿—ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
@@ -613,11 +613,11 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
 				Case $NM_DBLCLK
 					$columnOfTable = $tb_source
 					$columnOfLV = $lvInTabSources
-					FuncCreateEditRecForColumn("Ôª Êı ¾İ", $lvInTabSources, $lParam )
+					FuncCreateEditRecForColumn("å…ƒ æ•° æ®", $lvInTabSources, $lParam )
 				Case $NM_CLICK
 					Local $ts = _GUICtrlListView_GetItemTextString ( $lvInTabSources )
 					If StringReplace ( $ts, "|", "") <> "" Then
-						GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶Ôª Êı ¾İ¡·ÖĞÑ¡ÖĞµÄĞĞ£º" & $ts )
+						GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå…ƒ æ•° æ®ã€‹ä¸­é€‰ä¸­çš„è¡Œï¼š" & $ts )
 					Else
 						GUICtrlSetData($strInfoLbl, "" )
 					EndIf
@@ -628,14 +628,14 @@ Func _WM_NOTIFY($hWndGUI, $MsgID, $wParam, $lParam)
     Return $GUI_RUNDEFMSG
 EndFunc
 
-; ÔÚLVÉÏµÄÓÒ¼ü²Ëµ¥
+; åœ¨LVä¸Šçš„å³é”®èœå•
 Func Func_MouseMenuItem_LV ()
 	Switch @GUI_CtrlId
 		Case $mouseMenuItemDelLV
-			; Ê¹ÓÃÈ«¾Ö±äÁ¿
-			; $columnOfTable£º	±íÃû³Æ
-			; $columnOfLV£º		ÁĞ±íID
-			; $columnOldData£º	ÕûĞĞµÄÄÚÈİ
+			; ä½¿ç”¨å…¨å±€å˜é‡
+			; $columnOfTableï¼š	è¡¨åç§°
+			; $columnOfLVï¼š		åˆ—è¡¨ID
+			; $columnOldDataï¼š	æ•´è¡Œçš„å†…å®¹
 			FuncDeleteItemFromAccessAndListView ( $columnOfTable, $columnOfLV, $columnOldData)
 	EndSwitch
 
@@ -647,10 +647,10 @@ Func Func_MouseMenuItem_LV ()
 EndFunc
 
 ;#cs
-; ÔÚµ±Ç°ÁĞ±íÖĞ²éÑ¯Êı¾İ
-; ÀÛ¼Ó²»Í¬µÄ×Ö¶Î¼¯ºÏÎª²éÑ¯Ìõ¼ş
-; ÔÚ$strArgsOfLVArrÖĞ±£´æ¹Ø¼ü×Ö¿Ø¼şµÄID
-; ÔÚ$strArgsOfTableArrÖĞ±£´æ±í¡¢ÁĞ
+; åœ¨å½“å‰åˆ—è¡¨ä¸­æŸ¥è¯¢æ•°æ®
+; ç´¯åŠ ä¸åŒçš„å­—æ®µé›†åˆä¸ºæŸ¥è¯¢æ¡ä»¶
+; åœ¨$strArgsOfLVArrä¸­ä¿å­˜å…³é”®å­—æ§ä»¶çš„ID
+; åœ¨$strArgsOfTableArrä¸­ä¿å­˜è¡¨ã€åˆ—
 ;#ce
 Func FuncFindData()
 	Local $strLvName
@@ -659,141 +659,141 @@ Func FuncFindData()
 	Local $popWinWidth = 500, $popWinHeight = 180
 
 	$popupWindow = GUICreate("" , 500, 175, Default, Default, $WS_CAPTION, BitOR($WS_EX_TOPMOST, $GUI_WS_EX_PARENTDRAG))
-		WinSetTitle($popupWindow, "", "ÔÚ¡¶" & $strLvName & "¡·ÖĞ²éÑ¯Êı¾İ" )
+		WinSetTitle($popupWindow, "", "åœ¨ã€Š" & $strLvName & "ã€‹ä¸­æŸ¥è¯¢æ•°æ®" )
 
-		GUICtrlCreateGroup("ÔÚĞèÒªµÄÌõ¼şÀïÊäÈë¹Ø¼ü×Ö¡£¶à¸ö´ÊÓÃ¿Õ¸ñ·Ö¿ª", 10, 10, $popWinWidth - 20, $popWinHeight - 45)
+		GUICtrlCreateGroup("åœ¨éœ€è¦çš„æ¡ä»¶é‡Œè¾“å…¥å…³é”®å­—ã€‚å¤šä¸ªè¯ç”¨ç©ºæ ¼åˆ†å¼€", 10, 10, $popWinWidth - 20, $popWinHeight - 45)
 
-		; »ñÈ¡µ±Ç°¼¤»îµÄLV
+		; è·å–å½“å‰æ¿€æ´»çš„LV
 		Switch $strLvName
-			Case "¹¤×÷ÈÕÖ¾"		;  ÈËÔ± ÈÕÆÚ µØµã ½»Í¨ Ê³ËŞ ¹¤×÷ÃèÊö¡£id, j_name, j_date, j_address, j_traffic, j_board, j_content, j_note, j_record, j_date_record
+			Case "å·¥ä½œæ—¥å¿—"		;  äººå‘˜ æ—¥æœŸ åœ°ç‚¹ äº¤é€š é£Ÿå®¿ å·¥ä½œæè¿°ã€‚id, j_name, j_date, j_address, j_traffic, j_board, j_content, j_note, j_record, j_date_record
 				$strArgsOfLVArr[0] = $lvInTabJournal	; LV
 				$strArgsOfTableArr[0] = $tb_journal		; Table
 
-				GUICtrlCreateLabel("ÈËÔ±:", 20, 45, 30, 20 )
+				GUICtrlCreateLabel("äººå‘˜:", 20, 45, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 40, 180, 20)
 				$strArgsOfTableArr[1] = "j_name"
-				GUICtrlCreateLabel("ÈÕÆÚ:", 20, 75, 30, 20 )
+				GUICtrlCreateLabel("æ—¥æœŸ:", 20, 75, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 70, 180, 20)
 				$strArgsOfTableArr[2] = "j_date"
-				GUICtrlCreateLabel("µØµã:", 20, 105, 30, 20 )
+				GUICtrlCreateLabel("åœ°ç‚¹:", 20, 105, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 100, 180, 20)
 				$strArgsOfTableArr[3] = "j_address"
 
-				GUICtrlCreateLabel("½»Í¨:", 260, 45, 30, 20 )
+				GUICtrlCreateLabel("äº¤é€š:", 260, 45, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 292, 40, 180, 20)
 				$strArgsOfTableArr[4] = "j_traffic"
-				GUICtrlCreateLabel("Ê³ËŞ:", 260, 75, 30, 20 )
+				GUICtrlCreateLabel("é£Ÿå®¿:", 260, 75, 30, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 70, 180, 20)
 				$strArgsOfTableArr[5] = "j_board"
-				GUICtrlCreateLabel("¹¤×÷:", 260, 105, 30, 20 )
+				GUICtrlCreateLabel("å·¥ä½œ:", 260, 105, 30, 20 )
 				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 292, 100, 180, 20)
 				$strArgsOfTableArr[6] = "j_content"
 
-			Case "¹«Ë¾²úÆ·"		; ²úÆ· ÀàĞÍ Éè¼Æ ÅäÖÃ Ôì¼Û¡£id, pd_name, pd_type, pd_desiger, pd_configuration, pd_cost, pd_note
+			Case "å…¬å¸äº§å“"		; äº§å“ ç±»å‹ è®¾è®¡ é…ç½® é€ ä»·ã€‚id, pd_name, pd_type, pd_desiger, pd_configuration, pd_cost, pd_note
 				$strArgsOfLVArr[0] = $lvInTabProducts
 				$strArgsOfTableArr[0] = $tb_products
 
-				GUICtrlCreateLabel("²úÆ·:", 20, 45, 30, 20 )
+				GUICtrlCreateLabel("äº§å“:", 20, 45, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 40, 180, 20)
 				$strArgsOfTableArr[1] = "pd_name"
-				GUICtrlCreateLabel("ÀàĞÍ:", 20, 75, 30, 20 )
+				GUICtrlCreateLabel("ç±»å‹:", 20, 75, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 70, 180, 20)
 				$strArgsOfTableArr[2] = "pd_type"
-				GUICtrlCreateLabel("Éè¼Æ:", 20, 105, 30, 20 )
+				GUICtrlCreateLabel("è®¾è®¡:", 20, 105, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 100, 180, 20)
 				$strArgsOfTableArr[3] = "pd_desiger"
 
-				GUICtrlCreateLabel("ÅäÖÃ:", 260, 45, 30, 20 )
+				GUICtrlCreateLabel("é…ç½®:", 260, 45, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 292, 40, 180, 20)
 				$strArgsOfTableArr[4] = "pd_configuration"
-				GUICtrlCreateLabel("Ôì¼Û:", 260, 75, 30, 20 )
+				GUICtrlCreateLabel("é€ ä»·:", 260, 75, 30, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 70, 180, 20)
 				$strArgsOfTableArr[5] = "pd_cost"
-			Case "Ñ§Ğ£ĞÅÏ¢"		; Ñ§Ğ£ ÁªÏµÈË µØÖ· µç»° ÓÊÏä¡£id, s_name, s_contact, s_address, s_phone, s_email, s_note
+			Case "å­¦æ ¡ä¿¡æ¯"		; å­¦æ ¡ è”ç³»äºº åœ°å€ ç”µè¯ é‚®ç®±ã€‚id, s_name, s_contact, s_address, s_phone, s_email, s_note
 				$strArgsOfLVArr[0] = $lvInTabSchools
 				$strArgsOfTableArr[0] = $tb_schools
 
-				GUICtrlCreateLabel("Ñ§  Ğ£:", 20, 45, 45, 20 )
+				GUICtrlCreateLabel("å­¦  æ ¡:", 20, 45, 45, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 67, 40, 170, 20)
 				$strArgsOfTableArr[1] = "s_name"
-				GUICtrlCreateLabel("ÁªÏµÈË:", 20, 75, 45, 20 )
+				GUICtrlCreateLabel("è”ç³»äºº:", 20, 75, 45, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 67, 70, 170, 20)
 				$strArgsOfTableArr[2] = "s_contact"
-				GUICtrlCreateLabel("µØ  Ö·:", 20, 105, 45, 20 )
+				GUICtrlCreateLabel("åœ°  å€:", 20, 105, 45, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 67, 100, 170, 20)
 				$strArgsOfTableArr[3] = "s_address"
 
-				GUICtrlCreateLabel("µç  »°:", 260, 45, 45, 20 )
+				GUICtrlCreateLabel("ç”µ  è¯:", 260, 45, 45, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 307, 40, 170, 20)
 				$strArgsOfTableArr[4] = "s_phone"
-				GUICtrlCreateLabel("ÓÊ  Ïä:", 260, 75, 45, 20 )
+				GUICtrlCreateLabel("é‚®  ç®±:", 260, 75, 45, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 307, 70, 170, 20)
 				$strArgsOfTableArr[5] = "s_email"
-			Case "¹¤³Ì¹ÜÀí"		; Ãû³Æ Ñ§Ğ£ ²úÆ· ºÏ×÷Õß ×´Ì¬¡£id, pj_name, pj_s_name, pj_pd_name, pj_pt_name, pj_w_name, pj_content, pj_date_start, pj_state, pj_date_finish, pj_account, pj_note
+			Case "å·¥ç¨‹ç®¡ç†"		; åç§° å­¦æ ¡ äº§å“ åˆä½œè€… çŠ¶æ€ã€‚id, pj_name, pj_s_name, pj_pd_name, pj_pt_name, pj_w_name, pj_content, pj_date_start, pj_state, pj_date_finish, pj_account, pj_note
 				$strArgsOfLVArr[0] = $lvInTabProjects
 				$strArgsOfTableArr[0] = $tb_projects
 
-				GUICtrlCreateLabel("Ãû  ³Æ:", 20, 45, 45, 20 )
+				GUICtrlCreateLabel("å  ç§°:", 20, 45, 45, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 67, 40, 170, 20)
 				$strArgsOfTableArr[1] = "pj_name"
-				GUICtrlCreateLabel("Ñ§  Ğ£:", 20, 75, 45, 20 )
+				GUICtrlCreateLabel("å­¦  æ ¡:", 20, 75, 45, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 67, 70, 170, 20)
 				$strArgsOfTableArr[2] = "pj_s_name"
-				GUICtrlCreateLabel("²ú  Æ·:", 20, 105, 45, 20 )
+				GUICtrlCreateLabel("äº§  å“:", 20, 105, 45, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 67, 100, 170, 20)
 				$strArgsOfTableArr[3] = "pj_pt_name"
 
-				GUICtrlCreateLabel("ºÏ×÷Õß:", 260, 45, 45, 20 )
+				GUICtrlCreateLabel("åˆä½œè€…:", 260, 45, 45, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 307, 40, 170, 20)
 				$strArgsOfTableArr[4] = "pj_content"
-				GUICtrlCreateLabel("×´  Ì¬:", 260, 75, 45, 20 )
+				GUICtrlCreateLabel("çŠ¶  æ€:", 260, 75, 45, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 307, 70, 170, 20)
 				$strArgsOfTableArr[5] = "pj_state"
-			Case "ºÏ×÷»ï°é"		; Ãû³Æ ÀàĞÍ µØÖ· µç»° ÓÊÏä ÒµÎñ¡£id, pt_name, pt_type, pt_address, pt_phone, pt_email, pt_business, pt_note
+			Case "åˆä½œä¼™ä¼´"		; åç§° ç±»å‹ åœ°å€ ç”µè¯ é‚®ç®± ä¸šåŠ¡ã€‚id, pt_name, pt_type, pt_address, pt_phone, pt_email, pt_business, pt_note
 				$strArgsOfLVArr[0] = $lvInTabPartners
 				$strArgsOfTableArr[0] = $tb_partners
 
-				GUICtrlCreateLabel("Ãû³Æ:", 20, 45, 30, 20 )
+				GUICtrlCreateLabel("åç§°:", 20, 45, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 40, 180, 20)
 				$strArgsOfTableArr[1] = "pt_name"
-				GUICtrlCreateLabel("ÀàĞÍ:", 20, 75, 30, 20 )
+				GUICtrlCreateLabel("ç±»å‹:", 20, 75, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 70, 180, 20)
 				$strArgsOfTableArr[2] = "pt_type"
-				GUICtrlCreateLabel("µØÖ·:", 20, 105, 30, 20 )
+				GUICtrlCreateLabel("åœ°å€:", 20, 105, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 100, 180, 20)
 				$strArgsOfTableArr[3] = "pt_address"
 
-				GUICtrlCreateLabel("µç»°:", 260, 45, 30, 20 )
+				GUICtrlCreateLabel("ç”µè¯:", 260, 45, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 292, 40, 180, 20)
 				$strArgsOfTableArr[4] = "pt_phone"
-				GUICtrlCreateLabel("ÓÊÏä:", 260, 75, 30, 20 )
+				GUICtrlCreateLabel("é‚®ç®±:", 260, 75, 30, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 70, 180, 20)
 				$strArgsOfTableArr[5] = "pt_email"
-				GUICtrlCreateLabel("ÒµÎñ:", 260, 105, 30, 20 )
+				GUICtrlCreateLabel("ä¸šåŠ¡:", 260, 105, 30, 20 )
 				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 292, 100, 180, 20)
 				$strArgsOfTableArr[6] = "pt_business"
 
-			Case "ÓÃ»§¹ÜÀí"
-				;±àºÅ|ÓÃ»§Ãû|ÃÜÂë|È¨ÏŞ|±¸×¢
+			Case "ç”¨æˆ·ç®¡ç†"
+				;ç¼–å·|ç”¨æˆ·å|å¯†ç |æƒé™|å¤‡æ³¨
 				; id, u_name, u_pswd, u_authority, u_note
 				$strArgsOfLVArr[0] = $lvInTabUsers
 				$strArgsOfTableArr[0] = $tb_users
 
-				GUICtrlCreateLabel("ÓÃ»§Ãû:", 20, 35, 45, 20 )
+				GUICtrlCreateLabel("ç”¨æˆ·å:", 20, 35, 45, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 72, 30, 180, 20)
 				$strArgsOfTableArr[1] = "u_name"
-				GUICtrlCreateLabel("ÃÜ  Âë:", 20, 60, 45, 20 )
+				GUICtrlCreateLabel("å¯†  ç :", 20, 60, 45, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 72, 55, 180, 20)
 				$strArgsOfTableArr[2] = "u_pswd"
-				GUICtrlCreateLabel("È¨  ÏŞ:", 20, 90, 45, 20 )
+				GUICtrlCreateLabel("æƒ  é™:", 20, 90, 45, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 72, 85, 180, 20)
 				$strArgsOfTableArr[3] = "u_authority"
-				GUICtrlCreateLabel("±¸  ×¢:", 20, 120, 45, 20 )
+				GUICtrlCreateLabel("å¤‡  æ³¨:", 20, 120, 45, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 72, 115, 180, 20)
 				$strArgsOfTableArr[4] = "u_note"
 
-			Case "×Ê²ú¹ÜÀí"
-				;±àºÅ|Ãû³Æ|´®ºÅ|µ¥Î»|ÀàĞÍ|¹ºÈëÈÕÆÚ|µ¥¼Û|ËùÊô²¿ÃÅ|¾­ÏúÉÌ|ÊÇ·ñ±¨·Ï|±¸×¢
+			Case "èµ„äº§ç®¡ç†"
+				;ç¼–å·|åç§°|ä¸²å·|å•ä½|ç±»å‹|è´­å…¥æ—¥æœŸ|å•ä»·|æ‰€å±éƒ¨é—¨|ç»é”€å•†|æ˜¯å¦æŠ¥åºŸ|å¤‡æ³¨
 				; id, a_name, a_serial_number, a_unit, a_type, a_date_bought, a_price, a_deportment, a_dealer, a_scrap, a_note
 				$strArgsOfLVArr[0] = $lvInTabAccets	; LV
 				$strArgsOfTableArr[0] = $tb_accets		; Table
@@ -803,44 +803,44 @@ Func FuncFindData()
 				$popWinHeight = 210
 
 				$popupWindow = GUICreate("" , $popWinWidth, $popWinHeight, Default, Default, $WS_CAPTION, BitOR($WS_EX_TOPMOST, $GUI_WS_EX_PARENTDRAG))
-					WinSetTitle($popupWindow, "", "ÔÚ¡¶" & $strLvName & "¡·ÖĞ²åÈëÊı¾İ" )
+					WinSetTitle($popupWindow, "", "åœ¨ã€Š" & $strLvName & "ã€‹ä¸­æ’å…¥æ•°æ®" )
 
-					GUICtrlCreateGroup("ÔÚĞèÒªµÄÌõ¼şÀïÊäÈë¹Ø¼ü×Ö¡£¶à¸ö´ÊÓÃ¿Õ¸ñ·Ö¿ª", 10, 5, 480, $popWinHeight - 45)
+					GUICtrlCreateGroup("åœ¨éœ€è¦çš„æ¡ä»¶é‡Œè¾“å…¥å…³é”®å­—ã€‚å¤šä¸ªè¯ç”¨ç©ºæ ¼åˆ†å¼€", 10, 5, 480, $popWinHeight - 45)
 
-					GUICtrlCreateLabel("Ãû    ³Æ:", 20, 25, 60, 20 )
+					GUICtrlCreateLabel("å    ç§°:", 20, 25, 60, 20 )
 					$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 82, 20, 150, 20)
 					$strArgsOfTableArr[1] = "a_name"
-					GUICtrlCreateLabel("´®    ºÅ:", 20, 55, 60, 20 )
+					GUICtrlCreateLabel("ä¸²    å·:", 20, 55, 60, 20 )
 					$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 82, 50, 150, 20)
 					$strArgsOfTableArr[2] = "a_serial_number"
-					GUICtrlCreateLabel("µ¥    Î»:", 20, 85, 60, 20 )
+					GUICtrlCreateLabel("å•    ä½:", 20, 85, 60, 20 )
 					$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 82, 80, 150, 20)
 					$strArgsOfTableArr[3] = "a_unit"
-					GUICtrlCreateLabel("Àà    ĞÍ:", 20, 115, 60, 20 )
+					GUICtrlCreateLabel("ç±»    å‹:", 20, 115, 60, 20 )
 					$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 82, 110, 150, 20)
 					$strArgsOfTableArr[4] = "a_type"
-					GUICtrlCreateLabel("¹ºÈëÈÕÆÚ:", 20, 145, 60, 20 )
+					GUICtrlCreateLabel("è´­å…¥æ—¥æœŸ:", 20, 145, 60, 20 )
 					$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 82, 140, 150, 20)
 					$strArgsOfTableArr[5] = "a_date_bought"
 
-					GUICtrlCreateLabel("µ¥    ¼Û:", 260, 25, 60, 20 )
+					GUICtrlCreateLabel("å•    ä»·:", 260, 25, 60, 20 )
 					$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 322, 20, 150, 20)
 					$strArgsOfTableArr[6] = "a_price"
-					GUICtrlCreateLabel("ËùÊô²¿ÃÅ:", 260, 55, 60, 20 )
+					GUICtrlCreateLabel("æ‰€å±éƒ¨é—¨:", 260, 55, 60, 20 )
 					$strArgsOfLVArr[7] = GUICtrlCreateInput ( "", 322, 50, 150, 20)
 					$strArgsOfTableArr[7] = "a_deportment"
-					GUICtrlCreateLabel("¾­ Ïú ÉÌ:", 260, 85, 60, 20 )
+					GUICtrlCreateLabel("ç» é”€ å•†:", 260, 85, 60, 20 )
 					$strArgsOfLVArr[8] = GUICtrlCreateInput ( "", 322, 80, 150, 20)
 					$strArgsOfTableArr[8] = "a_dealer"
-					GUICtrlCreateLabel("ÊÇ·ñ±¨·Ï:", 260, 115, 60, 20 )
+					GUICtrlCreateLabel("æ˜¯å¦æŠ¥åºŸ:", 260, 115, 60, 20 )
 					$strArgsOfLVArr[9] = GUICtrlCreateInput ( "", 322, 110, 150, 20)
 					$strArgsOfTableArr[9] = "a_scrap"
-					GUICtrlCreateLabel("±¸    ×¢:", 260, 145, 60, 20 )
+					GUICtrlCreateLabel("å¤‡    æ³¨:", 260, 145, 60, 20 )
 					$strArgsOfLVArr[10] = GUICtrlCreateInput ( "", 322, 140, 150, 20)
 					$strArgsOfTableArr[10] = "a_note"
 
-			Case "ÈËÔ±¹ÜÀí"
-				; ĞÕÃû|Éí·İÖ¤ºÅ|²¿ÃÅ|Ö°Îñ|ÈëÖ°ÈÕÆÚ|×ªÕıÈÕÆÚ|ÔÂĞ½×Ê|ĞÔ±ğ|ÉúÈÕ|µç»°|ÓÊÏä|×¡Ö·|¼ÒÍ¥ĞÅÏ¢|±¸×¢
+			Case "äººå‘˜ç®¡ç†"
+				; å§“å|èº«ä»½è¯å·|éƒ¨é—¨|èŒåŠ¡|å…¥èŒæ—¥æœŸ|è½¬æ­£æ—¥æœŸ|æœˆè–ªèµ„|æ€§åˆ«|ç”Ÿæ—¥|ç”µè¯|é‚®ç®±|ä½å€|å®¶åº­ä¿¡æ¯|å¤‡æ³¨
 				; w_name, w_identity_number, w_deportment, w_position, w_date_of_entry, w_date_regular, w_month_wage, w_sex, w_birthday, w_phone, w_email, w_address, w_family, w_note
 				$strArgsOfLVArr[0] = $lvInTabWorkers
 				$strArgsOfTableArr[0] = $tb_workers
@@ -850,102 +850,102 @@ Func FuncFindData()
 				$popWinHeight = 270
 
 				$popupWindow = GUICreate("" , $popWinWidth, $popWinHeight, Default, Default, $WS_CAPTION, BitOR($WS_EX_TOPMOST, $GUI_WS_EX_PARENTDRAG))
-					WinSetTitle($popupWindow, "", "ÔÚ¡¶" & $strLvName & "¡·ÖĞ²åÈëÊı¾İ" )
+					WinSetTitle($popupWindow, "", "åœ¨ã€Š" & $strLvName & "ã€‹ä¸­æ’å…¥æ•°æ®" )
 
-					GUICtrlCreateGroup("ÔÚĞèÒªµÄÌõ¼şÀïÊäÈë¹Ø¼ü×Ö¡£¶à¸ö´ÊÓÃ¿Õ¸ñ·Ö¿ª", 10, 5, 480, $popWinHeight - 45)
+					GUICtrlCreateGroup("åœ¨éœ€è¦çš„æ¡ä»¶é‡Œè¾“å…¥å…³é”®å­—ã€‚å¤šä¸ªè¯ç”¨ç©ºæ ¼åˆ†å¼€", 10, 5, 480, $popWinHeight - 45)
 
-					GUICtrlCreateLabel("ĞÕ    Ãû:", 20, 25, 60, 20 )
+					GUICtrlCreateLabel("å§“    å:", 20, 25, 60, 20 )
 					$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 82, 20, 150, 20)
 					$strArgsOfTableArr[1] = "w_name"
-					GUICtrlCreateLabel("Éí·İÖ¤ºÅ:", 20, 55, 60, 20 )
+					GUICtrlCreateLabel("èº«ä»½è¯å·:", 20, 55, 60, 20 )
 					$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 82, 50, 150, 20)
 					$strArgsOfTableArr[2] = "w_identity_number"
-					GUICtrlCreateLabel("²¿    ÃÅ:", 20, 85, 60, 20 )
+					GUICtrlCreateLabel("éƒ¨    é—¨:", 20, 85, 60, 20 )
 					$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 82, 80, 150, 20)
 					$strArgsOfTableArr[3] = "w_deportment"
-					GUICtrlCreateLabel("Ö°    Îñ:", 20, 115, 60, 20 )
+					GUICtrlCreateLabel("èŒ    åŠ¡:", 20, 115, 60, 20 )
 					$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 82, 110, 150, 20)
 					$strArgsOfTableArr[4] = "w_position"
-					GUICtrlCreateLabel("ÈëÖ°ÈÕÆÚ:", 20, 145, 60, 20 )
+					GUICtrlCreateLabel("å…¥èŒæ—¥æœŸ:", 20, 145, 60, 20 )
 					$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 82, 140, 150, 20)
 					$strArgsOfTableArr[5] = "w_date_of_entry"
-					GUICtrlCreateLabel("×ªÕıÈÕÆÚ:", 20, 175, 60, 20 )
+					GUICtrlCreateLabel("è½¬æ­£æ—¥æœŸ:", 20, 175, 60, 20 )
 					$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 82, 170, 150, 20)
 					$strArgsOfTableArr[6] = "w_date_regular"
-					GUICtrlCreateLabel("ÔÂ Ğ½ ×Ê:", 20, 205, 60, 20 )
+					GUICtrlCreateLabel("æœˆ è–ª èµ„:", 20, 205, 60, 20 )
 					$strArgsOfLVArr[7] = GUICtrlCreateInput ( "", 82, 200, 150, 20)
 					$strArgsOfTableArr[7] = "w_month_wage"
 
-					GUICtrlCreateLabel("ĞÔ    ±ğ:", 260, 25, 60, 20 )
+					GUICtrlCreateLabel("æ€§    åˆ«:", 260, 25, 60, 20 )
 					$strArgsOfLVArr[8] = GUICtrlCreateInput ( "", 322, 20, 150, 20)
 					$strArgsOfTableArr[8] = "w_sex"
-					GUICtrlCreateLabel("Éú    ÈÕ:", 260, 55, 60, 20 )
+					GUICtrlCreateLabel("ç”Ÿ    æ—¥:", 260, 55, 60, 20 )
 					$strArgsOfLVArr[9] = GUICtrlCreateInput ( "", 322, 50, 150, 20)
 					$strArgsOfTableArr[9] = "w_birthday"
-					GUICtrlCreateLabel("µç    »°:", 260, 85, 60, 20 )
+					GUICtrlCreateLabel("ç”µ    è¯:", 260, 85, 60, 20 )
 					$strArgsOfLVArr[10] = GUICtrlCreateInput ( "", 322, 80, 150, 20)
 					$strArgsOfTableArr[10] = "w_phone"
-					GUICtrlCreateLabel("ÓÊ    Ïä:", 260, 115, 60, 20 )
+					GUICtrlCreateLabel("é‚®    ç®±:", 260, 115, 60, 20 )
 					$strArgsOfLVArr[11] = GUICtrlCreateInput ( "", 322, 110, 150, 20)
 					$strArgsOfTableArr[11] = "w_email"
-					GUICtrlCreateLabel("×¡    Ö·:", 260, 145, 60, 20 )
+					GUICtrlCreateLabel("ä½    å€:", 260, 145, 60, 20 )
 					$strArgsOfLVArr[12] = GUICtrlCreateInput ( "", 322, 140, 150, 20)
 					$strArgsOfTableArr[12] = "w_address"
-					GUICtrlCreateLabel("¼ÒÍ¥ĞÅÏ¢:", 260, 175, 60, 20 )
+					GUICtrlCreateLabel("å®¶åº­ä¿¡æ¯:", 260, 175, 60, 20 )
 					$strArgsOfLVArr[13] = GUICtrlCreateInput ( "", 322, 170, 150, 20)
 					$strArgsOfTableArr[13] = "w_family"
-					GUICtrlCreateLabel("±¸    ×¢:", 260, 205, 60, 20 )
+					GUICtrlCreateLabel("å¤‡    æ³¨:", 260, 205, 60, 20 )
 					$strArgsOfLVArr[14] = GUICtrlCreateInput ( "", 322, 200, 150, 20)
 					$strArgsOfTableArr[14] = "w_note"
 
-			Case "²Ù×÷ÈÕÖ¾"
-				; ÓÃ»§|µÇÂ½ÍË³öÔöÉ¾¸Ä|±í|ÁĞ|¾ÉÊı¾İ|ĞÂÊı¾İ|ÈÕÆÚ|±¸×¢ 8
+			Case "æ“ä½œæ—¥å¿—"
+				; ç”¨æˆ·|ç™»é™†é€€å‡ºå¢åˆ æ”¹|è¡¨|åˆ—|æ—§æ•°æ®|æ–°æ•°æ®|æ—¥æœŸ|å¤‡æ³¨ 8
 				; l_name, l_operate, l_table, l_column, l_old_data, l_new_data, l_date, l_note
 				$strArgsOfLVArr[0] = $lvInTabLog
 				$strArgsOfTableArr[0] = $tb_log
 
-				GUICtrlCreateLabel("ÓÃ»§:", 20, 30, 30, 20 )
+				GUICtrlCreateLabel("ç”¨æˆ·:", 20, 30, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 25, 180, 20)
 				$strArgsOfTableArr[1] = "l_name"
-				GUICtrlCreateLabel("²Ù×÷:", 20, 60, 30, 20 )
+				GUICtrlCreateLabel("æ“ä½œ:", 20, 60, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 55, 180, 20)
 				$strArgsOfTableArr[2] = "l_operate"
-				GUICtrlCreateLabel("±íµ¥:", 20, 90, 30, 20 )
+				GUICtrlCreateLabel("è¡¨å•:", 20, 90, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 85, 180, 20)
 				$strArgsOfTableArr[3] = "l_table"
-				GUICtrlCreateLabel("ÁĞÃû:", 20, 120, 30, 20 )
+				GUICtrlCreateLabel("åˆ—å:", 20, 120, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 52, 115, 180, 20)
 				$strArgsOfTableArr[4] = "l_column"
 
-				GUICtrlCreateLabel("¾ÉÖµ:", 260, 30, 30, 20 )
+				GUICtrlCreateLabel("æ—§å€¼:", 260, 30, 30, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 25, 180, 20)
 				$strArgsOfTableArr[5] = "l_old_data"
-				GUICtrlCreateLabel("ĞÂÖµ:", 260, 60, 30, 20 )
+				GUICtrlCreateLabel("æ–°å€¼:", 260, 60, 30, 20 )
 				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 292, 55, 180, 20)
 				$strArgsOfTableArr[6] = "l_new_data"
-				GUICtrlCreateLabel("ÈÕÆÚ:", 260, 90, 30, 20 )
+				GUICtrlCreateLabel("æ—¥æœŸ:", 260, 90, 30, 20 )
 				$strArgsOfLVArr[7] = GUICtrlCreateInput ( "", 292, 85, 180, 20)
 				$strArgsOfTableArr[7] = "l_date"
-				GUICtrlCreateLabel("±¸×¢:", 260, 120, 30, 20 )
+				GUICtrlCreateLabel("å¤‡æ³¨:", 260, 120, 30, 20 )
 				$strArgsOfLVArr[8] = GUICtrlCreateInput ( "", 292, 115, 180, 20)
 				$strArgsOfTableArr[8] = "l_note"
 
-			Case "Ôª Êı ¾İ"
-				; ±íµ¥|ÁĞ|Öµ|ÃèÊö 4
+			Case "å…ƒ æ•° æ®"
+				; è¡¨å•|åˆ—|å€¼|æè¿° 4
 				; sr_tb_name, sr_column, sr_value, sr_note
 				$strArgsOfLVArr[0] = $lvInTabSources
 				$strArgsOfTableArr[0] = $tb_source
 
-				GUICtrlCreateLabel("±íµ¥:", 20, 30, 30, 20 )
+				GUICtrlCreateLabel("è¡¨å•:", 20, 30, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 25, 180, 20)
 				$strArgsOfTableArr[1] = "sr_tb_name"
-				GUICtrlCreateLabel("ÁĞÃû:", 20, 60, 30, 20 )
+				GUICtrlCreateLabel("åˆ—å:", 20, 60, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 55, 180, 20)
 				$strArgsOfTableArr[2] = "sr_column"
-				GUICtrlCreateLabel("Ñ¡Öµ:", 20, 90, 30, 20 )
+				GUICtrlCreateLabel("é€‰å€¼:", 20, 90, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 85, 180, 20)
 				$strArgsOfTableArr[3] = "sr_value"
-				GUICtrlCreateLabel("±¸×¢:", 20, 120, 30, 20 )
+				GUICtrlCreateLabel("å¤‡æ³¨:", 20, 120, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 52, 115, 180, 20)
 				$strArgsOfTableArr[4] = "sr_note"
 
@@ -953,9 +953,9 @@ Func FuncFindData()
 
 		GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-		$btnOKInPopWin = GUICtrlCreateButton("È·¶¨", 10, $popWinHeight - 30, 60, 22)
+		$btnOKInPopWin = GUICtrlCreateButton("ç¡®å®š", 10, $popWinHeight - 30, 60, 22)
 			GUICtrlSetOnEvent($btnOKInPopWin, "FuncFindDataByArgs")
-		$btnNOInPopWin = GUICtrlCreateButton("È¡Ïû", 428, $popWinHeight - 30, 60, 22)
+		$btnNOInPopWin = GUICtrlCreateButton("å–æ¶ˆ", 428, $popWinHeight - 30, 60, 22)
 			GUICtrlSetOnEvent($btnNOInPopWin, "FuncFindDataByArgs")
 
 	GUISetState(@SW_SHOW, $popupWindow)
@@ -964,59 +964,59 @@ EndFunc
 
 Func FuncFindDataByArgs ()
 	If @GUI_CtrlId = $btnOKInPopWin Then
-		Local $isSqlStrEnable = False	; ²éÑ¯Óï¾äÊÇ·ñ¿ÉÓÃ¡£Èç¹ûÈ«²¿²ÎÊı¶¼ÊÇ¿ÕµÄ£¬²»»áÉèÎªtrue
+		Local $isSqlStrEnable = False	; æŸ¥è¯¢è¯­å¥æ˜¯å¦å¯ç”¨ã€‚å¦‚æœå…¨éƒ¨å‚æ•°éƒ½æ˜¯ç©ºçš„ï¼Œä¸ä¼šè®¾ä¸ºtrue
 
 		$strArgsOfSql = "SELECT * FROM " & $strArgsOfTableArr[0] & " WHERE "
 
-		; ±éÀú¿Ø¼şÊı×é£¬Æ´½ÓÓï¾ä
-		For $iiii = 1 To 11 Step 1	; 0Ë÷Òı±£´æµÄÊÇlV»òAccessÃû³Æ¡£Ê£Óà 1-11 ±£´æ¿Ø¼ş
+		; éå†æ§ä»¶æ•°ç»„ï¼Œæ‹¼æ¥è¯­å¥
+		For $iiii = 1 To 11 Step 1	; 0ç´¢å¼•ä¿å­˜çš„æ˜¯lVæˆ–Accessåç§°ã€‚å‰©ä½™ 1-11 ä¿å­˜æ§ä»¶
 
 			Local $strWidget = GUICtrlRead($strArgsOfLVArr[$iiii])
 
 			If $strWidget <> "" And StringIsSpace($strWidget) <> 1 Then
 
-				; ¶Á¿Ø¼şÄÚµÄÎÄ±¾£¬È¥³ıÊ×¡¢Î²¿Õ¸ñ¡¢Á¬Ğø¶à¸ö¿Õ¸ñºÏÎª1¸ö
+				; è¯»æ§ä»¶å†…çš„æ–‡æœ¬ï¼Œå»é™¤é¦–ã€å°¾ç©ºæ ¼ã€è¿ç»­å¤šä¸ªç©ºæ ¼åˆä¸º1ä¸ª
 				Local $keywords = StringStripWS($strWidget, $STR_STRIPLEADING + $STR_STRIPTRAILING + $STR_STRIPSPACES )
-				; ¸ù¾İ¹Ø¼ü´ÊÎÄ±¾Ö®¼äµÄ¿Õ¸ñ½øĞĞ²ğ×é
+				; æ ¹æ®å…³é”®è¯æ–‡æœ¬ä¹‹é—´çš„ç©ºæ ¼è¿›è¡Œæ‹†ç»„
 				Local $keywordArr = StringSplit ($keywords, " ")
-				; Ö»ÒªÓĞ´ÊÓï£¬ÖÁÉÙÄÜÓĞÒ»¸öÔªËØ[1]
-				If $keywordArr[0] > 0 Then	; $keywordArr[0]±£´æÓĞĞ§ÔªËØÊıÁ¿
-					; Èç¹ûÓĞ¶à¸ö´Ê£¬Æ´½Ó
+				; åªè¦æœ‰è¯è¯­ï¼Œè‡³å°‘èƒ½æœ‰ä¸€ä¸ªå…ƒç´ [1]
+				If $keywordArr[0] > 0 Then	; $keywordArr[0]ä¿å­˜æœ‰æ•ˆå…ƒç´ æ•°é‡
+					; å¦‚æœæœ‰å¤šä¸ªè¯ï¼Œæ‹¼æ¥
 					For $j = 1 To $keywordArr[0]
-						; ÁĞ like %Öµ%
+						; åˆ— like %å€¼%
 						$strArgsOfSql &= $strArgsOfTableArr[$iiii] & " LIKE '%" & $keywordArr[$j] & "%' AND "
 					Next
 				EndIf
 
-				$isSqlStrEnable = True	; ÖÁÉÙÓĞÒ»¸öÓĞĞ§²ÎÊı£¬²Å¿ÉÓÃ
+				$isSqlStrEnable = True	; è‡³å°‘æœ‰ä¸€ä¸ªæœ‰æ•ˆå‚æ•°ï¼Œæ‰å¯ç”¨
 			EndIf
 		Next
 
-		$strArgsOfSql &= "1 = 1"	; Æ´½ÓsqlÓï¾ä³£ÓÃ½áÎ²¡£·ñÔòÉ¾³ı×îºóÒ»¸ö AND±È½ÏÂé·³
+		$strArgsOfSql &= "1 = 1"	; æ‹¼æ¥sqlè¯­å¥å¸¸ç”¨ç»“å°¾ã€‚å¦åˆ™åˆ é™¤æœ€åä¸€ä¸ª ANDæ¯”è¾ƒéº»çƒ¦
 
 		If $isSqlStrEnable Then
-			; Ö´ĞĞÊı¾İ¿â²éÑ¯
+			; æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢
 			Local $adoCon = ObjCreate("ADODB.Connection")
 			$adoCon.Open("Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" & $db_path & "; Jet OLEDB:Database Password='" & $db_pswd & "'")
 			Local $adoRec = ObjCreate("ADODB.Recordset")
 			$adoRec.ActiveConnection = $adoCon
 
-			$adoRec.Open($strArgsOfSql)	; ´Ó±íÖĞ²éµ½µÄ½á¹û¼¯
+			$adoRec.Open($strArgsOfSql)	; ä»è¡¨ä¸­æŸ¥åˆ°çš„ç»“æœé›†
 
-			Local $fieldsCount = $adoRec.fields.count	; Ö´ĞĞÉÏÒ»²½ºó£¬µÃµ½±íµÄ×Ö¶ÎÊıÁ¿
+			Local $fieldsCount = $adoRec.fields.count	; æ‰§è¡Œä¸Šä¸€æ­¥åï¼Œå¾—åˆ°è¡¨çš„å­—æ®µæ•°é‡
 			If $strArgsOfTableArr[0] = $tb_journal Then
 				$fieldsCount = $fieldsCount - 2
 			EndIf
 
-			; Çå¿ÕÁĞ±í
+			; æ¸…ç©ºåˆ—è¡¨
 			_GUICtrlListView_DeleteAllItems ($strArgsOfLVArr[0])
 
 			_GUICtrlListView_BeginUpdate($strArgsOfLVArr[0])
-			While Not $adoRec.Eof And Not $adoRec.Bof	; ±éÀú½á¹û¼¯Ã¿Ò»ĞĞ
+			While Not $adoRec.Eof And Not $adoRec.Bof	; éå†ç»“æœé›†æ¯ä¸€è¡Œ
 				If @error = 1 Then
 					ExitLoop
 				Else
-					; ÕâÀï×îºÃÊÇ´´½¨Ò»¸öĞÂµÄ±êÇ©¡¢LVÀ´Õ¹Ê¾²éÑ¯½á¹û
+					; è¿™é‡Œæœ€å¥½æ˜¯åˆ›å»ºä¸€ä¸ªæ–°çš„æ ‡ç­¾ã€LVæ¥å±•ç¤ºæŸ¥è¯¢ç»“æœ
 
 					Local $strResultDataForLv = ""
 
@@ -1031,15 +1031,15 @@ Func FuncFindDataByArgs ()
 					Next
 
 					GUICtrlCreateListViewItem($strResultDataForLv, $strArgsOfLVArr[0])
-						GUICtrlSetBkColor (-1, 0xffa500 );ÉèÖÃlistviewitemµÄ±³¾°É«
+						GUICtrlSetBkColor (-1, 0xffa500 );è®¾ç½®listviewitemçš„èƒŒæ™¯è‰²
 
-					$adoRec.Movenext	; ½á¹û¼¯µÄÏÂÒ»ĞĞ
+					$adoRec.Movenext	; ç»“æœé›†çš„ä¸‹ä¸€è¡Œ
 				EndIf
 			WEnd
 			_GUICtrlListView_EndUpdate($strArgsOfLVArr[0])
 			_GUICtrlListView_Scroll($strArgsOfLVArr[0], 0, _GUICtrlListView_GetItemCount($strArgsOfLVArr[0])*10)
 
-			GUICtrlSetData($strInfoLbl, "±í¡¶" & $strArgsOfTableArr[0] & "¡·ÖĞ²éÑ¯µ½µÄ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $strArgsOfLVArr[0] ))
+			GUICtrlSetData($strInfoLbl, "è¡¨ã€Š" & $strArgsOfTableArr[0] & "ã€‹ä¸­æŸ¥è¯¢åˆ°çš„è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $strArgsOfLVArr[0] ))
 
 			$adoRec.Close
 			$adoCon.Close
@@ -1051,7 +1051,7 @@ Func FuncFindDataByArgs ()
 	GUISetState(@SW_ENABLE, $guiMainWindow)
 	GUISetState(@SW_RESTORE, $guiMainWindow)
 
-	; ¸´Î»¡£Çå¿ÕÊı×é
+	; å¤ä½ã€‚æ¸…ç©ºæ•°ç»„
 	$strArgsOfSql = ""
 	For $i = 0 To 14
 		$strArgsOfLVArr[$i] = ""
@@ -1060,28 +1060,28 @@ Func FuncFindDataByArgs ()
 EndFunc
 
 ; #cs
-; 	Ë«»÷LVµÄµ¥Ôª¸ñºó£¬´´½¨Ò»¸öÊäÈë¿ò
-; 	¶ÔÔ­Êı¾İ½øĞĞĞŞ¸Ä
-; 	²ÎÊı $strLvInTab:Òª²Ù×÷µÄÁĞ±íID
-; 	²ÎÊı $lParam:ÏµÍ³ÏûÏ¢
+; 	åŒå‡»LVçš„å•å…ƒæ ¼åï¼Œåˆ›å»ºä¸€ä¸ªè¾“å…¥æ¡†
+; 	å¯¹åŸæ•°æ®è¿›è¡Œä¿®æ”¹
+; 	å‚æ•° $strLvInTab:è¦æ“ä½œçš„åˆ—è¡¨ID
+; 	å‚æ•° $lParam:ç³»ç»Ÿæ¶ˆæ¯
 ; #ce
 Func FuncCreateEditRecForColumn($tmplvname, $strLvInTab, $lParam )
-	; ´´½¨½á¹¹ÌåÊı¾İ£¨½á¹¹Ìå£¬Ìá¹©Êı¾İµÄÖ¸Õë£©
+	; åˆ›å»ºç»“æ„ä½“æ•°æ®ï¼ˆç»“æ„ä½“ï¼Œæä¾›æ•°æ®çš„æŒ‡é’ˆï¼‰
 	Local $tInfo = DllStructCreate($tagNMITEMACTIVATE, $lParam)
-	$hItemRow = DllStructGetData($tInfo, "Index")		; µã»÷µÄĞĞ¡£Ê¼ÓÚ0
-	$hItemColumn = DllStructGetData($tInfo, "SubItem")	; µã»÷µÄÁĞ¡£Ê¼ÓÚ0
+	$hItemRow = DllStructGetData($tInfo, "Index")		; ç‚¹å‡»çš„è¡Œã€‚å§‹äº0
+	$hItemColumn = DllStructGetData($tInfo, "SubItem")	; ç‚¹å‡»çš„åˆ—ã€‚å§‹äº0
 
 	Local $oADO = ObjCreate("ADODB.Connection")
 	$oADO.Open("Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" & $db_path & "; Jet OLEDB:Database Password='" & $db_pswd & "'")
 	Local $oREC = ObjCreate("ADODB.Recordset")
 	$oREC.ActiveConnection = $oADO
-	$oREC.Open($columnOfTable, $oADO, 3, 3)	; ¼ìË÷±»Ë«»÷µÄLVËùÊôµÄ±í
-	Local $fieldsCount = $oREC.fields.count	; »ñÈ¡±íµ¥µÄÁĞÊı£¬×Ü¹²ÓĞ¶àÉÙ×Ö¶Î
-	; $oREC.fields[i].name	; ÁĞÃû
+	$oREC.Open($columnOfTable, $oADO, 3, 3)	; æ£€ç´¢è¢«åŒå‡»çš„LVæ‰€å±çš„è¡¨
+	Local $fieldsCount = $oREC.fields.count	; è·å–è¡¨å•çš„åˆ—æ•°ï¼Œæ€»å…±æœ‰å¤šå°‘å­—æ®µ
+	; $oREC.fields[i].name	; åˆ—å
 
-	; È«¾Ö±äÁ¿£¬_WM_COMMANDÖĞÓÃµ½
-	$columnName = $oREC.fields($hItemColumn).name		; µÃµ½µ¥Ôª¸ñµÄÁĞÃû¡£×¢ÒâÊÇĞ¡À¨ºÅ
-	; $oREC.fields(1).value	; ÁĞÖµ
+	; å…¨å±€å˜é‡ï¼Œ_WM_COMMANDä¸­ç”¨åˆ°
+	$columnName = $oREC.fields($hItemColumn).name		; å¾—åˆ°å•å…ƒæ ¼çš„åˆ—åã€‚æ³¨æ„æ˜¯å°æ‹¬å·
+	; $oREC.fields(1).value	; åˆ—å€¼
 
 	$oREC.Close
 	$oADO.Close
@@ -1105,24 +1105,24 @@ Func FuncCreateEditRecForColumn($tmplvname, $strLvInTab, $lParam )
 
 	_WinAPI_FrameRect($hDC, DllStructGetPtr($stRect), $hBrush)
 
-	GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶" & $tmplvname & "¡·ÖĞÑ¡ÖĞµÄĞĞ±àºÅ£º" & _GUICtrlListView_GetItemText($strLvInTab, $hItemRow) & "£¬Ñ¡ÖĞµÄÁĞ£º" & _GUICtrlListView_GetColumn($strLvInTab, $hItemColumn)[5] & "£¬Ô­Êı¾İ£º" & $columnOldData)
+	GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Š" & $tmplvname & "ã€‹ä¸­é€‰ä¸­çš„è¡Œç¼–å·ï¼š" & _GUICtrlListView_GetItemText($strLvInTab, $hItemRow) & "ï¼Œé€‰ä¸­çš„åˆ—ï¼š" & _GUICtrlListView_GetColumn($strLvInTab, $hItemColumn)[5] & "ï¼ŒåŸæ•°æ®ï¼š" & $columnOldData)
 EndFunc
 
-; ÓÒ¼ü²Ëµ¥ WM_CONTEXTMENU ÏûÏ¢
+; å³é”®èœå• WM_CONTEXTMENU æ¶ˆæ¯
 Func _WM_CONTEXTMENU($hWnd, $iMsg, $iwParam, $ilParam)
 	Switch $iwParam
 		Case $hLvInTabJournal, $hLvInTabAccets, $hLvInTabPartners, $hLvInTabProducts, $hLvInTabProjects, $hLvInTabSchools, $hLvInTabSources, $hLvInTabWorkers, $hLvInTabUsers, $hlvintabLog
 
-			; »ñÈ¡ÓÒ¼üµã»÷µÄÓĞĞ§Ë÷Òı
+			; è·å–å³é”®ç‚¹å‡»çš„æœ‰æ•ˆç´¢å¼•
 			If _GUICtrlListView_GetSelectedIndices ( $iwParam ) <> "" Then
 				$columnOldData = _GUICtrlListView_GetItemTextString ($iwParam, _GUICtrlListView_GetSelectedIndices ( $iwParam ))
 				Local $hMenu; $id_menu_lv_del = 2000, $id_menu_lv_update, $id_menu_lv_copy
 				$hMenu = _GUICtrlMenu_CreatePopup()
-				_GUICtrlMenu_InsertMenuItem($hMenu, 0, "É¾³ı", $id_menu_lv_del)
+				_GUICtrlMenu_InsertMenuItem($hMenu, 0, "åˆ é™¤", $id_menu_lv_del)
 				_GUICtrlMenu_InsertMenuItem($hMenu, 1, "", 0)
-				_GUICtrlMenu_InsertMenuItem($hMenu, 2, "ĞŞ¸Ä", $id_menu_lv_update)
+				_GUICtrlMenu_InsertMenuItem($hMenu, 2, "ä¿®æ”¹", $id_menu_lv_update)
 				_GUICtrlMenu_InsertMenuItem($hMenu, 3, "", 0)
-				_GUICtrlMenu_InsertMenuItem($hMenu, 4, "¸´ÖÆ", $id_menu_lv_copy)
+				_GUICtrlMenu_InsertMenuItem($hMenu, 4, "å¤åˆ¶", $id_menu_lv_copy)
 				_GUICtrlMenu_TrackPopupMenu($hMenu, $hWnd)
 				_GUICtrlMenu_DestroyMenu($hMenu)
 				$hEnableListView = $iwParam
@@ -1132,20 +1132,20 @@ Func _WM_CONTEXTMENU($hWnd, $iMsg, $iwParam, $ilParam)
 	EndSwitch
 EndFunc
 
-; ¿Ø¼şÊ§È¥½¹µã
-; LVµÄÓÒ¼ü²Ëµ¥Ïî´¦Àí
-; µ¥Ôª¸ñĞÂÊı¾İ±£´æ
+; æ§ä»¶å¤±å»ç„¦ç‚¹
+; LVçš„å³é”®èœå•é¡¹å¤„ç†
+; å•å…ƒæ ¼æ–°æ•°æ®ä¿å­˜
 Func _WM_COMMAND($hWnd, $msg, $wParam, $lParam)
 
-	; Æ¥ÅäÊÇÔÚÄÄ¸öLVÉÏÓÒ¼üµÄ²Ëµ¥
+	; åŒ¹é…æ˜¯åœ¨å“ªä¸ªLVä¸Šå³é”®çš„èœå•
 	Switch $hEnableListView
 		Case $hLvInTabJournal
-			; Æ¥Åä²Ëµ¥Ïî
+			; åŒ¹é…èœå•é¡¹
 			Switch $wParam
 				Case $id_menu_lv_del
-					; $strTbName£º ±íÃû³Æ
-					; $strLvInTab£ºÁĞ±íID
-					; $columnOldData£º ÕûĞĞµÄÄÚÈİ
+					; $strTbNameï¼š è¡¨åç§°
+					; $strLvInTabï¼šåˆ—è¡¨ID
+					; $columnOldDataï¼š æ•´è¡Œçš„å†…å®¹
 					FuncDeleteItemFromAccessAndListView ( "tb_journal", $lvInTabJournal, $columnOldData )
 
 				Case $id_menu_lv_update
@@ -1256,21 +1256,21 @@ Func _WM_COMMAND($hWnd, $msg, $wParam, $lParam)
 					_WinAPI_DestroyWindow($hEdit)
 					_GUICtrlEdit_Destroy($hEdit)
 
-					; Èç¹ûÊäÈëµÄÊÇĞÂÊı¾İ
+					; å¦‚æœè¾“å…¥çš„æ˜¯æ–°æ•°æ®
 					If $iText <> $columnOldData Then
 
 						Local $tmpIndexOfDClick = _GUICtrlListView_GetItemText ( $columnOfLV, $hItemRow )
 
-						;                               ±í                             ÁĞ                ĞÂÖµ             Ìõ¼ş
+						;                               è¡¨                             åˆ—                æ–°å€¼             æ¡ä»¶
 						Local $strUpdate = "UPDATE " & $columnOfTable & " SET " & $columnName & "='" & $iText & "' WHERE id=" & $tmpIndexOfDClick
 						Local $adoCon = ObjCreate("ADODB.Connection")
 						$adoCon.Open("Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" & $db_path & ";Jet Oledb:Database Password='" & $db_pswd & "'")
 						$adoCon.execute($strUpdate)
 						;$adoCon.close
 
-						; ÈÕÖ¾±í
-						Local $strLvItem = "'Eminem', 'update', '" & $columnOfTable & "', '" & $columnName & "', '" & $columnOldData & "', '" & $iText & "', '" & @YEAR & "-" & @MON & "-" & @MDAY & "(" & @WDAY - 1 & ")" & @HOUR & ":" & @MIN & ":" & @SEC & "`" & @MSEC & "', '_none'"	; Êı¾İ
-						$strLvItem = "insert into " & $tb_log & " (l_name, l_operate, l_table, l_column, l_old_data, l_new_data, l_date, l_note) values ( " & $strLvItem & " )"				; ²åÈëÓï¾ä
+						; æ—¥å¿—è¡¨
+						Local $strLvItem = "'Eminem', 'update', '" & $columnOfTable & "', '" & $columnName & "', '" & $columnOldData & "', '" & $iText & "', '" & @YEAR & "-" & @MON & "-" & @MDAY & "(" & @WDAY - 1 & ")" & @HOUR & ":" & @MIN & ":" & @SEC & "`" & @MSEC & "', '_none'"	; æ•°æ®
+						$strLvItem = "insert into " & $tb_log & " (l_name, l_operate, l_table, l_column, l_old_data, l_new_data, l_date, l_note) values ( " & $strLvItem & " )"				; æ’å…¥è¯­å¥
 						$adoCon.Execute($strLvItem)
 						$adoCon.Close
 
@@ -1288,68 +1288,68 @@ Func _WM_COMMAND($hWnd, $msg, $wParam, $lParam)
 	Return $GUI_RUNDEFMSG
 EndFunc
 
-; #cs É¾³ıµ±Ç°ÁĞ±íÖĞÑ¡ÔñµÄĞĞ
-; »ñÈ¡±êÇ©Ë÷Òı£¬LVÖĞĞĞË÷Òı
-; É¾³ıÕâÒ»ĞĞ
-; ÔÚ¶ÔÓÚÊı¾İ¿âÖĞÉ¾³ı¼ÇÂ¼£¬ÔÚLog±íÖĞ¼ÇÂ¼
+; #cs åˆ é™¤å½“å‰åˆ—è¡¨ä¸­é€‰æ‹©çš„è¡Œ
+; è·å–æ ‡ç­¾ç´¢å¼•ï¼ŒLVä¸­è¡Œç´¢å¼•
+; åˆ é™¤è¿™ä¸€è¡Œ
+; åœ¨å¯¹äºæ•°æ®åº“ä¸­åˆ é™¤è®°å½•ï¼Œåœ¨Logè¡¨ä¸­è®°å½•
 ; #ce
 Func FuncDeleteItemFromListView()
 	Local $strLvItem, $strLvInTab, $strTbName
-	; »ñÈ¡µ±Ç°¼¤»îµÄLV
+	; è·å–å½“å‰æ¿€æ´»çš„LV
 	Switch _GUICtrlTab_GetItemText ( $tabInMainWindow, _GUICtrlTab_GetCurSel ( $tabInMainWindow ))
-		Case "¹¤×÷ÈÕÖ¾"
-			; »ñÈ¡Ñ¡ÖĞĞĞµÄÄÚÈİ
-			;$row = _GUICtrlListView_GetSelectedIndices ( $lvInTabJournal )			; Ñ¡ÖĞµÄÌõÄ¿µÄË÷Òı
-			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabJournal, -1 )	; Ñ¡ÖĞµÄÌõÄ¿µÄÕûĞĞÄÚÈİ
+		Case "å·¥ä½œæ—¥å¿—"
+			; è·å–é€‰ä¸­è¡Œçš„å†…å®¹
+			;$row = _GUICtrlListView_GetSelectedIndices ( $lvInTabJournal )			; é€‰ä¸­çš„æ¡ç›®çš„ç´¢å¼•
+			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabJournal, -1 )	; é€‰ä¸­çš„æ¡ç›®çš„æ•´è¡Œå†…å®¹
 
 			$strLvInTab = $lvInTabJournal	; LV
 			$strTbName = $tb_journal		; Table
-		Case "¹«Ë¾²úÆ·"
+		Case "å…¬å¸äº§å“"
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabProducts, -1 )
 
 			$strLvInTab = $lvInTabProducts
 			$strTbName = $tb_products
-		Case "Ñ§Ğ£ĞÅÏ¢"
+		Case "å­¦æ ¡ä¿¡æ¯"
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabSchools, -1 )
 
 			$strLvInTab = $lvInTabSchools
 			$strTbName = $tb_schools
-		Case "¹¤³Ì¹ÜÀí"
+		Case "å·¥ç¨‹ç®¡ç†"
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabProjects, -1 )
 
 			$strLvInTab = $lvInTabProjects
 			$strTbName = $tb_projects
-		Case "ºÏ×÷»ï°é"
+		Case "åˆä½œä¼™ä¼´"
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabPartners, -1 )
 
 			$strLvInTab = $lvInTabPartners
 			$strTbName = $tb_partners
 
-		Case "ÓÃ»§¹ÜÀí"
+		Case "ç”¨æˆ·ç®¡ç†"
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabUsers, -1 )
 
 			$strLvInTab = $lvInTabUsers
 			$strTbName = $tb_users
 
-		Case "×Ê²ú¹ÜÀí"
+		Case "èµ„äº§ç®¡ç†"
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabAccets, -1 )
 
 			$strLvInTab = $lvInTabAccets
 			$strTbName = $tb_accets
 
-		Case "ÈËÔ±¹ÜÀí"
+		Case "äººå‘˜ç®¡ç†"
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabWorkers, -1 )
 
 			$strLvInTab = $lvInTabWorkers
 			$strTbName = $tb_workers
 
-		Case "²Ù×÷ÈÕÖ¾"
+		Case "æ“ä½œæ—¥å¿—"
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabLog, -1 )
 
 			$strLvInTab = $lvInTabLog
 			$strTbName = $tb_log
 
-		Case "Ôª Êı ¾İ"
+		Case "å…ƒ æ•° æ®"
 			$strLvItem = _GUICtrlListView_GetItemTextString ( $lvInTabSources, -1 )
 
 			$strLvInTab = $lvInTabSources
@@ -1363,15 +1363,15 @@ Func FuncDeleteItemFromListView()
 	FuncDeleteItemFromAccessAndListView ( $strTbName, $strLvInTab, $strLvItem )
 EndFunc
 
-; É¾³ıÑ¡ÖĞµÄĞĞ
-; $strTbName£º ±íÃû³Æ
-; $strLvInTab£ºÁĞ±íID
-; $strLvItem£º ÕûĞĞµÄÄÚÈİ
-; Í¬²½µ½Êı¾İ¿â
+; åˆ é™¤é€‰ä¸­çš„è¡Œ
+; $strTbNameï¼š è¡¨åç§°
+; $strLvInTabï¼šåˆ—è¡¨ID
+; $strLvItemï¼š æ•´è¡Œçš„å†…å®¹
+; åŒæ­¥åˆ°æ•°æ®åº“
 Func FuncDeleteItemFromAccessAndListView ( $strTbName, $strLvInTab, $strLvItem )
 	Local $indexOfDelItem = StringSplit($strLvItem, "|")
 
-	Local $confirmDel = MsgBox(1 + 16, "ÃüÁîÈ·ÈÏ", "ÄãÈ·¶¨É¾³ıËùÑ¡ÌõÄ¿£¿")
+	Local $confirmDel = MsgBox(1 + 16, "å‘½ä»¤ç¡®è®¤", "ä½ ç¡®å®šåˆ é™¤æ‰€é€‰æ¡ç›®ï¼Ÿ")
 
 	If $confirmDel = 1 Then
 		_GUICtrlListView_DeleteItemsSelected ($strLvInTab)
@@ -1383,17 +1383,17 @@ Func FuncDeleteItemFromAccessAndListView ( $strTbName, $strLvInTab, $strLvItem )
 
 		$dataAdodbConnectionDel.execute($strDel)
 
-		; Èç¹ûÊÇÔÚ¡°ÈÕÖ¾±í¡±ÖĞÉ¾³ıÊı¾İ£¬¾ÍÊÇ¾ø¶ÔµÄÇå³ı¼ÇÂ¼¡£²»Ó¦¸ÃÓĞ´Î²Ù×÷
-		If $strTbName <> "tb_log" Then	; ²Ù×÷ÈÕÖ¾±íÓ¦¸ÃÊÇÓĞºÜ¸ßÈ¨ÏŞµÄ
-			; ÈÕÖ¾±í
-			$strLvItem = "'Eminem', 'del', '" & $strTbName & "', '_item', '" & StringTrimLeft ($strLvItem, StringInStr( $strLvItem, "|")) & "', '_none', '" & @YEAR & "-" & @MON & "-" & @MDAY & "(" & @WDAY - 1 & ")" & @HOUR & ":" & @MIN & ":" & @SEC & "`" & @MSEC & "', '_none'"	; Êı¾İ
-			$strLvItem = "insert into " & $tb_log & " (l_name, l_operate, l_table, l_column, l_old_data, l_new_data, l_date, l_note) values ( " & $strLvItem & " )"				; ²åÈëÓï¾ä
+		; å¦‚æœæ˜¯åœ¨â€œæ—¥å¿—è¡¨â€ä¸­åˆ é™¤æ•°æ®ï¼Œå°±æ˜¯ç»å¯¹çš„æ¸…é™¤è®°å½•ã€‚ä¸åº”è¯¥æœ‰æ¬¡æ“ä½œ
+		If $strTbName <> "tb_log" Then	; æ“ä½œæ—¥å¿—è¡¨åº”è¯¥æ˜¯æœ‰å¾ˆé«˜æƒé™çš„
+			; æ—¥å¿—è¡¨
+			$strLvItem = "'Eminem', 'del', '" & $strTbName & "', '_item', '" & StringTrimLeft ($strLvItem, StringInStr( $strLvItem, "|")) & "', '_none', '" & @YEAR & "-" & @MON & "-" & @MDAY & "(" & @WDAY - 1 & ")" & @HOUR & ":" & @MIN & ":" & @SEC & "`" & @MSEC & "', '_none'"	; æ•°æ®
+			$strLvItem = "insert into " & $tb_log & " (l_name, l_operate, l_table, l_column, l_old_data, l_new_data, l_date, l_note) values ( " & $strLvItem & " )"				; æ’å…¥è¯­å¥
 			$dataAdodbConnectionDel.Execute($strLvItem)
 		EndIf
 
 		$dataAdodbConnectionDel.Close
 
-		GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶" & $strTbName & "¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $strLvInTab ))
+		GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Š" & $strTbName & "ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $strLvInTab ))
 	EndIf
 
 	$columnOfTable = ""
@@ -1402,104 +1402,104 @@ Func FuncDeleteItemFromAccessAndListView ( $strTbName, $strLvInTab, $strLvItem )
 EndFunc
 
 ; #cs
-; ÏìÓ¦¹¤¾ßÌõ¡°ĞÂ½¨¡±°´Å¥¡£²åÈëÌõÄ¿µ½ListView
-; Ê×ÏÈÅĞ¶Ïµ±Ç°¼¤»îµÄ±êÇ©-ÄÄÒ»¸öListView´¦ÓÚÏÔÊ¾×´Ì¬
-; È»ºó²åÈëÌõÄ¿£¬¸üĞÂÌõÄ¿Î»ÖÃ
+; å“åº”å·¥å…·æ¡â€œæ–°å»ºâ€æŒ‰é’®ã€‚æ’å…¥æ¡ç›®åˆ°ListView
+; é¦–å…ˆåˆ¤æ–­å½“å‰æ¿€æ´»çš„æ ‡ç­¾-å“ªä¸€ä¸ªListViewå¤„äºæ˜¾ç¤ºçŠ¶æ€
+; ç„¶åæ’å…¥æ¡ç›®ï¼Œæ›´æ–°æ¡ç›®ä½ç½®
 ; #ce
 Func FuncInsertItemToListView ()
 	Local $strLvName = _GUICtrlTab_GetItemText ( $tabInMainWindow, _GUICtrlTab_GetCurSel ( $tabInMainWindow ))
 	Local $popWinWidth = 500, $popWinHeight = 180
 
 	$popupWindow = GUICreate("" , $popWinWidth, $popWinHeight, Default, Default, $WS_CAPTION, BitOR($WS_EX_TOPMOST, $GUI_WS_EX_PARENTDRAG))
-		WinSetTitle($popupWindow, "", "ÔÚ¡¶" & $strLvName & "¡·ÖĞ²åÈëÊı¾İ" )
+		WinSetTitle($popupWindow, "", "åœ¨ã€Š" & $strLvName & "ã€‹ä¸­æ’å…¥æ•°æ®" )
 
 		GUICtrlCreateGroup("", 10, 5, 480, 135)
 
-		; »ñÈ¡µ±Ç°¼¤»îµÄLV
+		; è·å–å½“å‰æ¿€æ´»çš„LV
 		Switch $strLvName
-			Case "¹¤×÷ÈÕÖ¾"
-				; ÈËÔ± ÈÕÆÚ µØµã ½»Í¨ Ê³ËŞ ¹¤×÷ÃèÊö ±¸×¢ 7
+			Case "å·¥ä½œæ—¥å¿—"
+				; äººå‘˜ æ—¥æœŸ åœ°ç‚¹ äº¤é€š é£Ÿå®¿ å·¥ä½œæè¿° å¤‡æ³¨ 7
 				;j_name, j_date, j_address, j_traffic, j_board, j_content, j_note, j_record, j_date_record
 				$strArgsOfLVArr[0] = $lvInTabJournal	; LV
 				$strArgsOfTableArr[0] = $tb_journal		; Table
 
-				GUICtrlCreateLabel("ÈËÔ±:", 20, 25, 30, 20 )
+				GUICtrlCreateLabel("äººå‘˜:", 20, 25, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 20, 180, 20)
 				$strArgsOfTableArr[1] = "j_name"
-				GUICtrlCreateLabel("ÈÕÆÚ:", 20, 55, 30, 20 )
+				GUICtrlCreateLabel("æ—¥æœŸ:", 20, 55, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 50, 180, 20)
 				$strArgsOfTableArr[2] = "j_date"
-				GUICtrlCreateLabel("µØµã:", 20, 85, 30, 20 )
+				GUICtrlCreateLabel("åœ°ç‚¹:", 20, 85, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 80, 180, 20)
 				$strArgsOfTableArr[3] = "j_address"
 
-				GUICtrlCreateLabel("±¸×¢:", 20, 115, 30, 20 )
+				GUICtrlCreateLabel("å¤‡æ³¨:", 20, 115, 30, 20 )
 				$strArgsOfLVArr[7] = GUICtrlCreateInput ( "", 52, 110, 420, 20)
 				$strArgsOfTableArr[7] = "j_note"
 
-				GUICtrlCreateLabel("½»Í¨:", 260, 25, 30, 20 )
+				GUICtrlCreateLabel("äº¤é€š:", 260, 25, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 292, 20, 180, 20)
 				$strArgsOfTableArr[4] = "j_traffic"
-				GUICtrlCreateLabel("Ê³ËŞ:", 260, 55, 30, 20 )
+				GUICtrlCreateLabel("é£Ÿå®¿:", 260, 55, 30, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 50, 180, 20)
 				$strArgsOfTableArr[5] = "j_board"
-				GUICtrlCreateLabel("¹¤×÷:", 260, 85, 30, 20 )
+				GUICtrlCreateLabel("å·¥ä½œ:", 260, 85, 30, 20 )
 				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 292, 80, 180, 20)
 				$strArgsOfTableArr[6] = "j_content"
 
-			Case "¹«Ë¾²úÆ·"
-				;²úÆ· ÀàĞÍ Éè¼Æ ÅäÖÃ Ôì¼Û ±¸×¢ 6
+			Case "å…¬å¸äº§å“"
+				;äº§å“ ç±»å‹ è®¾è®¡ é…ç½® é€ ä»· å¤‡æ³¨ 6
 				;pd_name, pd_type, pd_desiger, pd_configuration, pd_cost, pd_note
 				$strArgsOfLVArr[0] = $lvInTabProducts	; LV
 				$strArgsOfTableArr[0] = $tb_products		; Table
 
-				GUICtrlCreateLabel("²úÆ·:", 20, 45, 30, 20 )
+				GUICtrlCreateLabel("äº§å“:", 20, 45, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 40, 180, 20)
 				$strArgsOfTableArr[1] = "pd_name"
-				GUICtrlCreateLabel("ÀàĞÍ:", 20, 75, 30, 20 )
+				GUICtrlCreateLabel("ç±»å‹:", 20, 75, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 70, 180, 20)
 				$strArgsOfTableArr[2] = "pd_type"
-				GUICtrlCreateLabel("Éè¼Æ:", 20, 105, 30, 20 )
+				GUICtrlCreateLabel("è®¾è®¡:", 20, 105, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 100, 180, 20)
 				$strArgsOfTableArr[3] = "pd_desiger"
-				GUICtrlCreateLabel("ÅäÖÃ:", 260, 45, 30, 20 )
+				GUICtrlCreateLabel("é…ç½®:", 260, 45, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 292, 40, 180, 20)
 				$strArgsOfTableArr[4] = "pd_configuration"
-				GUICtrlCreateLabel("Ôì¼Û:", 260, 75, 30, 20 )
+				GUICtrlCreateLabel("é€ ä»·:", 260, 75, 30, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 70, 180, 20)
 				$strArgsOfTableArr[5] = "pd_cost"
-				GUICtrlCreateLabel("±¸×¢:", 260, 105, 30, 20 )
+				GUICtrlCreateLabel("å¤‡æ³¨:", 260, 105, 30, 20 )
 				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 292, 100, 180, 20)
 				$strArgsOfTableArr[6] = "pd_note"
 
-			Case "Ñ§Ğ£ĞÅÏ¢"
-				;Ñ§Ğ£ ÁªÏµÈË µØÖ· µç»° ÓÊÏä ±¸×¢ 6
+			Case "å­¦æ ¡ä¿¡æ¯"
+				;å­¦æ ¡ è”ç³»äºº åœ°å€ ç”µè¯ é‚®ç®± å¤‡æ³¨ 6
 				;s_name, s_contact, s_address, s_phone, s_email, s_note
 				$strArgsOfLVArr[0] = $lvInTabSchools	; LV
 				$strArgsOfTableArr[0] = $tb_schools		; Table
 
-				GUICtrlCreateLabel("Ñ§  Ğ£:", 20, 45, 45, 20 )
+				GUICtrlCreateLabel("å­¦  æ ¡:", 20, 45, 45, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 67, 40, 170, 20)
 				$strArgsOfTableArr[1] = "s_name"
-				GUICtrlCreateLabel("ÁªÏµÈË:", 20, 75, 45, 20 )
+				GUICtrlCreateLabel("è”ç³»äºº:", 20, 75, 45, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 67, 70, 170, 20)
 				$strArgsOfTableArr[2] = "s_contact"
-				GUICtrlCreateLabel("µØ  Ö·:", 20, 105, 45, 20 )
+				GUICtrlCreateLabel("åœ°  å€:", 20, 105, 45, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 67, 100, 170, 20)
 				$strArgsOfTableArr[3] = "s_address"
 
-				GUICtrlCreateLabel("µç  »°:", 260, 45, 45, 20 )
+				GUICtrlCreateLabel("ç”µ  è¯:", 260, 45, 45, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 307, 40, 170, 20)
 				$strArgsOfTableArr[4] = "s_phone"
-				GUICtrlCreateLabel("ÓÊ  Ïä:", 260, 75, 45, 20 )
+				GUICtrlCreateLabel("é‚®  ç®±:", 260, 75, 45, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 307, 70, 170, 20)
 				$strArgsOfTableArr[5] = "s_email"
-				GUICtrlCreateLabel("±¸  ×¢:", 260, 105, 45, 20 )
+				GUICtrlCreateLabel("å¤‡  æ³¨:", 260, 105, 45, 20 )
 				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 307, 100, 170, 20)
 				$strArgsOfTableArr[6] = "s_note"
 
-			Case "¹¤³Ì¹ÜÀí"
-				;Ãû³Æ Ñ§Ğ£ ²úÆ· ºÏ×÷Õß ÎÒË¾¸ºÔğÈË Ï¸Ôò£¨ÕÕÆ¬£© ÆğÊ¼ÈÕÆÚ ×´Ì¬ ½áÊøÈÕÆÚ ½áËã¼ÇÂ¼ ±¸×¢ 11
+			Case "å·¥ç¨‹ç®¡ç†"
+				;åç§° å­¦æ ¡ äº§å“ åˆä½œè€… æˆ‘å¸è´Ÿè´£äºº ç»†åˆ™ï¼ˆç…§ç‰‡ï¼‰ èµ·å§‹æ—¥æœŸ çŠ¶æ€ ç»“æŸæ—¥æœŸ ç»“ç®—è®°å½• å¤‡æ³¨ 11
 				;pj_name, pj_s_name, pj_pd_name, pj_pt_name, pj_w_name, pj_content, pj_date_start, pj_state, pj_date_finish, pj_account, pj_note
 				$strArgsOfLVArr[0] = $lvInTabProjects	; LV
 				$strArgsOfTableArr[0] = $tb_projects		; Table
@@ -1509,98 +1509,98 @@ Func FuncInsertItemToListView ()
 				$popWinHeight = 300
 
 				$popupWindow = GUICreate("" , $popWinWidth, $popWinHeight, Default, Default, $WS_CAPTION, BitOR($WS_EX_TOPMOST, $GUI_WS_EX_PARENTDRAG))
-					WinSetTitle($popupWindow, "", "ÔÚ¡¶" & $strLvName & "¡·ÖĞ²åÈëÊı¾İ" )
+					WinSetTitle($popupWindow, "", "åœ¨ã€Š" & $strLvName & "ã€‹ä¸­æ’å…¥æ•°æ®" )
 
 					GUICtrlCreateGroup("", 10, 5, 480, $popWinHeight - 45)
 
-					GUICtrlCreateLabel("Ãû    ³Æ:", 20, 25, 60, 20 )
+					GUICtrlCreateLabel("å    ç§°:", 20, 25, 60, 20 )
 					$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 82, 20, 150, 20)
 					$strArgsOfTableArr[1] = "pj_name"
-					GUICtrlCreateLabel("Ñ§    Ğ£:", 20, 55, 60, 20 )
+					GUICtrlCreateLabel("å­¦    æ ¡:", 20, 55, 60, 20 )
 					$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 82, 50, 150, 20)
 					$strArgsOfTableArr[2] = "pj_s_name"
-					GUICtrlCreateLabel("²ú    Æ·:", 20, 85, 60, 20 )
+					GUICtrlCreateLabel("äº§    å“:", 20, 85, 60, 20 )
 					$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 82, 80, 150, 20)
 					$strArgsOfTableArr[3] = "pj_pd_name"
-					GUICtrlCreateLabel("ºÏ ×÷ Õß:", 20, 115, 60, 20 )
+					GUICtrlCreateLabel("åˆ ä½œ è€…:", 20, 115, 60, 20 )
 					$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 82, 110, 150, 20)
 					$strArgsOfTableArr[4] = "pj_pt_name"
-					GUICtrlCreateLabel("ÎÒ¸ºÔğÈË:", 20, 145, 60, 20 )
+					GUICtrlCreateLabel("æˆ‘è´Ÿè´£äºº:", 20, 145, 60, 20 )
 					$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 82, 140, 150, 20)
 					$strArgsOfTableArr[5] = "pj_w_name"
 
-					GUICtrlCreateLabel("±¸    ×¢:", 20, 175, 60, 20 )
+					GUICtrlCreateLabel("å¤‡    æ³¨:", 20, 175, 60, 20 )
 					$strArgsOfLVArr[11] = GUICtrlCreateInput ( "", 82, 170, 390, 80, BitOR($ES_MULTILINE, $ES_WANTRETURN, $ES_AUTOVSCROLL))
 					$strArgsOfTableArr[11] = "pj_note"
 
-					GUICtrlCreateLabel("Ğ­ÒéÏ¸Ôò:", 260, 25, 60, 20 )
+					GUICtrlCreateLabel("åè®®ç»†åˆ™:", 260, 25, 60, 20 )
 					$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 322, 20, 150, 20)
 					$strArgsOfTableArr[6] = "pj_content"
-					GUICtrlCreateLabel("¿ª¹¤ÈÕÆÚ:", 260, 55, 60, 20 )
+					GUICtrlCreateLabel("å¼€å·¥æ—¥æœŸ:", 260, 55, 60, 20 )
 					$strArgsOfLVArr[7] = GUICtrlCreateInput ( "", 322, 50, 150, 20)
 					$strArgsOfTableArr[7] = "pj_date_start"
-					GUICtrlCreateLabel("½øÕ¹×´Ì¬:", 260, 85, 60, 20 )
+					GUICtrlCreateLabel("è¿›å±•çŠ¶æ€:", 260, 85, 60, 20 )
 					$strArgsOfLVArr[8] = GUICtrlCreateInput ( "", 322, 80, 150, 20)
 					$strArgsOfTableArr[8] = "pj_state"
-					GUICtrlCreateLabel("Íê¹¤ÈÕÆÚ:", 260, 115, 60, 20 )
+					GUICtrlCreateLabel("å®Œå·¥æ—¥æœŸ:", 260, 115, 60, 20 )
 					$strArgsOfLVArr[9] = GUICtrlCreateInput ( "", 322, 110, 150, 20)
 					$strArgsOfTableArr[9] = "pj_date_finish"
-					GUICtrlCreateLabel("½áËã¼ÇÂ¼:", 260, 145, 60, 20 )
+					GUICtrlCreateLabel("ç»“ç®—è®°å½•:", 260, 145, 60, 20 )
 					$strArgsOfLVArr[10] = GUICtrlCreateInput ( "", 322, 140, 150, 20)
 					$strArgsOfTableArr[10] = "pj_account"
 
-			Case "ºÏ×÷»ï°é"
-				;Ãû³Æ ÀàĞÍ µØÖ· µç»° ÓÊÏä ÒµÎñ ±¸×¢ 7
+			Case "åˆä½œä¼™ä¼´"
+				;åç§° ç±»å‹ åœ°å€ ç”µè¯ é‚®ç®± ä¸šåŠ¡ å¤‡æ³¨ 7
 				;pt_name, pt_type, pt_address, pt_phone, pt_email, pt_business, pt_note
 				$strArgsOfLVArr[0] = $lvInTabPartners	; LV
 				$strArgsOfTableArr[0] = $tb_partners	; Table
 
-				GUICtrlCreateLabel("Ãû³Æ:", 20, 25, 30, 20 )
+				GUICtrlCreateLabel("åç§°:", 20, 25, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 20, 180, 20)
 				$strArgsOfTableArr[1] = "pt_name"
-				GUICtrlCreateLabel("ÀàĞÍ:", 20, 55, 30, 20 )
+				GUICtrlCreateLabel("ç±»å‹:", 20, 55, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 50, 180, 20)
 				$strArgsOfTableArr[2] = "pt_type"
-				GUICtrlCreateLabel("µØÖ·:", 20, 85, 30, 20 )
+				GUICtrlCreateLabel("åœ°å€:", 20, 85, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 80, 180, 20)
 				$strArgsOfTableArr[3] = "pt_address"
 
-				GUICtrlCreateLabel("µç»°:", 260, 25, 30, 20 )
+				GUICtrlCreateLabel("ç”µè¯:", 260, 25, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 292, 20, 180, 20)
 				$strArgsOfTableArr[4] = "pt_phone"
-				GUICtrlCreateLabel("ÓÊÏä:", 260, 55, 30, 20 )
+				GUICtrlCreateLabel("é‚®ç®±:", 260, 55, 30, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 50, 180, 20)
 				$strArgsOfTableArr[5] = "pt_email"
-				GUICtrlCreateLabel("ÒµÎñ:", 260, 85, 30, 20 )
+				GUICtrlCreateLabel("ä¸šåŠ¡:", 260, 85, 30, 20 )
 				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 292, 80, 180, 20)
 				$strArgsOfTableArr[6] = "pt_business"
 
-				GUICtrlCreateLabel("±¸×¢:", 20, 115, 30, 20 )
+				GUICtrlCreateLabel("å¤‡æ³¨:", 20, 115, 30, 20 )
 				$strArgsOfLVArr[7] = GUICtrlCreateInput ( "", 52, 110, 420, 20)
 				$strArgsOfTableArr[7] = "pt_note"
 
-			Case "ÓÃ»§¹ÜÀí"
-				; ÓÃ»§Ãû|ÃÜÂë|È¨ÏŞ|±¸×¢ 4
+			Case "ç”¨æˆ·ç®¡ç†"
+				; ç”¨æˆ·å|å¯†ç |æƒé™|å¤‡æ³¨ 4
 				; u_name, u_pswd, u_authority, u_note
 				$strArgsOfLVArr[0] = $lvInTabUsers	; LV
 				$strArgsOfTableArr[0] = $tb_users	; Table
 
-				GUICtrlCreateLabel("ÓÃ»§:", 20, 25, 30, 20 )
+				GUICtrlCreateLabel("ç”¨æˆ·:", 20, 25, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 20, 180, 20)
 				$strArgsOfTableArr[1] = "u_name"
-				GUICtrlCreateLabel("ÃÜÂë:", 20, 55, 30, 20 )
+				GUICtrlCreateLabel("å¯†ç :", 20, 55, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 50, 180, 20)
 				$strArgsOfTableArr[2] = "u_pswd"
-				GUICtrlCreateLabel("È¨ÏŞ:", 20, 85, 30, 20 )
+				GUICtrlCreateLabel("æƒé™:", 20, 85, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 80, 180, 20)
 				$strArgsOfTableArr[3] = "u_authority"
-				GUICtrlCreateLabel("±¸×¢:", 20, 115, 30, 20 )
+				GUICtrlCreateLabel("å¤‡æ³¨:", 20, 115, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 52, 110, 180, 20)
 				$strArgsOfTableArr[4] = "u_note"
 
 
-			Case "×Ê²ú¹ÜÀí"
-				; Ãû³Æ|´®ºÅ|µ¥Î»|ÀàĞÍ|¹ºÈëÈÕÆÚ|µ¥¼Û|ËùÊô²¿ÃÅ|¾­ÏúÉÌ|ÊÇ·ñ±¨·Ï|±¸×¢ 10
+			Case "èµ„äº§ç®¡ç†"
+				; åç§°|ä¸²å·|å•ä½|ç±»å‹|è´­å…¥æ—¥æœŸ|å•ä»·|æ‰€å±éƒ¨é—¨|ç»é”€å•†|æ˜¯å¦æŠ¥åºŸ|å¤‡æ³¨ 10
 				; a_name, a_serial_number, a_unit, a_type, a_date_bought, a_price, a_deportment, a_dealer, a_scrap, a_note
 				$strArgsOfLVArr[0] = $lvInTabAccets	; LV
 				$strArgsOfTableArr[0] = $tb_accets		; Table
@@ -1610,44 +1610,44 @@ Func FuncInsertItemToListView ()
 				$popWinHeight = 210
 
 				$popupWindow = GUICreate("" , $popWinWidth, $popWinHeight, Default, Default, $WS_CAPTION, BitOR($WS_EX_TOPMOST, $GUI_WS_EX_PARENTDRAG))
-					WinSetTitle($popupWindow, "", "ÔÚ¡¶" & $strLvName & "¡·ÖĞ²åÈëÊı¾İ" )
+					WinSetTitle($popupWindow, "", "åœ¨ã€Š" & $strLvName & "ã€‹ä¸­æ’å…¥æ•°æ®" )
 
 					GUICtrlCreateGroup("", 10, 5, 480, $popWinHeight - 45)
 
-					GUICtrlCreateLabel("Ãû    ³Æ:", 20, 25, 60, 20 )
+					GUICtrlCreateLabel("å    ç§°:", 20, 25, 60, 20 )
 					$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 82, 20, 150, 20)
 					$strArgsOfTableArr[1] = "a_name"
-					GUICtrlCreateLabel("´®    ºÅ:", 20, 55, 60, 20 )
+					GUICtrlCreateLabel("ä¸²    å·:", 20, 55, 60, 20 )
 					$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 82, 50, 150, 20)
 					$strArgsOfTableArr[2] = "a_serial_number"
-					GUICtrlCreateLabel("µ¥    Î»:", 20, 85, 60, 20 )
+					GUICtrlCreateLabel("å•    ä½:", 20, 85, 60, 20 )
 					$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 82, 80, 150, 20)
 					$strArgsOfTableArr[3] = "a_unit"
-					GUICtrlCreateLabel("Àà    ĞÍ:", 20, 115, 60, 20 )
+					GUICtrlCreateLabel("ç±»    å‹:", 20, 115, 60, 20 )
 					$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 82, 110, 150, 20)
 					$strArgsOfTableArr[4] = "a_type"
-					GUICtrlCreateLabel("¹ºÈëÈÕÆÚ:", 20, 145, 60, 20 )
+					GUICtrlCreateLabel("è´­å…¥æ—¥æœŸ:", 20, 145, 60, 20 )
 					$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 82, 140, 150, 20)
 					$strArgsOfTableArr[5] = "a_date_bought"
 
-					GUICtrlCreateLabel("µ¥    ¼Û:", 260, 25, 60, 20 )
+					GUICtrlCreateLabel("å•    ä»·:", 260, 25, 60, 20 )
 					$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 322, 20, 150, 20)
 					$strArgsOfTableArr[6] = "a_price"
-					GUICtrlCreateLabel("ËùÊô²¿ÃÅ:", 260, 55, 60, 20 )
+					GUICtrlCreateLabel("æ‰€å±éƒ¨é—¨:", 260, 55, 60, 20 )
 					$strArgsOfLVArr[7] = GUICtrlCreateInput ( "", 322, 50, 150, 20)
 					$strArgsOfTableArr[7] = "a_deportment"
-					GUICtrlCreateLabel("¾­ Ïú ÉÌ:", 260, 85, 60, 20 )
+					GUICtrlCreateLabel("ç» é”€ å•†:", 260, 85, 60, 20 )
 					$strArgsOfLVArr[8] = GUICtrlCreateInput ( "", 322, 80, 150, 20)
 					$strArgsOfTableArr[8] = "a_dealer"
-					GUICtrlCreateLabel("ÊÇ·ñ±¨·Ï:", 260, 115, 60, 20 )
+					GUICtrlCreateLabel("æ˜¯å¦æŠ¥åºŸ:", 260, 115, 60, 20 )
 					$strArgsOfLVArr[9] = GUICtrlCreateInput ( "", 322, 110, 150, 20)
 					$strArgsOfTableArr[9] = "a_scrap"
-					GUICtrlCreateLabel("±¸    ×¢:", 260, 145, 60, 20 )
+					GUICtrlCreateLabel("å¤‡    æ³¨:", 260, 145, 60, 20 )
 					$strArgsOfLVArr[10] = GUICtrlCreateInput ( "", 322, 140, 150, 20)
 					$strArgsOfTableArr[10] = "a_note"
 
-			Case "ÈËÔ±¹ÜÀí"
-				; ĞÕÃû|Éí·İÖ¤ºÅ|²¿ÃÅ|Ö°Îñ|ÈëÖ°ÈÕÆÚ|×ªÕıÈÕÆÚ|ÔÂĞ½×Ê|ĞÔ±ğ|ÉúÈÕ|µç»°|ÓÊÏä|×¡Ö·|¼ÒÍ¥ĞÅÏ¢|±¸×¢
+			Case "äººå‘˜ç®¡ç†"
+				; å§“å|èº«ä»½è¯å·|éƒ¨é—¨|èŒåŠ¡|å…¥èŒæ—¥æœŸ|è½¬æ­£æ—¥æœŸ|æœˆè–ªèµ„|æ€§åˆ«|ç”Ÿæ—¥|ç”µè¯|é‚®ç®±|ä½å€|å®¶åº­ä¿¡æ¯|å¤‡æ³¨
 				; w_name, w_identity_number, w_deportment, w_position, w_date_of_entry, w_date_regular, w_month_wage, w_sex, w_birthday, w_phone, w_email, w_address, w_family, w_note
 				$strArgsOfLVArr[0] = $lvInTabWorkers
 				$strArgsOfTableArr[0] = $tb_workers
@@ -1657,102 +1657,102 @@ Func FuncInsertItemToListView ()
 				$popWinHeight = 270
 
 				$popupWindow = GUICreate("" , $popWinWidth, $popWinHeight, Default, Default, $WS_CAPTION, BitOR($WS_EX_TOPMOST, $GUI_WS_EX_PARENTDRAG))
-					WinSetTitle($popupWindow, "", "ÔÚ¡¶" & $strLvName & "¡·ÖĞ²åÈëÊı¾İ" )
+					WinSetTitle($popupWindow, "", "åœ¨ã€Š" & $strLvName & "ã€‹ä¸­æ’å…¥æ•°æ®" )
 
 					GUICtrlCreateGroup("", 10, 5, 480, $popWinHeight - 45)
 
-					GUICtrlCreateLabel("ĞÕ    Ãû:", 20, 25, 60, 20 )
+					GUICtrlCreateLabel("å§“    å:", 20, 25, 60, 20 )
 					$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 82, 20, 150, 20)
 					$strArgsOfTableArr[1] = "w_name"
-					GUICtrlCreateLabel("Éí·İÖ¤ºÅ:", 20, 55, 60, 20 )
+					GUICtrlCreateLabel("èº«ä»½è¯å·:", 20, 55, 60, 20 )
 					$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 82, 50, 150, 20)
 					$strArgsOfTableArr[2] = "w_identity_number"
-					GUICtrlCreateLabel("²¿    ÃÅ:", 20, 85, 60, 20 )
+					GUICtrlCreateLabel("éƒ¨    é—¨:", 20, 85, 60, 20 )
 					$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 82, 80, 150, 20)
 					$strArgsOfTableArr[3] = "w_deportment"
-					GUICtrlCreateLabel("Ö°    Îñ:", 20, 115, 60, 20 )
+					GUICtrlCreateLabel("èŒ    åŠ¡:", 20, 115, 60, 20 )
 					$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 82, 110, 150, 20)
 					$strArgsOfTableArr[4] = "w_position"
-					GUICtrlCreateLabel("ÈëÖ°ÈÕÆÚ:", 20, 145, 60, 20 )
+					GUICtrlCreateLabel("å…¥èŒæ—¥æœŸ:", 20, 145, 60, 20 )
 					$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 82, 140, 150, 20)
 					$strArgsOfTableArr[5] = "w_date_of_entry"
-					GUICtrlCreateLabel("×ªÕıÈÕÆÚ:", 20, 175, 60, 20 )
+					GUICtrlCreateLabel("è½¬æ­£æ—¥æœŸ:", 20, 175, 60, 20 )
 					$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 82, 170, 150, 20)
 					$strArgsOfTableArr[6] = "w_date_regular"
-					GUICtrlCreateLabel("ÔÂ Ğ½ ×Ê:", 20, 205, 60, 20 )
+					GUICtrlCreateLabel("æœˆ è–ª èµ„:", 20, 205, 60, 20 )
 					$strArgsOfLVArr[7] = GUICtrlCreateInput ( "", 82, 200, 150, 20)
 					$strArgsOfTableArr[7] = "w_month_wage"
 
-					GUICtrlCreateLabel("ĞÔ    ±ğ:", 260, 25, 60, 20 )
+					GUICtrlCreateLabel("æ€§    åˆ«:", 260, 25, 60, 20 )
 					$strArgsOfLVArr[8] = GUICtrlCreateInput ( "", 322, 20, 150, 20)
 					$strArgsOfTableArr[8] = "w_sex"
-					GUICtrlCreateLabel("Éú    ÈÕ:", 260, 55, 60, 20 )
+					GUICtrlCreateLabel("ç”Ÿ    æ—¥:", 260, 55, 60, 20 )
 					$strArgsOfLVArr[9] = GUICtrlCreateInput ( "", 322, 50, 150, 20)
 					$strArgsOfTableArr[9] = "w_birthday"
-					GUICtrlCreateLabel("µç    »°:", 260, 85, 60, 20 )
+					GUICtrlCreateLabel("ç”µ    è¯:", 260, 85, 60, 20 )
 					$strArgsOfLVArr[10] = GUICtrlCreateInput ( "", 322, 80, 150, 20)
 					$strArgsOfTableArr[10] = "w_phone"
-					GUICtrlCreateLabel("ÓÊ    Ïä:", 260, 115, 60, 20 )
+					GUICtrlCreateLabel("é‚®    ç®±:", 260, 115, 60, 20 )
 					$strArgsOfLVArr[11] = GUICtrlCreateInput ( "", 322, 110, 150, 20)
 					$strArgsOfTableArr[11] = "w_email"
-					GUICtrlCreateLabel("×¡    Ö·:", 260, 145, 60, 20 )
+					GUICtrlCreateLabel("ä½    å€:", 260, 145, 60, 20 )
 					$strArgsOfLVArr[12] = GUICtrlCreateInput ( "", 322, 140, 150, 20)
 					$strArgsOfTableArr[12] = "w_address"
-					GUICtrlCreateLabel("¼ÒÍ¥ĞÅÏ¢:", 260, 175, 60, 20 )
+					GUICtrlCreateLabel("å®¶åº­ä¿¡æ¯:", 260, 175, 60, 20 )
 					$strArgsOfLVArr[13] = GUICtrlCreateInput ( "", 322, 170, 150, 20)
 					$strArgsOfTableArr[13] = "w_family"
-					GUICtrlCreateLabel("±¸    ×¢:", 260, 205, 60, 20 )
+					GUICtrlCreateLabel("å¤‡    æ³¨:", 260, 205, 60, 20 )
 					$strArgsOfLVArr[14] = GUICtrlCreateInput ( "", 322, 200, 150, 20)
 					$strArgsOfTableArr[14] = "w_note"
 
-			Case "²Ù×÷ÈÕÖ¾"
-				; ÓÃ»§|µÇÂ½ÍË³öÔöÉ¾¸Ä|±í|ÁĞ|¾ÉÊı¾İ|ĞÂÊı¾İ|ÈÕÆÚ|±¸×¢ 8
+			Case "æ“ä½œæ—¥å¿—"
+				; ç”¨æˆ·|ç™»é™†é€€å‡ºå¢åˆ æ”¹|è¡¨|åˆ—|æ—§æ•°æ®|æ–°æ•°æ®|æ—¥æœŸ|å¤‡æ³¨ 8
 				; l_name, l_operate, l_table, l_column, l_old_data, l_new_data, l_date, l_note
 				$strArgsOfLVArr[0] = $lvInTabLog
 				$strArgsOfTableArr[0] = $tb_log
 
-				GUICtrlCreateLabel("ÓÃ»§:", 20, 25, 30, 20 )
+				GUICtrlCreateLabel("ç”¨æˆ·:", 20, 25, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 20, 180, 20)
 				$strArgsOfTableArr[1] = "l_name"
-				GUICtrlCreateLabel("²Ù×÷:", 20, 55, 30, 20 )
+				GUICtrlCreateLabel("æ“ä½œ:", 20, 55, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 50, 180, 20)
 				$strArgsOfTableArr[2] = "l_operate"
-				GUICtrlCreateLabel("±íµ¥:", 20, 85, 30, 20 )
+				GUICtrlCreateLabel("è¡¨å•:", 20, 85, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 80, 180, 20)
 				$strArgsOfTableArr[3] = "l_table"
-				GUICtrlCreateLabel("ÁĞÃû:", 20, 115, 30, 20 )
+				GUICtrlCreateLabel("åˆ—å:", 20, 115, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 52, 110, 180, 20)
 				$strArgsOfTableArr[4] = "l_column"
 
-				GUICtrlCreateLabel("¾ÉÖµ:", 260, 25, 30, 20 )
+				GUICtrlCreateLabel("æ—§å€¼:", 260, 25, 30, 20 )
 				$strArgsOfLVArr[5] = GUICtrlCreateInput ( "", 292, 20, 180, 20)
 				$strArgsOfTableArr[5] = "l_old_data"
-				GUICtrlCreateLabel("ĞÂÖµ:", 260, 55, 30, 20 )
+				GUICtrlCreateLabel("æ–°å€¼:", 260, 55, 30, 20 )
 				$strArgsOfLVArr[6] = GUICtrlCreateInput ( "", 292, 50, 180, 20)
 				$strArgsOfTableArr[6] = "l_new_data"
-				GUICtrlCreateLabel("ÈÕÆÚ:", 260, 85, 30, 20 )
+				GUICtrlCreateLabel("æ—¥æœŸ:", 260, 85, 30, 20 )
 				$strArgsOfLVArr[7] = GUICtrlCreateInput ( "", 292, 80, 180, 20)
 				$strArgsOfTableArr[7] = "l_date"
-				GUICtrlCreateLabel("±¸×¢:", 260, 115, 30, 20 )
+				GUICtrlCreateLabel("å¤‡æ³¨:", 260, 115, 30, 20 )
 				$strArgsOfLVArr[8] = GUICtrlCreateInput ( "", 292, 110, 180, 20)
 				$strArgsOfTableArr[8] = "l_note"
 
-			Case "Ôª Êı ¾İ"
-				; ±íµ¥|ÁĞ|Öµ|ÃèÊö 4
+			Case "å…ƒ æ•° æ®"
+				; è¡¨å•|åˆ—|å€¼|æè¿° 4
 				; sr_tb_name, sr_column, sr_value, sr_note
 				$strArgsOfLVArr[0] = $lvInTabSources
 				$strArgsOfTableArr[0] = $tb_source
 
-				GUICtrlCreateLabel("±íµ¥:", 20, 25, 30, 20 )
+				GUICtrlCreateLabel("è¡¨å•:", 20, 25, 30, 20 )
 				$strArgsOfLVArr[1] = GUICtrlCreateInput ( "", 52, 20, 180, 20)
 				$strArgsOfTableArr[1] = "sr_tb_name"
-				GUICtrlCreateLabel("ÁĞÃû:", 20, 55, 30, 20 )
+				GUICtrlCreateLabel("åˆ—å:", 20, 55, 30, 20 )
 				$strArgsOfLVArr[2] = GUICtrlCreateInput ( "", 52, 50, 180, 20)
 				$strArgsOfTableArr[2] = "sr_column"
-				GUICtrlCreateLabel("Ñ¡Öµ:", 20, 85, 30, 20 )
+				GUICtrlCreateLabel("é€‰å€¼:", 20, 85, 30, 20 )
 				$strArgsOfLVArr[3] = GUICtrlCreateInput ( "", 52, 80, 180, 20)
 				$strArgsOfTableArr[3] = "sr_value"
-				GUICtrlCreateLabel("±¸×¢:", 20, 115, 30, 20 )
+				GUICtrlCreateLabel("å¤‡æ³¨:", 20, 115, 30, 20 )
 				$strArgsOfLVArr[4] = GUICtrlCreateInput ( "", 52, 110, 180, 20)
 				$strArgsOfTableArr[4] = "sr_note"
 
@@ -1760,9 +1760,9 @@ Func FuncInsertItemToListView ()
 
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	$btnOKInPopWin = GUICtrlCreateButton("È·¶¨", 10, $popWinHeight - 30, 60, 22)
+	$btnOKInPopWin = GUICtrlCreateButton("ç¡®å®š", 10, $popWinHeight - 30, 60, 22)
 		GUICtrlSetOnEvent($btnOKInPopWin, "FuncInsertDatas")
-	$btnNOInPopWin = GUICtrlCreateButton("È¡Ïû", 428, $popWinHeight - 30, 60, 22)
+	$btnNOInPopWin = GUICtrlCreateButton("å–æ¶ˆ", 428, $popWinHeight - 30, 60, 22)
 		GUICtrlSetOnEvent($btnNOInPopWin, "FuncInsertDatas")
 
 	GUISetState(@SW_SHOW, $popupWindow)
@@ -1770,87 +1770,87 @@ Func FuncInsertItemToListView ()
 EndFunc
 
 ; #cs
-; ÏòÊı¾İ¿âÖĞĞ´Êı¾İÌõÄ¿
+; å‘æ•°æ®åº“ä¸­å†™æ•°æ®æ¡ç›®
 ; #ce
 Func FuncInsertDatas ()
 
 	If @GUI_CtrlId = $btnOKInPopWin Then
-		Local $strColumns	; Æ¥Åä²Ù×÷µÄÁĞ
-		Local $isSqlStrEnable = False	; ²éÑ¯Óï¾äÊÇ·ñ¿ÉÓÃ¡£Èç¹ûÈ«²¿²ÎÊı¶¼ÊÇ¿ÕµÄ£¬²»»áÉèÎªtrue
-		Local $tmpStep	; ¿ØÖÆÑ­»·³¤¶È£¬Æ¥Åä±íÁĞÊı
+		Local $strColumns	; åŒ¹é…æ“ä½œçš„åˆ—
+		Local $isSqlStrEnable = False	; æŸ¥è¯¢è¯­å¥æ˜¯å¦å¯ç”¨ã€‚å¦‚æœå…¨éƒ¨å‚æ•°éƒ½æ˜¯ç©ºçš„ï¼Œä¸ä¼šè®¾ä¸ºtrue
+		Local $tmpStep	; æ§åˆ¶å¾ªç¯é•¿åº¦ï¼ŒåŒ¹é…è¡¨åˆ—æ•°
 		Local $strTempLVName
 
-		Switch $strArgsOfTableArr[0]	; Æ¥ÅäÊı¾İ¿â±í
+		Switch $strArgsOfTableArr[0]	; åŒ¹é…æ•°æ®åº“è¡¨
 			Case $tb_products
-				$strTempLVName = "¹«Ë¾²úÆ·"
+				$strTempLVName = "å…¬å¸äº§å“"
 				$tmpStep = 6
 				$strColumns = " (pd_name, pd_type, pd_desiger, pd_configuration, pd_cost, pd_note) values ('"
 			Case $tb_partners
-				$strTempLVName = "ºÏ×÷»ï°é"
+				$strTempLVName = "åˆä½œä¼™ä¼´"
 				$tmpStep = 7
 				$strColumns = " (pt_name, pt_type, pt_address, pt_phone, pt_email, pt_business, pt_note) values ('"
 			Case $tb_projects
-				$strTempLVName = "¹¤³Ì¹ÜÀí"
+				$strTempLVName = "å·¥ç¨‹ç®¡ç†"
 				$tmpStep = 11
 				$strColumns = " (pj_name, pj_s_name, pj_pd_name, pj_pt_name, pj_w_name, pj_content, pj_date_start, pj_state, pj_date_finish, pj_account, pj_note) values ('"
 			Case $tb_journal
-				$strTempLVName = "¹¤×÷ÈÕÖ¾"
+				$strTempLVName = "å·¥ä½œæ—¥å¿—"
 				$tmpStep = 7
 				$strColumns = " (j_name, j_date, j_address, j_traffic, j_board, j_content, j_note) values ('"	; , j_record, j_date_record
 			Case $tb_schools
-				$strTempLVName = "Ñ§Ğ£ĞÅÏ¢"
+				$strTempLVName = "å­¦æ ¡ä¿¡æ¯"
 				$tmpStep = 6
 				$strColumns = " (s_name, s_contact, s_address, s_phone, s_email, s_note) values ('"
 
 			Case $tb_users
-				$strTempLVName = "ÓÃ»§¹ÜÀí"
+				$strTempLVName = "ç”¨æˆ·ç®¡ç†"
 				$tmpStep = 4
 				$strColumns = " (u_name, u_pswd, u_authority, u_note) values ('"
 
 			Case $tb_accets
-				$strTempLVName = "×Ê²ú¹ÜÀí"
+				$strTempLVName = "èµ„äº§ç®¡ç†"
 				$tmpStep = 10
 				$strColumns = " (a_name, a_serial_number, a_unit, a_type, a_date_bought, a_price, a_deportment, a_dealer, a_scrap, a_note) values ('"
 
 			Case $tb_workers
-				$strTempLVName = "ÈËÔ±¹ÜÀí"
+				$strTempLVName = "äººå‘˜ç®¡ç†"
 				$tmpStep = 14
 				$strColumns = " (w_name, w_identity_number, w_deportment, w_position, w_date_of_entry, w_date_regular, w_month_wage, w_sex, w_birthday, w_phone, w_email, w_address, w_family, w_note) values ('"
 
 			Case $tb_log
-				$strTempLVName = "²Ù×÷ÈÕÖ¾"
+				$strTempLVName = "æ“ä½œæ—¥å¿—"
 				$tmpStep = 8
 				$strColumns = " (l_name, l_operate, l_table, l_column, l_old_data, l_new_data, l_date, l_note) values ('"
 
 			Case $tb_source
-				$strTempLVName = "Ôª Êı ¾İ"
+				$strTempLVName = "å…ƒ æ•° æ®"
 				$tmpStep = 4
 				$strColumns = " (sr_tb_name, sr_column, sr_value, sr_note) values ('"
 				;------------------------------------------------------ todo --------------------------------------
 		EndSwitch
 
-		$strArgsOfSql = ""	; Êı¾İÆ´½Ó
+		$strArgsOfSql = ""	; æ•°æ®æ‹¼æ¥
 
-		; ±éÀú¿Ø¼şÊı×é£¬Æ´½ÓÊäÈëµÄÊı¾İ
-		For $iiii = 1 To $tmpStep Step 1	; 0Ë÷Òı±£´æµÄÊÇlV»òAccessÃû³Æ¡£Ê£Óà 1-11 ±£´æ¿Ø¼ş
+		; éå†æ§ä»¶æ•°ç»„ï¼Œæ‹¼æ¥è¾“å…¥çš„æ•°æ®
+		For $iiii = 1 To $tmpStep Step 1	; 0ç´¢å¼•ä¿å­˜çš„æ˜¯lVæˆ–Accessåç§°ã€‚å‰©ä½™ 1-11 ä¿å­˜æ§ä»¶
 
 			Local $strWidget = GUICtrlRead($strArgsOfLVArr[$iiii])
 
-			If $strWidget <> "" And StringIsSpace($strWidget) <> 1 Then	; Èç¹ûÊäÈë·ÇÈ«¿Õ¸ñµÄÊı¾İ
+			If $strWidget <> "" And StringIsSpace($strWidget) <> 1 Then	; å¦‚æœè¾“å…¥éå…¨ç©ºæ ¼çš„æ•°æ®
 
-				; ¶Á¿Ø¼şÄÚµÄÎÄ±¾£¬È¥³ıÊ×¡¢Î²¿Õ¸ñ¡¢Á¬Ğø¶à¸ö¿Õ¸ñºÏÎª1¸ö
+				; è¯»æ§ä»¶å†…çš„æ–‡æœ¬ï¼Œå»é™¤é¦–ã€å°¾ç©ºæ ¼ã€è¿ç»­å¤šä¸ªç©ºæ ¼åˆä¸º1ä¸ª
 				Local $keywords = StringStripWS($strWidget, $STR_STRIPLEADING + $STR_STRIPTRAILING + $STR_STRIPSPACES )
 				$strArgsOfSql &= $keywords & "', '"
 
-				$isSqlStrEnable = True	; ÖÁÉÙÓĞÒ»¸öÓĞĞ§²ÎÊı£¬²Å¿ÉÓÃ
+				$isSqlStrEnable = True	; è‡³å°‘æœ‰ä¸€ä¸ªæœ‰æ•ˆå‚æ•°ï¼Œæ‰å¯ç”¨
 
-			ElseIf $strWidget = "" Or StringIsSpace($strWidget) = 1 Then ; Èç¹ûÊäÈë¿òÁô¿Õ£¬»ò½öÊäÈëµÄ¿Õ¸ñ
+			ElseIf $strWidget = "" Or StringIsSpace($strWidget) = 1 Then ; å¦‚æœè¾“å…¥æ¡†ç•™ç©ºï¼Œæˆ–ä»…è¾“å…¥çš„ç©ºæ ¼
 				$strArgsOfSql &= " " & "', '"
 
 			EndIf
 		Next
 
-		$strArgsOfSql = StringTrimRight ( $strArgsOfSql, 4 )	; Çå³ı×îÓĞÒ»¸ö¶ººÅºÍ¿Õ¸ñºÍÒ»¶Ôµ¥ÒıºÅ ', '
+		$strArgsOfSql = StringTrimRight ( $strArgsOfSql, 4 )	; æ¸…é™¤æœ€æœ‰ä¸€ä¸ªé€—å·å’Œç©ºæ ¼å’Œä¸€å¯¹å•å¼•å· ', '
 
 		If $isSqlStrEnable Then
 
@@ -1861,21 +1861,21 @@ Func FuncInsertDatas ()
 
 			$strArgsOfSql = StringReplace ( $strArgsOfSql, "', '", "|" )
 
-			; ÈÕÖ¾±í
-			Local $strTmpSqlInsert = "'Eminem', 'add', '" & $strArgsOfTableArr[0] & "', '_item', '_none', '" & $strArgsOfSql & "', '" & @YEAR & "-" & @MON & "-" & @MDAY & "(" & @WDAY - 1 & ")" & @HOUR & ":" & @MIN & ":" & @SEC & "`" & @MSEC & "', '_none'"	; Êı¾İ
-			$strTmpSqlInsert = "insert into " & $tb_log & " (l_name, l_operate, l_table, l_column, l_old_data, l_new_data, l_date, l_note) values ( " & $strTmpSqlInsert & " )"	; ²åÈëÓï¾ä
+			; æ—¥å¿—è¡¨
+			Local $strTmpSqlInsert = "'Eminem', 'add', '" & $strArgsOfTableArr[0] & "', '_item', '_none', '" & $strArgsOfSql & "', '" & @YEAR & "-" & @MON & "-" & @MDAY & "(" & @WDAY - 1 & ")" & @HOUR & ":" & @MIN & ":" & @SEC & "`" & @MSEC & "', '_none'"	; æ•°æ®
+			$strTmpSqlInsert = "insert into " & $tb_log & " (l_name, l_operate, l_table, l_column, l_old_data, l_new_data, l_date, l_note) values ( " & $strTmpSqlInsert & " )"	; æ’å…¥è¯­å¥
 			$dataAdodbConnectionIn.Execute($strTmpSqlInsert)
 
 			Local $adoRec = ObjCreate("ADODB.Recordset")
 			$adoRec.ActiveConnection = $dataAdodbConnectionIn
-			$adoRec.open("SELECT TOP 1 id FROM " & $strArgsOfTableArr[0] & " ORDER BY id DESC")	; ²éÑ¯×î´óµÄid¡£¾ÍËãÒÑ¾­É¾³ıÁË¼ÇÂ¼£¬IDÈÔÈ»±£³ÖÔö³¤
-			Local $recordcount = $adoRec.fields(0).value	; Ö»ÓĞÒ»Ìõ¼ÇÂ¼£¬ËùÒÔÖ±½ÓÈ¡¡£Õâ¸öIDÖµÒÑ¾­ + 1
+			$adoRec.open("SELECT TOP 1 id FROM " & $strArgsOfTableArr[0] & " ORDER BY id DESC")	; æŸ¥è¯¢æœ€å¤§çš„idã€‚å°±ç®—å·²ç»åˆ é™¤äº†è®°å½•ï¼ŒIDä»ç„¶ä¿æŒå¢é•¿
+			Local $recordcount = $adoRec.fields(0).value	; åªæœ‰ä¸€æ¡è®°å½•ï¼Œæ‰€ä»¥ç›´æ¥å–ã€‚è¿™ä¸ªIDå€¼å·²ç» + 1
 
 			$adoRec.Close
 			$dataAdodbConnectionIn.Close
 
-			; ÕâÀï»¹ÒªÌí¼ÓÒ»¸ö¡°±àºÅ¡±ÁĞµ½LV
-			; Õâ¸ö±àºÅÊÇÊı¾İ¿âÖĞ×î´óµÄID+1¡£ÕâÀïµÃµ½µÄÖµÒÑ¾­+1
+			; è¿™é‡Œè¿˜è¦æ·»åŠ ä¸€ä¸ªâ€œç¼–å·â€åˆ—åˆ°LV
+			; è¿™ä¸ªç¼–å·æ˜¯æ•°æ®åº“ä¸­æœ€å¤§çš„ID+1ã€‚è¿™é‡Œå¾—åˆ°çš„å€¼å·²ç»+1
 			$strArgsOfSql = $recordcount & "|" & $strArgsOfSql
 
 			Local $tmpLvItem = GUICtrlCreateListViewItem( $strArgsOfSql, $strArgsOfLVArr[0])
@@ -1883,7 +1883,7 @@ Func FuncInsertDatas ()
 
 			_GUICtrlListView_Scroll($strArgsOfLVArr[0], 0, _GUICtrlListView_GetItemCount($strArgsOfLVArr[0])*15)
 
-			GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶" & $strTempLVName & "¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $strArgsOfLVArr[0] ))
+			GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Š" & $strTempLVName & "ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $strArgsOfLVArr[0] ))
 		EndIf
 	EndIf
 
@@ -1891,7 +1891,7 @@ Func FuncInsertDatas ()
 	GUISetState(@SW_ENABLE, $guiMainWindow)
 	GUISetState(@SW_RESTORE, $guiMainWindow)
 
-	; ¸´Î»¡£Çå¿ÕÊı×é
+	; å¤ä½ã€‚æ¸…ç©ºæ•°ç»„
 	$strArgsOfSql = ""
 	For $i = 0 To 14
 		$strArgsOfLVArr[$i] = ""
@@ -1900,8 +1900,8 @@ Func FuncInsertDatas ()
 EndFunc
 
 ; #cs
-; ÓÒ¼üµã»÷±êÇ©¿¨µ¯³ö²Ëµ¥
-; ¶ÔÓÒ¼ü²Ëµ¥ÏîµÄÏìÓ¦
+; å³é”®ç‚¹å‡»æ ‡ç­¾å¡å¼¹å‡ºèœå•
+; å¯¹å³é”®èœå•é¡¹çš„å“åº”
 ; #ce
 Func Func_MouseMenuItem()
 	Switch @GUI_CtrlId
@@ -1926,27 +1926,27 @@ Func Func_MouseMenuItem()
 			EndIf
 
 			Switch _GUICtrlTab_GetItemText($tabInMainWindow, $idOfTabItem)
-				Case "¹¤×÷ÈÕÖ¾"
-					GUICtrlSetData($menuItemJournal, "¡¡¹¤×÷ÈÕÖ¾")
-				Case "¹«Ë¾²úÆ·"
-					GUICtrlSetData($menuItemProducts, "¡¡¹«Ë¾²úÆ·")
-				Case "Ñ§Ğ£ĞÅÏ¢"
-					GUICtrlSetData($menuItemSchools, "¡¡Ñ§Ğ£ĞÅÏ¢")
-				Case "¹¤³Ì¹ÜÀí"
-					GUICtrlSetData($menuItemProjects, "¡¡¹¤³Ì¹ÜÀí")
-				Case "ºÏ×÷»ï°é"
-					GUICtrlSetData($menuItemPartners, "¡¡ºÏ×÷»ï°é")
+				Case "å·¥ä½œæ—¥å¿—"
+					GUICtrlSetData($menuItemJournal, "ã€€å·¥ä½œæ—¥å¿—")
+				Case "å…¬å¸äº§å“"
+					GUICtrlSetData($menuItemProducts, "ã€€å…¬å¸äº§å“")
+				Case "å­¦æ ¡ä¿¡æ¯"
+					GUICtrlSetData($menuItemSchools, "ã€€å­¦æ ¡ä¿¡æ¯")
+				Case "å·¥ç¨‹ç®¡ç†"
+					GUICtrlSetData($menuItemProjects, "ã€€å·¥ç¨‹ç®¡ç†")
+				Case "åˆä½œä¼™ä¼´"
+					GUICtrlSetData($menuItemPartners, "ã€€åˆä½œä¼™ä¼´")
 
-				Case "ÓÃ»§¹ÜÀí"
-					GUICtrlSetData($menuItemUsers, "  ÓÃ»§¹ÜÀí")
-				Case "×Ê²ú¹ÜÀí"
-					GUICtrlSetData($menuItemAccets, "  ×Ê²ú¹ÜÀí")
-				Case "ÈËÔ±¹ÜÀí"
-					GUICtrlSetData($menuItemWorkers, "  ÈËÔ±¹ÜÀí")
-				Case "²Ù×÷ÈÕÖ¾"
-					GUICtrlSetData($menuItemLog, "  ²Ù×÷ÈÕÖ¾")
-				Case "Ôª Êı ¾İ"
-					GUICtrlSetData($menuItemSources, "  Ôª Êı ¾İ")
+				Case "ç”¨æˆ·ç®¡ç†"
+					GUICtrlSetData($menuItemUsers, "  ç”¨æˆ·ç®¡ç†")
+				Case "èµ„äº§ç®¡ç†"
+					GUICtrlSetData($menuItemAccets, "  èµ„äº§ç®¡ç†")
+				Case "äººå‘˜ç®¡ç†"
+					GUICtrlSetData($menuItemWorkers, "  äººå‘˜ç®¡ç†")
+				Case "æ“ä½œæ—¥å¿—"
+					GUICtrlSetData($menuItemLog, "  æ“ä½œæ—¥å¿—")
+				Case "å…ƒ æ•° æ®"
+					GUICtrlSetData($menuItemSources, "  å…ƒ æ•° æ®")
 			EndSwitch
 
 			_GUICtrlTab_DeleteItem ( $tabInMainWindow, $idOfTabItem )
@@ -1954,37 +1954,37 @@ Func Func_MouseMenuItem()
 			$strTabItemText = _GUICtrlTab_GetItemText ( $tabInMainWindow, _GUICtrlTab_GetCurSel ( $tabInMainWindow ) )
 
 			Switch $strTabItemText
-				Case "¹¤×÷ÈÕÖ¾"
+				Case "å·¥ä½œæ—¥å¿—"
 					GUICtrlSetState($lvInTabJournal, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹¤×÷ÈÕÖ¾¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabJournal ))
-				Case "¹«Ë¾²úÆ·"
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå·¥ä½œæ—¥å¿—ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabJournal ))
+				Case "å…¬å¸äº§å“"
 					GUICtrlSetState($lvInTabProducts, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹«Ë¾²úÆ·¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabProducts ))
-				Case "Ñ§Ğ£ĞÅÏ¢"
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå…¬å¸äº§å“ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabProducts ))
+				Case "å­¦æ ¡ä¿¡æ¯"
 					GUICtrlSetState($lvInTabSchools, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶Ñ§Ğ£ĞÅÏ¢¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabSchools ))
-				Case "¹¤³Ì¹ÜÀí"
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå­¦æ ¡ä¿¡æ¯ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabSchools ))
+				Case "å·¥ç¨‹ç®¡ç†"
 					GUICtrlSetState($lvInTabProjects, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶¹¤³Ì¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabProjects ))
-				Case "ºÏ×÷»ï°é"
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå·¥ç¨‹ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabProjects ))
+				Case "åˆä½œä¼™ä¼´"
 					GUICtrlSetState($lvInTabPartners, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ºÏ×÷»ï°é¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabPartners ))
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šåˆä½œä¼™ä¼´ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabPartners ))
 
-				Case "ÓÃ»§¹ÜÀí"
+				Case "ç”¨æˆ·ç®¡ç†"
 					GUICtrlSetState($lvInTabUsers, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ÓÃ»§¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabUsers ))
-				Case "×Ê²ú¹ÜÀí"
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šç”¨æˆ·ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabUsers ))
+				Case "èµ„äº§ç®¡ç†"
 					GUICtrlSetState($lvInTabAccets, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶×Ê²ú¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabAccets ))
-				Case "ÈËÔ±¹ÜÀí"
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šèµ„äº§ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabAccets ))
+				Case "äººå‘˜ç®¡ç†"
 					GUICtrlSetState($lvInTabWorkers, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶ÈËÔ±¹ÜÀí¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabWorkers ))
-				Case "²Ù×÷ÈÕÖ¾"
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šäººå‘˜ç®¡ç†ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabWorkers ))
+				Case "æ“ä½œæ—¥å¿—"
 					GUICtrlSetState($lvInTabLog, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶²Ù×÷ÈÕÖ¾¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabLog ))
-				Case "Ôª Êı ¾İ"
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šæ“ä½œæ—¥å¿—ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabLog ))
+				Case "å…ƒ æ•° æ®"
 					GUICtrlSetState($lvInTabSources, $GUI_SHOW)
-					GUICtrlSetData($strInfoLbl, "ÁĞ±í¡¶Ôª Êı ¾İ¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & _GUICtrlListView_GetItemCount ( $lvInTabSources ))
+					GUICtrlSetData($strInfoLbl, "åˆ—è¡¨ã€Šå…ƒ æ•° æ®ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & _GUICtrlListView_GetItemCount ( $lvInTabSources ))
 			EndSwitch
 
 			$idOfTabItem = -1
@@ -1997,34 +1997,34 @@ Func Func_MouseMenuItem()
 EndFunc
 
 #cs
-	Í¨¹ı²Ëµ¥À¸¿ØÖÆ±êÇ©µÄÏÔÊ¾ºÍÒş²Ø
+	é€šè¿‡èœå•æ æ§åˆ¶æ ‡ç­¾çš„æ˜¾ç¤ºå’Œéšè—
 #ce
 Func Func_ShowTab_ByMenu ()
 	Switch @GUI_CtrlId
 		Case $menuItemJournal
-			Func_ShowTab_ByText ("¹¤×÷ÈÕÖ¾")
+			Func_ShowTab_ByText ("å·¥ä½œæ—¥å¿—")
 		Case $menuItemProducts
-			Func_ShowTab_ByText ("¹«Ë¾²úÆ·")
+			Func_ShowTab_ByText ("å…¬å¸äº§å“")
 		Case $menuItemSchools
-			Func_ShowTab_ByText ("Ñ§Ğ£ĞÅÏ¢")
+			Func_ShowTab_ByText ("å­¦æ ¡ä¿¡æ¯")
 		Case $menuItemProjects
-			Func_ShowTab_ByText ("¹¤³Ì¹ÜÀí")
+			Func_ShowTab_ByText ("å·¥ç¨‹ç®¡ç†")
 		Case $menuItemPartners
-			Func_ShowTab_ByText ("ºÏ×÷»ï°é")
+			Func_ShowTab_ByText ("åˆä½œä¼™ä¼´")
 		Case $menuItemUsers
-			Func_ShowTab_ByText ("ÓÃ»§¹ÜÀí")
+			Func_ShowTab_ByText ("ç”¨æˆ·ç®¡ç†")
 		Case $menuItemAccets
-			Func_ShowTab_ByText ("×Ê²ú¹ÜÀí")
+			Func_ShowTab_ByText ("èµ„äº§ç®¡ç†")
 		Case $menuItemWorkers
-			Func_ShowTab_ByText ("ÈËÔ±¹ÜÀí")
+			Func_ShowTab_ByText ("äººå‘˜ç®¡ç†")
 		Case $menuItemLog
-			Func_ShowTab_ByText ("²Ù×÷ÈÕÖ¾")
+			Func_ShowTab_ByText ("æ“ä½œæ—¥å¿—")
 		Case $menuItemSources
-			Func_ShowTab_ByText ("Ôª Êı ¾İ")
+			Func_ShowTab_ByText ("å…ƒ æ•° æ®")
 	EndSwitch
 EndFunc
 
-#cs Í¨¹ı´«ÈëµÄ×Ö·û´®£¬ºÍ±êÇ©Í·½øĞĞÆ¥Åä¡£¿ØÖÆÏÔÊ¾»òÒş²Ø
+#cs é€šè¿‡ä¼ å…¥çš„å­—ç¬¦ä¸²ï¼Œå’Œæ ‡ç­¾å¤´è¿›è¡ŒåŒ¹é…ã€‚æ§åˆ¶æ˜¾ç¤ºæˆ–éšè—
 #ce
 Func Func_ShowTab_ByText ( $strItemName )
 
@@ -2053,138 +2053,138 @@ Func Func_ShowTab_ByText ( $strItemName )
 		EndIf
 
 		Switch _GUICtrlTab_GetItemText($tabInMainWindow, $id_item)
-			Case "¹¤×÷ÈÕÖ¾"
-				GUICtrlSetData($menuItemJournal, "  ¹¤×÷ÈÕÖ¾")
-			Case "¹«Ë¾²úÆ·"
-				GUICtrlSetData($menuItemProducts, "  ¹«Ë¾²úÆ·")
-			Case "Ñ§Ğ£ĞÅÏ¢"
-				GUICtrlSetData($menuItemSchools, "  Ñ§Ğ£ĞÅÏ¢")
-			Case "¹¤³Ì¹ÜÀí"
-				GUICtrlSetData($menuItemProjects, "  ¹¤³Ì¹ÜÀí")
-			Case "ºÏ×÷»ï°é"
-				GUICtrlSetData($menuItemPartners, "  ºÏ×÷»ï°é")
+			Case "å·¥ä½œæ—¥å¿—"
+				GUICtrlSetData($menuItemJournal, "  å·¥ä½œæ—¥å¿—")
+			Case "å…¬å¸äº§å“"
+				GUICtrlSetData($menuItemProducts, "  å…¬å¸äº§å“")
+			Case "å­¦æ ¡ä¿¡æ¯"
+				GUICtrlSetData($menuItemSchools, "  å­¦æ ¡ä¿¡æ¯")
+			Case "å·¥ç¨‹ç®¡ç†"
+				GUICtrlSetData($menuItemProjects, "  å·¥ç¨‹ç®¡ç†")
+			Case "åˆä½œä¼™ä¼´"
+				GUICtrlSetData($menuItemPartners, "  åˆä½œä¼™ä¼´")
 
-			Case "ÓÃ»§¹ÜÀí"
-				GUICtrlSetData($menuItemUsers, "  ÓÃ»§¹ÜÀí")
-			Case "×Ê²ú¹ÜÀí"
-				GUICtrlSetData($menuItemAccets, "  ×Ê²ú¹ÜÀí")
-			Case "ÈËÔ±¹ÜÀí"
-				GUICtrlSetData($menuItemWorkers, "  ÈËÔ±¹ÜÀí")
-			Case "²Ù×÷ÈÕÖ¾"
-				GUICtrlSetData($menuItemLog, "  ²Ù×÷ÈÕÖ¾")
-			Case "Ôª Êı ¾İ"
-				GUICtrlSetData($menuItemSources, "  Ôª Êı ¾İ")
+			Case "ç”¨æˆ·ç®¡ç†"
+				GUICtrlSetData($menuItemUsers, "  ç”¨æˆ·ç®¡ç†")
+			Case "èµ„äº§ç®¡ç†"
+				GUICtrlSetData($menuItemAccets, "  èµ„äº§ç®¡ç†")
+			Case "äººå‘˜ç®¡ç†"
+				GUICtrlSetData($menuItemWorkers, "  äººå‘˜ç®¡ç†")
+			Case "æ“ä½œæ—¥å¿—"
+				GUICtrlSetData($menuItemLog, "  æ“ä½œæ—¥å¿—")
+			Case "å…ƒ æ•° æ®"
+				GUICtrlSetData($menuItemSources, "  å…ƒ æ•° æ®")
 		EndSwitch
 
 		_GUICtrlTab_DeleteItem ( $tabInMainWindow, $id_item )
 
 		$strTabItemText = _GUICtrlTab_GetItemText ( $tabInMainWindow, _GUICtrlTab_GetCurSel ( $tabInMainWindow ) )
 		Switch $strTabItemText
-			Case "¹¤×÷ÈÕÖ¾"
+			Case "å·¥ä½œæ—¥å¿—"
 				If $hasReadedDbTbJournal = False Then
 					FuncReadDb($tb_journal, $lvInTabJournal)
 					$hasReadedDbTbJournal = True
 				EndIf
 
 				GUICtrlSetState($lvInTabJournal, $GUI_SHOW)
-				GUICtrlSetData($menuItemJournal, "¡Ì ¹¤×÷ÈÕÖ¾")
-			Case "¹«Ë¾²úÆ·"
+				GUICtrlSetData($menuItemJournal, "âˆš å·¥ä½œæ—¥å¿—")
+			Case "å…¬å¸äº§å“"
 				If $hasReadedDbTbProducts = False Then
 					FuncReadDb($tb_products, $lvInTabProducts)
 					$hasReadedDbTbProducts = True
 				EndIf
 
 				GUICtrlSetState($lvInTabProducts, $GUI_SHOW)
-				GUICtrlSetData($menuItemProducts, "¡Ì ¹«Ë¾²úÆ·")
-			Case "Ñ§Ğ£ĞÅÏ¢"
+				GUICtrlSetData($menuItemProducts, "âˆš å…¬å¸äº§å“")
+			Case "å­¦æ ¡ä¿¡æ¯"
 				If $hasReadedDbTbSchools = False Then
 					FuncReadDb($tb_schools, $lvInTabSchools)
 					$hasReadedDbTbSchools = True
 				EndIf
 
 				GUICtrlSetState($lvInTabSchools, $GUI_SHOW)
-				GUICtrlSetData($menuItemSchools, "¡Ì Ñ§Ğ£ĞÅÏ¢")
-			Case "¹¤³Ì¹ÜÀí"
+				GUICtrlSetData($menuItemSchools, "âˆš å­¦æ ¡ä¿¡æ¯")
+			Case "å·¥ç¨‹ç®¡ç†"
 				If $hasReadedDbTbProjects = False Then
 					FuncReadDb($tb_projects, $lvInTabProjects)
 					$hasReadedDbTbProjects = True
 				EndIf
 
 				GUICtrlSetState($lvInTabProjects, $GUI_SHOW)
-				GUICtrlSetData($menuItemProjects, "¡Ì ¹¤³Ì¹ÜÀí")
-			Case "ºÏ×÷»ï°é"
+				GUICtrlSetData($menuItemProjects, "âˆš å·¥ç¨‹ç®¡ç†")
+			Case "åˆä½œä¼™ä¼´"
 				If $hasReadedDbTbPartners = False Then
 					FuncReadDb($tb_partners, $lvInTabPartners)
 					$hasReadedDbTbPartners = True
 				EndIf
 
 				GUICtrlSetState($lvInTabPartners, $GUI_SHOW)
-				GUICtrlSetData($menuItemPartners, "¡Ì ºÏ×÷»ï°é")
+				GUICtrlSetData($menuItemPartners, "âˆš åˆä½œä¼™ä¼´")
 
-			Case "ÓÃ»§¹ÜÀí"
+			Case "ç”¨æˆ·ç®¡ç†"
 				If $hasReadedDbTbUsers= False Then
 					FuncReadDb($tb_users, $lvInTabUsers)
 					$hasReadedDbTbUsers = True
 				EndIf
 
 				GUICtrlSetState($lvInTabUsers, $GUI_SHOW)
-				GUICtrlSetData($menuItemUsers, "¡Ì ÓÃ»§¹ÜÀí")
-			Case "×Ê²ú¹ÜÀí"
+				GUICtrlSetData($menuItemUsers, "âˆš ç”¨æˆ·ç®¡ç†")
+			Case "èµ„äº§ç®¡ç†"
 				If $hasReadedDbTbAccets = False Then
 					FuncReadDb($tb_accets, $lvInTabAccets)
 					$hasReadedDbTbAccets = True
 				EndIf
 
 				GUICtrlSetState($lvInTabAccets, $GUI_SHOW)
-				GUICtrlSetData($menuItemAccets, "¡Ì ×Ê²ú¹ÜÀí")
-			Case "ÈËÔ±¹ÜÀí"
+				GUICtrlSetData($menuItemAccets, "âˆš èµ„äº§ç®¡ç†")
+			Case "äººå‘˜ç®¡ç†"
 				If $hasReadedDbTbWorkers = False Then
 					FuncReadDb($tb_workers, $lvInTabWorkers)
 					$hasReadedDbTbWorkers = True
 				EndIf
 
 				GUICtrlSetState($lvInTabWorkers, $GUI_SHOW)
-				GUICtrlSetData($menuItemWorkers, "¡Ì ÈËÔ±¹ÜÀí")
-			Case "²Ù×÷ÈÕÖ¾"
+				GUICtrlSetData($menuItemWorkers, "âˆš äººå‘˜ç®¡ç†")
+			Case "æ“ä½œæ—¥å¿—"
 				If $hasReadedDbTbLog = False Then
 					FuncReadDb($tb_log, $lvInTabLog)
 					$hasReadedDbTbLog = True
 				EndIf
 
 				GUICtrlSetState($lvInTabLog, $GUI_SHOW)
-				GUICtrlSetData($menuItemLog, "¡Ì ²Ù×÷ÈÕÖ¾")
-			Case "Ôª Êı ¾İ"
+				GUICtrlSetData($menuItemLog, "âˆš æ“ä½œæ—¥å¿—")
+			Case "å…ƒ æ•° æ®"
 				If $hasReadedDbTbSource = False Then
 					FuncReadDb($tb_source, $lvInTabSources)
 					$hasReadedDbTbSource = True
 				EndIf
 
 				GUICtrlSetState($lvInTabSources, $GUI_SHOW)
-				GUICtrlSetData($menuItemSources, "¡Ì Ôª Êı ¾İ")
+				GUICtrlSetData($menuItemSources, "âˆš å…ƒ æ•° æ®")
 		EndSwitch
 
 	Else
 		Switch $strItemName
-			Case "¹¤×÷ÈÕÖ¾"
+			Case "å·¥ä½œæ—¥å¿—"
 				$id_item = 0
-			Case "¹«Ë¾²úÆ·"
+			Case "å…¬å¸äº§å“"
 				$id_item = 1
-			Case "Ñ§Ğ£ĞÅÏ¢"
+			Case "å­¦æ ¡ä¿¡æ¯"
 				$id_item = 2
-			Case "¹¤³Ì¹ÜÀí"
+			Case "å·¥ç¨‹ç®¡ç†"
 				$id_item = 3
-			Case "ºÏ×÷»ï°é"
+			Case "åˆä½œä¼™ä¼´"
 				$id_item = 4
 
-			Case "ÓÃ»§¹ÜÀí"
+			Case "ç”¨æˆ·ç®¡ç†"
 				$id_item = 5
-			Case "×Ê²ú¹ÜÀí"
+			Case "èµ„äº§ç®¡ç†"
 				$id_item = 6
-			Case "ÈËÔ±¹ÜÀí"
+			Case "äººå‘˜ç®¡ç†"
 				$id_item = 7
-			Case "²Ù×÷ÈÕÖ¾"
+			Case "æ“ä½œæ—¥å¿—"
 				$id_item = 8
-			Case "Ôª Êı ¾İ"
+			Case "å…ƒ æ•° æ®"
 				$id_item = 9
 		EndSwitch
 
@@ -2207,87 +2207,87 @@ Func Func_ShowTab_ByText ( $strItemName )
 				GUICtrlSetState($lvInTabSources, $GUI_HIDE)
 
 				Switch $strItemName
-					Case "¹¤×÷ÈÕÖ¾"
+					Case "å·¥ä½œæ—¥å¿—"
 						If $hasReadedDbTbJournal = False Then
 							FuncReadDb($tb_journal, $lvInTabJournal)
 							$hasReadedDbTbJournal = True
 						EndIf
 
 						GUICtrlSetState($lvInTabJournal, $GUI_SHOW)
-						GUICtrlSetData($menuItemJournal, "¡Ì ¹¤×÷ÈÕÖ¾")
-					Case "¹«Ë¾²úÆ·"
+						GUICtrlSetData($menuItemJournal, "âˆš å·¥ä½œæ—¥å¿—")
+					Case "å…¬å¸äº§å“"
 						If $hasReadedDbTbProducts = False Then
 							FuncReadDb($tb_products, $lvInTabProducts)
 							$hasReadedDbTbProducts = True
 						EndIf
 
 						GUICtrlSetState($lvInTabProducts, $GUI_SHOW)
-						GUICtrlSetData($menuItemProducts, "¡Ì ¹«Ë¾²úÆ·")
-					Case "Ñ§Ğ£ĞÅÏ¢"
+						GUICtrlSetData($menuItemProducts, "âˆš å…¬å¸äº§å“")
+					Case "å­¦æ ¡ä¿¡æ¯"
 						If $hasReadedDbTbSchools = False Then
 							FuncReadDb($tb_schools, $lvInTabSchools)
 							$hasReadedDbTbSchools = True
 						EndIf
 
 						GUICtrlSetState($lvInTabSchools, $GUI_SHOW)
-						GUICtrlSetData($menuItemSchools, "¡Ì Ñ§Ğ£ĞÅÏ¢")
-					Case "¹¤³Ì¹ÜÀí"
+						GUICtrlSetData($menuItemSchools, "âˆš å­¦æ ¡ä¿¡æ¯")
+					Case "å·¥ç¨‹ç®¡ç†"
 						If $hasReadedDbTbProjects = False Then
 							FuncReadDb($tb_projects, $lvInTabProjects)
 							$hasReadedDbTbProjects = True
 						EndIf
 
 						GUICtrlSetState($lvInTabProjects, $GUI_SHOW)
-						GUICtrlSetData($menuItemProjects, "¡Ì ¹¤³Ì¹ÜÀí")
-					Case "ºÏ×÷»ï°é"
+						GUICtrlSetData($menuItemProjects, "âˆš å·¥ç¨‹ç®¡ç†")
+					Case "åˆä½œä¼™ä¼´"
 						If $hasReadedDbTbPartners = False Then
 							FuncReadDb($tb_partners, $lvInTabPartners)
 							$hasReadedDbTbPartners = True
 						EndIf
 
 						GUICtrlSetState($lvInTabPartners, $GUI_SHOW)
-						GUICtrlSetData($menuItemPartners, "¡Ì ºÏ×÷»ï°é")
+						GUICtrlSetData($menuItemPartners, "âˆš åˆä½œä¼™ä¼´")
 
-					Case "ÓÃ»§¹ÜÀí"
+					Case "ç”¨æˆ·ç®¡ç†"
 						If $hasReadedDbTbUsers= False Then
 							FuncReadDb($tb_users, $lvInTabUsers)
 							$hasReadedDbTbUsers = True
 						EndIf
 
 						GUICtrlSetState($lvInTabUsers, $GUI_SHOW)
-						GUICtrlSetData($menuItemUsers, "¡Ì ÓÃ»§¹ÜÀí")
-					Case "×Ê²ú¹ÜÀí"
+						GUICtrlSetData($menuItemUsers, "âˆš ç”¨æˆ·ç®¡ç†")
+					Case "èµ„äº§ç®¡ç†"
 						If $hasReadedDbTbAccets = False Then
 							FuncReadDb($tb_accets, $lvInTabAccets)
 							$hasReadedDbTbAccets = True
 						EndIf
 
 						GUICtrlSetState($lvInTabAccets, $GUI_SHOW)
-						GUICtrlSetData($menuItemAccets, "¡Ì ×Ê²ú¹ÜÀí")
-					Case "ÈËÔ±¹ÜÀí"
+						GUICtrlSetData($menuItemAccets, "âˆš èµ„äº§ç®¡ç†")
+					Case "äººå‘˜ç®¡ç†"
 						If $hasReadedDbTbWorkers = False Then
 							FuncReadDb($tb_workers, $lvInTabWorkers)
 							$hasReadedDbTbWorkers = True
 						EndIf
 
 						GUICtrlSetState($lvInTabWorkers, $GUI_SHOW)
-						GUICtrlSetData($menuItemWorkers, "¡Ì ÈËÔ±¹ÜÀí")
-					Case "²Ù×÷ÈÕÖ¾"
+						GUICtrlSetData($menuItemWorkers, "âˆš äººå‘˜ç®¡ç†")
+					Case "æ“ä½œæ—¥å¿—"
 						If $hasReadedDbTbLog = False Then
 							FuncReadDb($tb_log, $lvInTabLog)
 							$hasReadedDbTbLog = True
 						EndIf
 
 						GUICtrlSetState($lvInTabLog, $GUI_SHOW)
-						GUICtrlSetData($menuItemLog, "¡Ì ²Ù×÷ÈÕÖ¾")
-					Case "Ôª Êı ¾İ"
+						GUICtrlSetData($menuItemLog, "âˆš æ“ä½œæ—¥å¿—")
+					Case "å…ƒ æ•° æ®"
 						If $hasReadedDbTbSource = False Then
 							FuncReadDb($tb_source, $lvInTabSources)
 							$hasReadedDbTbSource = True
 						EndIf
 
 						GUICtrlSetState($lvInTabSources, $GUI_SHOW)
-						GUICtrlSetData($menuItemSources, "¡Ì Ôª Êı ¾İ")
+						GUICtrlSetData($menuItemSources, "âˆš å…ƒ æ•° æ®")
 				EndSwitch
 			EndIf
 		Next
@@ -2297,9 +2297,9 @@ EndFunc
 Func Func_MenuHelp ()
 EndFunc
 
-;#cs ¶ÁÈ¡±íµÄÊı¾İ£¬ÏÔÊ¾µ½ListViewÉÏ
-;	$strTbName£ºÒª²éÑ¯µÄ±íÃû³Æ
-;	$strListView£ºÒªÏÔÊ¾Êı¾İµÄÁĞ±í
+;#cs è¯»å–è¡¨çš„æ•°æ®ï¼Œæ˜¾ç¤ºåˆ°ListViewä¸Š
+;	$strTbNameï¼šè¦æŸ¥è¯¢çš„è¡¨åç§°
+;	$strListViewï¼šè¦æ˜¾ç¤ºæ•°æ®çš„åˆ—è¡¨
 ;#ce
 Func FuncReadDb( $strTbName, $strListView )
 
@@ -2310,18 +2310,18 @@ Func FuncReadDb( $strTbName, $strListView )
 
 	Local $oRec = $obj_adodb_recordset
 	$oRec.Open($strTbName, $obj_adodb_connection, 3, 3)
-	Local $fieldsCount = $oRec.fields.count	; »ñÈ¡±íµ¥µÄÁĞÊı£¬×Ü¹²ÓĞ¶àÉÙ×Ö¶Î
+	Local $fieldsCount = $oRec.fields.count	; è·å–è¡¨å•çš„åˆ—æ•°ï¼Œæ€»å…±æœ‰å¤šå°‘å­—æ®µ
 
 	$obj_adodb_recordset.Open("SELECT * FROM " & $strTbName)
 	;
-	; ¹¤×÷ÈÕÖ¾±íÌØÊâ£º×îºóÁ½¸ö×Ö¶ÎÒş²Ø
+	; å·¥ä½œæ—¥å¿—è¡¨ç‰¹æ®Šï¼šæœ€åä¸¤ä¸ªå­—æ®µéšè—
 	;
 	If $strTbName = $tb_journal Then
 		$fieldsCount = $fieldsCount - 2
 	EndIf
 
 	_GUICtrlListView_BeginUpdate($strListView)
-	; ±éÀú ĞĞ
+	; éå† è¡Œ
 	While Not $obj_adodb_recordset.eof And Not $obj_adodb_recordset.bof
 		If @error = 1 Then ExitLoop
 		;
@@ -2335,16 +2335,16 @@ Func FuncReadDb( $strTbName, $strListView )
 
 			$strFields &= $strTmpS & "|"
 		Next
-		$strFields = StringTrimRight ( $strFields, 1 )	; É¾³ıÄ©Î²µÄ |
+		$strFields = StringTrimRight ( $strFields, 1 )	; åˆ é™¤æœ«å°¾çš„ |
 
-		; ³ÊÏÖ ÁĞ
+		; å‘ˆç° åˆ—
 		GUICtrlCreateListViewItem( $strFields, $strListView)
-			GUICtrlSetBkColor (-1, 0xffa500 );ÉèÖÃlistviewitemµÄ±³¾°É«
+			GUICtrlSetBkColor (-1, 0xffa500 );è®¾ç½®listviewitemçš„èƒŒæ™¯è‰²
 		$obj_adodb_recordset.movenext
 	WEnd
 	_GUICtrlListView_EndUpdate($strListView)
 
-	GUICtrlSetData($strInfoLbl, "±í¡¶" & $strTbName & "¡·ÖĞ¼ÇÂ¼ÊıÁ¿£º" & $obj_adodb_recordset.recordcount)
+	GUICtrlSetData($strInfoLbl, "è¡¨ã€Š" & $strTbName & "ã€‹ä¸­è®°å½•æ•°é‡ï¼š" & $obj_adodb_recordset.recordcount)
 
 	$obj_adodb_recordset.close
 	$obj_adodb_connection.Close
@@ -2352,71 +2352,71 @@ Func FuncReadDb( $strTbName, $strListView )
 
 EndFunc
 
-;#cs ´´½¨Êı¾İ¿â
-;	$strDbPath£ºÎÄ¼şÂ·¾¶
-;	$strDbPswd£º·ÃÎÊÃÜÂë
+;#cs åˆ›å»ºæ•°æ®åº“
+;	$strDbPathï¼šæ–‡ä»¶è·¯å¾„
+;	$strDbPswdï¼šè®¿é—®å¯†ç 
 ;#ce
 Func FuncCreateDb()
-	; ±íµ¥µÄÁĞºÍListViewÖĞ¶ÔÓ¦
+	; è¡¨å•çš„åˆ—å’ŒListViewä¸­å¯¹åº”
 
-	;=== ¹«Ë¾ÈËÔ±±í tb_workers £º14
-	;                              ±àºÅ¡£Ö÷¼ü×Ô¶¯Ôö³¤|                   ĞÕÃû¡£ÎÄ±¾|  Éí·İÖ¤ºÅ|               ²¿ÃÅ|              Ö°Îñ|            ÈëÖ°ÈÕÆÚ|             ×ªÕıÈÕÆÚ|            ÔÂĞ½×Ê|            ĞÔ±ğ|       ÉúÈÕ|            µç»°|         ÓÊÏä|         ×¡Ö·£¬Ä¬ÈÏ50×Ö·û|    ¼ÒÍ¥ĞÅÏ¢|          ±¸×¢
+	;=== å…¬å¸äººå‘˜è¡¨ tb_workers ï¼š14
+	;                              ç¼–å·ã€‚ä¸»é”®è‡ªåŠ¨å¢é•¿|                   å§“åã€‚æ–‡æœ¬|  èº«ä»½è¯å·|               éƒ¨é—¨|              èŒåŠ¡|            å…¥èŒæ—¥æœŸ|             è½¬æ­£æ—¥æœŸ|            æœˆè–ªèµ„|            æ€§åˆ«|       ç”Ÿæ—¥|            ç”µè¯|         é‚®ç®±|         ä½å€ï¼Œé»˜è®¤50å­—ç¬¦|    å®¶åº­ä¿¡æ¯|          å¤‡æ³¨
 	Local $strColsForTbWorders = "id integer identity(1,1) primary key, w_name text, w_identity_number text, w_deportment text, w_position text, w_date_of_entry text, w_date_regular text, w_month_wage text, w_sex text, w_birthday text, w_phone text, w_email text, w_address text(250), w_family text(254), w_note memo"
 
-	;=== Ñ§Ğ£ĞÅÏ¢±í tb_schools £º6
-	;                              ±àºÅ|                                 Ñ§Ğ£|        ÁªÏµÈË|         µØÖ·|                µç»°|         ÓÊÏä|        ±¸×¢
+	;=== å­¦æ ¡ä¿¡æ¯è¡¨ tb_schools ï¼š6
+	;                              ç¼–å·|                                 å­¦æ ¡|        è”ç³»äºº|         åœ°å€|                ç”µè¯|         é‚®ç®±|        å¤‡æ³¨
 	Local $strColsForTbSchools = "id integer identity(1,1) primary key, s_name text, s_contact text, s_address text(250), s_phone text, s_email text, s_note memo"
 
-	;=== ¹«Ë¾²úÆ·±í tb_products £º6
-	;                               ±àºÅ|                                 ²úÆ·|         ÀàĞÍ|        Éè¼Æ|             ÅäÖÃ|                       Ôì¼Û|        ±¸×¢
+	;=== å…¬å¸äº§å“è¡¨ tb_products ï¼š6
+	;                               ç¼–å·|                                 äº§å“|         ç±»å‹|        è®¾è®¡|             é…ç½®|                       é€ ä»·|        å¤‡æ³¨
 	Local $strColsForTbProducts = "id integer identity(1,1) primary key, pd_name text, pd_type text, pd_desiger text, pd_configuration text(250), pd_cost text, pd_note memo"
 
-	;=== ×Ê²ú¹ÜÀí±í tb_accets £º10
-	;                             ±àºÅ|                                 Ãû³Æ|        ´®ºÅ|                 µ¥Î»|        ÀàĞÍ|        ¹ºÈëÈÕÆÚ|           µ¥¼Û|         ËùÊô²¿ÃÅ|          ¾­ÏúÉÌ|        ÊÇ·ñ±¨·Ï|     ±¸×¢
+	;=== èµ„äº§ç®¡ç†è¡¨ tb_accets ï¼š10
+	;                             ç¼–å·|                                 åç§°|        ä¸²å·|                 å•ä½|        ç±»å‹|        è´­å…¥æ—¥æœŸ|           å•ä»·|         æ‰€å±éƒ¨é—¨|          ç»é”€å•†|        æ˜¯å¦æŠ¥åºŸ|     å¤‡æ³¨
 	Local $strColsForTbAccets = "id integer identity(1,1) primary key, a_name text, a_serial_number text, a_unit text, a_type text, a_date_bought text, a_price text, a_deportment text, a_dealer text, a_scrap text, a_note text(250)"
 
-	;=== ºÏ×÷»ï°é±í tb_partners £º7
-	;                               ±àºÅ|                                 Ãû³Æ|         ÀàĞÍ|         µØÖ·|                 µç»°|          ÓÊÏä|          ÒµÎñ|             ±¸×¢
+	;=== åˆä½œä¼™ä¼´è¡¨ tb_partners ï¼š7
+	;                               ç¼–å·|                                 åç§°|         ç±»å‹|         åœ°å€|                 ç”µè¯|          é‚®ç®±|          ä¸šåŠ¡|             å¤‡æ³¨
 	Local $strColsForTbPartners = "id integer identity(1,1) primary key, pt_name text, pt_type text, pt_address text(250), pt_phone text, pt_email text, pt_business text, pt_note memo"
 
-	;=== ¹¤³Ì¹ÜÀí±í tb_projects £º10
-	;                               ±àºÅ|                                 Ãû³Æ|         Ñ§Ğ£|           ²úÆ·|            ºÏ×÷Õß|          ÎÒË¾¸ºÔğÈË|     Ï¸Ôò£¨ÕÕÆ¬£©|         ÆğÊ¼ÈÕÆÚ|           ×´Ì¬|          ½áÊøÈÕÆÚ|            ½áËã¼ÇÂ¼|             ±¸×¢
+	;=== å·¥ç¨‹ç®¡ç†è¡¨ tb_projects ï¼š10
+	;                               ç¼–å·|                                 åç§°|         å­¦æ ¡|           äº§å“|            åˆä½œè€…|          æˆ‘å¸è´Ÿè´£äºº|     ç»†åˆ™ï¼ˆç…§ç‰‡ï¼‰|         èµ·å§‹æ—¥æœŸ|           çŠ¶æ€|          ç»“æŸæ—¥æœŸ|            ç»“ç®—è®°å½•|             å¤‡æ³¨
 	Local $strColsForTbProjects = "id integer identity(1,1) primary key, pj_name text, pj_s_name text, pj_pd_name text, pj_pt_name text, pj_w_name text, pj_content text(250), pj_date_start text, pj_state text, pj_date_finish text, pj_account text(250), pj_note memo"
 
-	;=== ¹¤×÷ÈÕÖ¾±í tb_journal £º7
-	;                              ±àºÅ|                                 ÈËÔ±|        ÈÕÆÚ|        µØµã|                ½»Í¨|                Ê³ËŞ|              ¹¤×÷ÃèÊö|            ±¸×¢|        ¼ÇÂ¼ÈË(Òş²Ø)|        ¼ÇÂ¼ÈÕÆÚ(Òş²Ø)
+	;=== å·¥ä½œæ—¥å¿—è¡¨ tb_journal ï¼š7
+	;                              ç¼–å·|                                 äººå‘˜|        æ—¥æœŸ|        åœ°ç‚¹|                äº¤é€š|                é£Ÿå®¿|              å·¥ä½œæè¿°|            å¤‡æ³¨|        è®°å½•äºº(éšè—)|        è®°å½•æ—¥æœŸ(éšè—)
 	Local $strColsForTbJournal = "id integer identity(1,1) primary key, j_name text, j_date text, j_address text(250), j_traffic text(250), j_board text(250), j_content text(250), j_note memo, j_record text, j_date_record text"
 
-	;=== ÓÃ»§±í tb_users £º4
-	;                            ±àºÅ|                                 ÓÃ»§Ãû|      ÃÜÂë|        È¨ÏŞ|             ±¸×¢
+	;=== ç”¨æˆ·è¡¨ tb_users ï¼š4
+	;                            ç¼–å·|                                 ç”¨æˆ·å|      å¯†ç |        æƒé™|             å¤‡æ³¨
 	Local $strColsForTbUsers = "id integer identity(1,1) primary key, u_name text, u_pswd text, u_authority text, u_note text(250)"
 
-	;=== Ô´Êı¾İ±í tb_source £º4
-	;                             ±àºÅ|                                 ±íµ¥|            ÁĞ|             Öµ|            ÃèÊö
+	;=== æºæ•°æ®è¡¨ tb_source ï¼š4
+	;                             ç¼–å·|                                 è¡¨å•|            åˆ—|             å€¼|            æè¿°
 	Local $strColsForTbSource = "id integer identity(1,1) primary key, sr_tb_name text, sr_column text, sr_value text, sr_note text(250)"
 
-	;=== ²Ù×÷ÈÕÖ¾±í tb_log £º
-	;                          ±àºÅ|                                 ÓÃ»§|        µÇÍËÔöÉ¾¸Ä|     ±í|            ÁĞ|            ¾ÉÊı¾İ|          ĞÂÊı¾İ|          ÈÕÆÚ|        ±¸×¢
+	;=== æ“ä½œæ—¥å¿—è¡¨ tb_log ï¼š
+	;                          ç¼–å·|                                 ç”¨æˆ·|        ç™»é€€å¢åˆ æ”¹|     è¡¨|            åˆ—|            æ—§æ•°æ®|          æ–°æ•°æ®|          æ—¥æœŸ|        å¤‡æ³¨
 	Local $strColsForTbLog = "id integer identity(1,1) primary key, l_name text, l_operate text, l_table text, l_column text,  l_old_data memo, l_new_data memo, l_date text, l_note text(250)"
 
-	; ´´½¨Êı¾İ¿âÎÄ¼ş
+	; åˆ›å»ºæ•°æ®åº“æ–‡ä»¶
 	Local $oADO = ObjCreate("ADOX.Catalog")
 	$oADO.Create("Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" & $db_path & "; Jet OLEDB:Database Password='" & $db_pswd & "'")
 	$oADO.ActiveConnection.Close
 
-	; ´´½¨±íµ¥ $tb_workers, $tb_schools, $tb_products, $tb_accets, $tb_partners, $tb_projects, $tb_journal, $tb_users, $tb_source, $tb_log
+	; åˆ›å»ºè¡¨å• $tb_workers, $tb_schools, $tb_products, $tb_accets, $tb_partners, $tb_projects, $tb_journal, $tb_users, $tb_source, $tb_log
 	$oADO = ObjCreate("ADODB.Connection")
 	$oADO.Open("Provider=Microsoft.Jet.OLEDB.4.0; Data Source=" & $db_path & "; Jet OLEDB:Database Password='" & $db_pswd & "'")
-	$oADO.Execute("CREATE TABLE " & $tb_workers)	; ÈËÔ±¹ÜÀí'
-	$oADO.Execute("CREATE TABLE " & $tb_schools)	; Ñ§Ğ£ĞÅÏ¢
-	$oADO.Execute("CREATE TABLE " & $tb_products)	; ¹«Ë¾²úÆ·
-	$oADO.Execute("CREATE TABLE " & $tb_accets)		; ×Ê²ú¹ÜÀí
-	$oADO.Execute("CREATE TABLE " & $tb_partners)	; ºÏ×÷»ï°é
-	$oADO.Execute("CREATE TABLE " & $tb_projects)	; ¹¤³Ì¹ÜÀí
-	$oADO.Execute("CREATE TABLE " & $tb_journal)	; Ö÷½çÃæ£¬¹¤×÷ÈÕÖ¾
-	$oADO.Execute("CREATE TABLE " & $tb_users)		; ÓÃ»§¹ÜÀí
-	$oADO.Execute("CREATE TABLE " & $tb_source)		; ÔªÊı¾İ
-	$oADO.Execute("CREATE TABLE " & $tb_log)		; ²Ù×÷ÈÕÖ¾
+	$oADO.Execute("CREATE TABLE " & $tb_workers)	; äººå‘˜ç®¡ç†'
+	$oADO.Execute("CREATE TABLE " & $tb_schools)	; å­¦æ ¡ä¿¡æ¯
+	$oADO.Execute("CREATE TABLE " & $tb_products)	; å…¬å¸äº§å“
+	$oADO.Execute("CREATE TABLE " & $tb_accets)		; èµ„äº§ç®¡ç†
+	$oADO.Execute("CREATE TABLE " & $tb_partners)	; åˆä½œä¼™ä¼´
+	$oADO.Execute("CREATE TABLE " & $tb_projects)	; å·¥ç¨‹ç®¡ç†
+	$oADO.Execute("CREATE TABLE " & $tb_journal)	; ä¸»ç•Œé¢ï¼Œå·¥ä½œæ—¥å¿—
+	$oADO.Execute("CREATE TABLE " & $tb_users)		; ç”¨æˆ·ç®¡ç†
+	$oADO.Execute("CREATE TABLE " & $tb_source)		; å…ƒæ•°æ®
+	$oADO.Execute("CREATE TABLE " & $tb_log)		; æ“ä½œæ—¥å¿—
 
 	$oADO.Execute("ALTER TABLE " & $tb_workers & " ADD " & $strColsForTbWorders)
 	$oADO.Execute("ALTER TABLE " & $tb_schools  & " ADD " & $strColsForTbSchools)
